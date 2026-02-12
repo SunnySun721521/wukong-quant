@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/backtest/backtest",
+    "pages/prediction/prediction",
+    "pages/strategy/strategy",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1a1a1a",
+    "navigationBarTitleText": "量化交易系统",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0d0d0d"
+  },
+  "tabBar": {
+    "color": "#888888",
+    "selectedColor": "#1890ff",
+    "backgroundColor": "#1a1a1a",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/backtest/backtest",
+        "text": "单测"
+      },
+      {
+        "pagePath": "pages/prediction/prediction",
+        "text": "合测"
+      },
+      {
+        "pagePath": "pages/strategy/strategy",
+        "text": "票池"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  }
+}

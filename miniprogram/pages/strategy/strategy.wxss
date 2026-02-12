@@ -1,0 +1,85 @@
+page {
+  background-color: #0d0d0d;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 20rpx;
+  background-color: #1a1a1a;
+  border-radius: 10rpx;
+  padding: 8rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.3);
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+  border-radius: 8rpx;
+  transition: all 0.3s ease;
+}
+
+.tab-item.active {
+  background-color: #1890ff;
+}
+
+.tab-item text {
+  font-size: 28rpx;
+  color: #888888;
+}
+
+.tab-item.active text {
+  color: #ffffff;
+}
+
+.stock-pool-list {
+  background-color: #2a2a2a;
+  border-radius: 8rpx;
+  padding: 20rpx;
+}
+
+.pool-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 0;
+  border-bottom: 1rpx solid #3a3a3a;
+}
+
+.pool-item:last-child {
+  border-bottom: none;
+}
+
+.pool-symbol {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400rpx;
+}
+
+.loading text {
+  font-size: 28rpx;
+  color: #888888;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-10 {
+  margin-top: 10rpx;
+}
+
+.mt-20 {
+  margin-top: 20rpx;
+}
+
+.mb-10 {
+  margin-bottom: 10rpx;
+}

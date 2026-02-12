@@ -1,0 +1,163 @@
+﻿成功注册字体: Microsoft YaHei (msyh)
+加载定时任务配置: [{'hour': 12, 'minute': 0}, {'hour': 12, 'minute': 20}, {'hour': 12, 'minute': 55}, {'hour': 13, 'minute': 20}, {'hour': 15, 'minute': 30}]
+加载执行日志: {'2026-02-05_0': '12:35:18', '2026-02-05_1': '12:35:18', '2026-02-05_2': '12:35:18', '2026-02-05_3': '12:35:18', '2026-02-05_4': '12:35:18', '2026-02-05_5': '12:35:18', '2026-02-05_6': '12:35:18', '2026-02-05_7': '12:35:18', '2026-02-06_0': '10:19:01', '2026-02-06_1': '10:24:08', '2026-02-06_2': '10:29:08', '2026-02-09_0': '10:14:02', '2026-02-09_1': '14:54:08', '2026-02-09_2': '15:29:06', '2026-02-09_3': '16:04:03', '2026-02-09_4': '17:29:03', '2026-02-09_5': '17:34:02', '2026-02-09_6': '17:39:06', '2026-02-09_7': '17:59:00', '2026-02-09_9': '18:14:00', '2026-02-09_10': '18:19:02', '2026-02-09_11': '18:24:03', '2026-02-09_12': '18:49:03', '2026-02-10_0': '11:59:06', '2026-02-10_1': '12:19:02', '2026-02-10_2': '12:54:00'}
+加载数据更新配置: 间隔=30分钟
+加载邮件模板成功: detailed
+加载邮件模板成功: simple
+StockPoolManager initialized with pool size: 35
+StockPoolManager current_pool: ['300274', '002371', '300308', '603000', '300502', '600875', '600170', '300024', '603019', '000977', '601138', '688012', '301269', '300212', '002368', '600406', '300750', '002594', '601985', '003816', '601727', '300402', '688339', '000723', '000988', '002008', '300124', '002747', '600893', '600118', '600760', '000768', '603259', '300760', '000999']
+==================================================
+测试邮件发送
+==================================================
+
+发送测试邮件:
+加载邮件模板成功: detailed
+加载邮件模板成功: simple
+SMTP连接成功: smtp.qq.com:465
+尝试发送邮件 (第 1/4 次)
+发送邮件成功: lib@tcscd.com
+记录邮件发送成功日志: 092d27e7-5d78-46aa-88df-e08c4e657faa
+SMTP连接已断开
+  状态码: 200
+  响应: {'message': '测试邮件发送成功', 'recipients': ['lib@tcscd.com']}
+
+==================================================
+测试完成
+==================================================
+python : <sys>:0: ResourceWarning: unclosed database in <
+sqlite3.Connection object at 0x000002BD7AA93010>
+所在位置 行:1 字符: 31
++ cd d:\trae\备份悟空52220\backend; python test_email_send.py
+ 2>&1 | Out-Fi ...
++                               ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo          : NotSpecified: (<sys>:0: Re 
+   sour...0002BD7AA93010>:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCC6D0>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCC7C0>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCC8B0>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCC9A0>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCCA90>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCCB80>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCCC70>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCCD60>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCCE50>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCCF40>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCD030>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCD120>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCD210>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCD300>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCD3F0>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCD4E0>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCD5D0>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCFE20>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCFB50>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7AFCFF10>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7B09C040>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7B09C130>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7B09C310>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7B09C220>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7B09C400>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7B09C4F0>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7B09C5E0>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7B09C6D0>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7B09C7C0>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7B09C8B0>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.C
+onnection object at 0x000002BD7B09CA90>
+ResourceWarning: Enable tracemalloc to get the object all
+ocation traceback

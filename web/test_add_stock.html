@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试添加股票</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>测试添加股票功能</h1>
+    
+    <div class="test-section">
+        <h2>测试1: 添加新股票</h2>
+        <button onclick="testAddStock('000002')">添加 000002 (万科A)</button>
+        <button onclick="testAddStock('600000')">添加 600000 (浦发银行)</button>
+        <button onclick="testAddStock('301269')">添加 301269 (华大九天)</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>测试2: 获取股票池信息</h2>
+        <button onclick=" testGetStockPool()">获取股票池</button>
+    </div>
+    
+    <div id="result"></div>
+    
+    <script>
+        function log(message) {
+            console.log(message);
+            document.getElementById('result').innerHTML += '<p>' + message + '</p>';
+        }
+        
+        function clearLog() {
+            document.getElementById('result').innerHTML = '';
+        }
+        
+        function testAddStock(symbol) {
+            clearLog();
+            log('开始添加股票: ' + symbol);
+            
+            fetch('/api/stockpool/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ stock_code: symbol })
+            })
+            .then(response => {
+                log('响应状态: ' + response.status);
+                if (!response.ok) {
+                    throw new Error('HTTP error, status = ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                log('响应数据: ' + JSON.stringify(data));
+                if (data.error) {
+                    log('添加失败: ' + data.error);
+                } else {
+                    log('添加成功: ' + data.message);
+                }
+            })
+            .catch(error => {
+                log('错误: ' + error.message);
+                log('错误详情: ' + error.stack);
+            });
+        }
+        
+        function testGetStockPool() {
+            clearLog();
+            log('获取股票池信息...');
+            
+            fetch('/api/stockpool/info')
+            .then(response => response.json())
+            .then(data => {
+                log('股票池大小: ' + data.pool_size);
+                log('当前股票池: ' + JSON.stringify(data.current_pool));
+                log('股票详情: ' + JSON.stringify(data.stock_details));
+            })
+            .catch(error => {
+                log('错误: ' + error.message);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+page {
+  background-color: #0d0d0d;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-group .input {
+  flex: 1;
+}
+
+.picker-btn {
+  padding: 10rpx 20rpx;
+  background: #2a2a2a;
+  color: #ffffff;
+  border-radius: 8rpx;
+  margin-left: 10rpx;
+  font-size: 24rpx;
+}
+
+.stock-picker {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #2a2a2a;
+  border-radius: 12rpx;
+  max-height: 400rpx;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.3);
+}
+
+.picker-item {
+  padding: 20rpx;
+  border-bottom: 1rpx solid #3a3a3a;
+  transition: background-color 0.2s;
+}
+
+.picker-item:last-child {
+  border-bottom: none;
+}
+
+.picker-item:active {
+  background-color: #3a3a3a;
+}
+
+.picker-item text {
+  color: #ffffff;
+  font-size: 28rpx;
+}

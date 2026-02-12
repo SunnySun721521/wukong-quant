@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>邮件配置测试</title>
+</head>
+<body>
+    <h1>邮件配置测试</h1>
+    
+    <div>
+        <label>邮件发送功能:</label>
+        <select id="emailEnabled">
+            <option value="false">禁用</option>
+            <option value="true">启用</option>
+        </select>
+    </div>
+    
+    <div>
+        <label>发送邮箱地址:</label>
+        <input type="text" id="senderEmail">
+    </div>
+    
+    <div>
+        <label>邮箱授权码:</label>
+        <input type="password" id="senderAuthCode">
+    </div>
+    
+    <div>
+        <label>邮件模板:</label>
+        <select id="emailTemplate">
+            <option value="simple">简洁版</option>
+            <option value="detailed">详细版</option>
+        </select>
+    </div>
+    
+    <button onclick="loadEmailConfig()">加载配置</button>
+    <button onclick="saveEmailConfig()">保存配置</button>
+    
+    <div id="result"></div>
+    
+    <script>
+        function loadEmailConfig() {
+            fetch('http://127.0.0.1:5006/api/email/config')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('加载配置响应:', data);
+                    if (data.error) {
+                        console.error('加载邮件配置失败:', data.error);
+                        document.getElementById('result').innerHTML = '加载失败: ' + data.error;
+                    } else {
+                        const config = data;
+                        console.log('配置对象:', config);
+                        document.getElementById('emailEnabled').value = config.enabled ? 'true' : 'false';
+                        document.getElementById('senderEmail').value = config.sender_email || '';
+                        document.getElementById('senderAuthCode').value = config.sender_auth_code || '';
+                        document.getElementById('emailTemplate').value = config.email_body_template || 'simple';
+                        document.getElementById('result').innerHTML = '配置加载成功<br>' + 
+                            'enabled: ' + config.enabled + '<br>' +
+                            'sender_email: ' + config.sender_email;
+                    }
+                })
+                .catch(error => {
+                    console.error('加载邮件配置失败:', error);
+                    document.getElementById('result').innerHTML = '加载失败: ' + error;
+                });
+        }
+        
+        function saveEmailConfig() {
+            const config = {
+                enabled: document.getElementById('emailEnabled').value === 'true',
+                sender_email: document.getElementById('senderEmail').value,
+                sender_auth_code: document.getElementById('senderAuthCode').value,
+                email_body_template: document.getElementById('emailTemplate').value
+            };
+            
+            console.log('保存配置:', config);
+            
+            fetch('http://127.0.0.1:5006/api/email/config', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(config)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('保存配置响应:', data);
+                if (data.error) {
+                    document.getElementById('result').innerHTML = '保存失败: ' + data.error;
+                } else {
+                    document.getElementById('result').innerHTML = '配置保存成功';
+                }
+            })
+            .catch(error => {
+                console.error('保存邮件配置失败:', error);
+                document.getElementById('result').innerHTML = '保存失败: ' + error;
+            });
+        }
+        
+        // 页面加载时自动加载配置
+        window.onload = loadEmailConfig;
+    </script>
+</body>
+</html>

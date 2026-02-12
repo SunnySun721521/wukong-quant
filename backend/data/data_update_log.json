@@ -1,0 +1,6002 @@
+[
+  {
+    "timestamp": "2026-02-05 13:25:40",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:25:40",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:25:42",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:25:51",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:28:22",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:28:22",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:28:23",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:28:33",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:29:03",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:29:03",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:29:06",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:29:31",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:31:17",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:31:17",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:31:18",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:31:22",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:33:07",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:33:07",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:33:08",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:33:29",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:33:52",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:33:52",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:33:53",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:33:59",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:34:57",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:34:57",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:34:57",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:35:01",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:35:44",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:35:44",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:35:47",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:35:52",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:38:24",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:38:24",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:38:26",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:38:34",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:40:46",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:40:46",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:40:48",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:41:02",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:42:27",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:42:27",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:42:28",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:42:39",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:43:23",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:43:23",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:43:24",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:43:34",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:45:44",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:45:44",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:45:47",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:45:53",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:48:15",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:48:15",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:48:16",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:48:25",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:48:25",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:48:26",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:48:26",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:48:35",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:48:48",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:48:48",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:48:50",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:48:55",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:49:53",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:49:53",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:49:55",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:50:00",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:50:35",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:50:35",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:50:36",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:50:39",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:51:16",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:51:16",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:51:18",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:51:25",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:51:58",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:51:58",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:51:59",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:52:15",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:55:09",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:55:09",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:55:12",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:55:15",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:55:46",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:55:46",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:55:47",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:55:56",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:55:59",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:55:59",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:56:01",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:56:06",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:56:48",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:56:48",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:56:49",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:56:53",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:57:44",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:57:44",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:57:45",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:57:58",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 13:58:26",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:58:26",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:58:27",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 13:58:35",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:00:58",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:00:58",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:00:59",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:01:03",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:01:55",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:01:55",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:01:56",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:02:07",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:03:06",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:03:06",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:03:07",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:03:15",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:03:42",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:03:42",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:03:43",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:03:47",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:05:47",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:05:47",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:05:47",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:05:53",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:06:16",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:06:16",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:06:17",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:06:21",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:07:03",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:07:03",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:07:04",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:07:09",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:08:26",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:08:26",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:08:26",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:08:26",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:08:28",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:08:32",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:08:35",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:08:39",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:09:00",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:09:00",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:09:02",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:09:08",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:11:04",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:11:04",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:11:05",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:11:13",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:12:25",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:12:25",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:12:26",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:12:31",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:13:54",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:13:54",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:13:55",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:14:00",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:14:32",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:14:32",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:14:33",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:14:44",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:15:47",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:15:47",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:15:49",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:15:55",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:15:55",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:15:56",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:15:56",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:16:00",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:18:34",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:18:34",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:18:36",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:18:42",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:19:26",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:19:26",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:19:27",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:19:32",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:20:49",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:20:49",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:20:51",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:20:58",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:23:59",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:23:59",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:24:03",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:24:13",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:24:41",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:24:41",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:24:42",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:24:50",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:26:05",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:26:05",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:26:07",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:26:12",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:26:37",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:26:37",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:26:40",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:26:45",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:28:33",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:28:33",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:28:34",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:28:47",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:36:03",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:36:03",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:36:04",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:36:17",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:36:45",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:36:45",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:36:46",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:36:50",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:38:38",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:38:38",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:38:39",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:38:51",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:46:07",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:46:07",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:46:08",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:46:17",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:46:51",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:46:51",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:46:52",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:46:56",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:48:41",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:48:41",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:48:42",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:48:56",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:56:08",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:56:08",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:56:10",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:56:26",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:56:56",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:56:56",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:56:57",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:57:02",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 14:58:47",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:58:47",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:58:48",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 14:58:52",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 15:06:17",
+    "module": "市场状态判断",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 15:06:17",
+    "module": "持仓分析",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 15:06:19",
+    "module": "调仓策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 15:06:24",
+    "module": "买入策略",
+    "success": false,
+    "error": "'Response' object is not subscriptable"
+  },
+  {
+    "timestamp": "2026-02-05 15:07:03",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:07:03",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:07:05",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:07:11",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:17:54",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:17:54",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:17:57",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:18:02",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:20:01",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:20:01",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:20:03",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:21:05",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:21:06",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:21:07",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:21:15",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:21:53",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:21:53",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:21:55",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:22:01",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:22:47",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:22:47",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:22:49",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:22:54",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:42:55",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:42:55",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:42:59",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 15:43:20",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:03:02",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:03:02",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:03:05",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:03:26",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:13:07",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:13:07",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:13:08",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:13:20",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:23:11",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:23:11",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:23:12",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:23:30",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:33:22",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:33:22",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:33:26",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:33:42",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:43:22",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:43:22",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:43:23",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:43:28",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:53:01",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:53:08",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:53:11",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:53:23",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:53:30",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:53:30",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:53:31",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:53:40",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:53:47",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:54:02",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:54:05",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 16:54:11",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:03:38",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:03:38",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:03:43",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:03:53",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:13:47",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:13:47",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:14:05",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:15:24",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:19:07",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:19:25",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:19:48",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:19:51",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:19:55",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:29:26",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:29:35",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:29:37",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:29:51",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:39:38",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:39:44",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:39:52",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:40:04",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:49:41",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:49:58",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:50:04",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:51:37",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:59:38",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:59:44",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 17:59:48",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:00:12",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:09:44",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:09:54",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:10:01",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:10:47",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:19:48",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:19:57",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:20:02",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:20:34",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:29:55",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:30:11",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:30:22",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:31:09",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:40:00",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:40:10",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:40:24",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:40:59",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:50:03",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:50:11",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:50:15",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 18:50:35",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:00:08",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:00:17",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:00:20",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:00:51",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:10:13",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:10:27",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:10:30",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:10:56",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:20:21",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:20:33",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:20:36",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:21:03",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:30:25",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:30:34",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:30:43",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:31:16",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:40:27",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:40:39",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:40:50",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:41:07",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:50:29",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:50:42",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:50:59",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 19:52:08",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:00:29",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:00:44",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:00:46",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:01:13",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:10:37",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:10:43",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:10:50",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:11:17",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:20:38",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:20:52",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:20:56",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:21:32",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:30:44",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:30:53",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:30:58",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:31:35",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:40:48",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:40:58",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:41:01",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:41:26",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:50:47",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:51:28",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:51:33",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 20:52:24",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:00:57",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:01:16",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:01:25",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:01:45",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:10:58",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:11:06",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:11:08",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:11:38",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:20:59",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:21:10",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:21:20",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:21:43",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:31:10",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:31:22",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:31:27",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:31:53",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:41:14",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:41:28",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:41:30",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:41:45",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:51:18",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:51:28",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:51:30",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 21:51:50",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:01:22",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:01:30",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:01:36",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:01:56",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:11:27",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:11:31",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:11:35",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:11:51",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:21:32",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:21:42",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:21:44",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:22:25",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:31:36",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:31:41",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:31:47",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:32:06",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:41:37",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:41:46",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:41:50",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:42:28",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:51:40",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:51:46",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:51:48",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 22:52:23",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:01:44",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:01:48",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:01:51",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:02:23",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:11:53",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:12:09",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:12:10",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:12:34",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:21:54",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:22:04",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:22:07",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:22:27",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:31:57",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:32:09",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:32:11",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:32:42",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:42:03",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:42:10",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:42:20",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:42:38",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:52:08",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:52:13",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:52:28",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05 23:52:41",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:02:12",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:02:22",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:02:26",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:02:43",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:12:24",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:12:35",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:12:37",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:12:49",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:22:20",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:22:25",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:22:34",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:22:53",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:32:24",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:32:33",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:32:35",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:32:52",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:42:34",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:42:40",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:42:43",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:43:00",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:52:42",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:52:48",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:52:50",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 00:53:04",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:02:44",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:02:52",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:02:55",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:03:10",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:12:51",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:12:55",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:12:58",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:13:17",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:22:59",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:23:03",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:23:05",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:23:29",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:33:01",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:33:06",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:33:10",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:33:27",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:43:08",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:43:18",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:43:23",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:43:42",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:53:13",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:53:26",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:53:28",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 01:53:38",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:03:19",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:03:25",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:03:29",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:03:45",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:13:26",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:13:30",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:13:33",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:14:04",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:23:34",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:23:44",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:23:48",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:23:58",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:33:39",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:33:43",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:33:46",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:33:57",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:43:47",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:43:51",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:43:53",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:44:00",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:53:51",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:53:54",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:53:59",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 02:54:12",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:03:53",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:03:58",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:04:01",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:04:11",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:14:01",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:14:09",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:14:10",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:14:22",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:24:03",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:24:06",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:24:06",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:24:16",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:34:07",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:34:11",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:34:14",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:34:24",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:44:14",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:44:17",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:44:19",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:44:30",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:54:21",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:54:24",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:54:26",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 03:54:36",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:04:26",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:04:31",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:04:32",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:04:51",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:14:32",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:14:37",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:14:39",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:14:47",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:24:38",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:24:44",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:24:46",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:25:00",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:34:41",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:34:46",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:34:47",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:34:56",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:44:47",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:44:51",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:44:54",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:45:03",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:54:54",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:55:08",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:55:09",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 04:56:24",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:04:55",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:05:02",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:05:03",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:05:13",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:15:04",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:15:09",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:15:15",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:15:23",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:25:13",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:25:18",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:25:19",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:25:28",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:35:18",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:35:21",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:35:25",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:35:31",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:45:22",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:45:28",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:45:29",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:45:34",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:55:24",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:55:27",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:55:28",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 05:55:33",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:05:34",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:05:45",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:05:52",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:05:57",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:15:37",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:15:41",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:15:43",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:15:48",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:25:40",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:25:47",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:25:50",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:25:57",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:35:48",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:35:56",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:36:04",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:36:09",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:45:51",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:46:12",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:46:18",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:46:25",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:55:57",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:56:10",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:56:14",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 06:56:26",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:05:57",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:06:10",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:06:17",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:06:32",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:16:03",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:16:18",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:16:20",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:16:25",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:26:06",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:26:19",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:26:20",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:26:24",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:36:16",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:36:28",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:36:36",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:36:45",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:46:16",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:46:18",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:46:20",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:47:31",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:56:21",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:56:23",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:56:30",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 07:56:33",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:06:24",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:06:27",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:06:33",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:06:38",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:16:28",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:16:36",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:16:39",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:16:45",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:26:35",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:26:43",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:26:45",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:26:57",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:36:38",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:36:42",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:36:46",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:37:08",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:46:39",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:46:45",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:46:48",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:47:12",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:56:42",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:56:47",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:56:48",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 08:57:00",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:06:50",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:06:55",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:06:55",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:07:11",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:16:51",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:16:58",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:17:01",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:17:05",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:26:55",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:27:04",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:27:06",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:27:29",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:36:59",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:37:09",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:37:10",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:37:37",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:47:08",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:47:10",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:47:15",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:47:19",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:57:10",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:57:23",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:57:24",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 09:57:29",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:07:20",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:07:23",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:07:25",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:07:34",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:17:26",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:17:33",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:17:34",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:17:41",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:27:30",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:27:32",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:27:33",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:27:38",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:37:35",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:37:38",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:37:40",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 10:37:45",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:12:25",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:12:29",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:12:30",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:12:34",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:14:12",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:14:22",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:14:23",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:14:28",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:21:48",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:21:54",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:21:55",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:22:12",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:26:23",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:26:29",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:26:30",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:26:45",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:26:50",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:26:52",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:26:57",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:29:06",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:29:14",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:29:15",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 11:29:23",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 13:33:42",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 13:33:46",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 13:33:47",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 13:33:48",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 13:34:26",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 13:34:40",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 13:34:43",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 13:34:43",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 13:34:44",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 13:40:23",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 13:40:25",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 13:40:28",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-06 13:40:38",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:07:23",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:07:27",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:07:31",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:07:42",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:07:57",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:08:00",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:08:02",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:08:11",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:38:04",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:38:07",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:38:08",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:38:31",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:48:48",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:48:51",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:48:53",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:49:10",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:49:14",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:49:15",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 10:49:24",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 11:02:26",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 11:02:29",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 11:02:30",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 11:02:38",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 11:27:09",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 11:27:15",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 11:27:17",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 11:27:26",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:00:01",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:00:06",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:00:08",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:00:12",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:30:07",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:30:14",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:30:22",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:30:35",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:37:07",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:37:10",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:37:15",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:37:15",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:37:21",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:37:23",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:37:29",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:37:36",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:38:02",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:38:09",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:38:11",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:38:27",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:40:35",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:40:40",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:40:41",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:40:48",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:40:58",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:41:00",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:41:02",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 13:41:34",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:00:54",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:00:57",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:00:59",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:01:05",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:01:30",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:01:34",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:01:35",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:01:48",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:02:41",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:02:44",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:02:46",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:02:50",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:04:07",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:04:11",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:04:13",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:04:25",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:05:16",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:05:24",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:05:26",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:05:39",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:07:32",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:07:39",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:07:40",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:07:47",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:08:26",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:08:30",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:08:36",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:08:47",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:10:37",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:10:40",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:10:42",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:10:49",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:11:38",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:11:46",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:11:48",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:11:57",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:11:59",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:12:01",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:12:02",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:12:10",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:13:42",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:13:44",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:13:45",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:13:56",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:15:57",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:16:03",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:16:04",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:16:16",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:16:51",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:16:56",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:16:57",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:17:02",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:22:46",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:22:55",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:22:59",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:23:10",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:38:59",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:39:09",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:39:12",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:39:21",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:40:23",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:40:27",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:40:28",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:40:41",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:46:00",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:46:02",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:46:03",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-09 14:46:25",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 09:30:05",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 09:30:09",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 09:30:11",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 09:30:30",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:00:11",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:00:14",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:00:16",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:00:37",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:30:20",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:30:25",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:30:26",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:30:52",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:55:02",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:55:05",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:55:06",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:55:17",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:55:19",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:55:20",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:55:22",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:55:31",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:55:43",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:55:49",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:55:49",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:55:56",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:56:45",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:56:48",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:56:51",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:57:04",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:57:45",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:57:53",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:57:57",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:58:20",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:58:42",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:58:42",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:58:44",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:58:45",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:58:46",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:58:49",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:58:50",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 10:58:54",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:00:30",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:00:40",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:00:48",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:00:56",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:00:58",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:00:59",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:01:03",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:01:05",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:03:21",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:03:23",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:03:24",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:03:26",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:03:34",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:03:35",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:03:36",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:03:43",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:19:05",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:19:08",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:19:14",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:19:24",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:20:08",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:20:10",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:20:11",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:20:22",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:23:28",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:23:30",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:23:31",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:23:37",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:25:09",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:25:14",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:25:20",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:25:29",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:28:17",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:28:41",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:28:45",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:28:47",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 11:28:59",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 13:00:07",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 13:00:11",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 13:00:13",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-10 13:00:25",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 11:08:44",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 11:08:47",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 11:08:48",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 11:08:53",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 11:20:04",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 11:20:06",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 11:20:07",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 11:20:18",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 11:28:26",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 11:28:45",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 11:28:46",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 11:28:50",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 13:00:05",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 13:00:07",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 13:00:09",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 13:00:15",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 13:24:47",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 13:24:49",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 13:24:50",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 13:24:55",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 13:36:55",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 13:37:00",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 13:37:02",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 13:37:08",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 14:06:56",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 14:06:59",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 14:07:00",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 14:07:05",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 14:36:56",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 14:36:59",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 14:37:00",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 14:37:05",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 14:56:43",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 14:56:46",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 14:56:48",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-12 14:56:53",
+    "module": "买入策略",
+    "success": true,
+    "error": null
+  }
+]

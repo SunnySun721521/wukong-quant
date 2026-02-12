@@ -1,0 +1,127 @@
+<view class="container">
+  <view class="loading" wx:if="{{loading}}">
+    <text>正在加载策略数据...</text>
+  </view>
+  <view wx:else>
+    <view class="tabs">
+      <view class="tab-item {{activeTab === 'status' ? 'active' : ''}}" data-tab="status" bindtap="onTabClick">
+        <text>策略状态</text>
+      </view>
+      <view class="tab-item {{activeTab === 'pool' ? 'active' : ''}}" data-tab="pool" bindtap="onTabClick">
+        <text>股票池</text>
+      </view>
+      <view class="tab-item {{activeTab === 'params' ? 'active' : ''}}" data-tab="params" bindtap="onTabClick">
+        <text>策略参数</text>
+      </view>
+      <view class="tab-item {{activeTab === 'backtest' ? 'active' : ''}}" data-tab="backtest" bindtap="onTabClick">
+        <text>回测结果</text>
+      </view>
+    </view>
+
+    <view wx:if="{{activeTab === 'status'}}">
+      <view class="card">
+        <view class="flex flex-between flex-align-center">
+          <text class="title">策略状态</text>
+          <text class="text {{strategyStatus.isRunning ? 'text-success' : 'text-danger'}}">
+            {{strategyStatus.isRunning ? '运行中' : '已停止'}}
+          </text>
+        </view>
+        <view class="flex flex-between flex-align-center mt-10">
+          <text class="text">股票池数量</text>
+          <text class="text text-primary">{{strategyStatus.stock_pool_size}} 只</text>
+        </view>
+        <view class="flex flex-between flex-align-center mt-10">
+          <text class="text">沪深300成分股</text>
+          <text class="text">{{strategyStatus.hs300_size}} 只</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{activeTab === 'pool'}}">
+      <view class="card">
+        <view class="flex flex-between flex-align-center">
+          <text class="title">股票池管理</text>
+          <text class="text text-primary" bindtap="refreshStockPool">刷新</text>
+        </view>
+        <view class="mt-20">
+          <text class="text">当前股票池 ({{stockPoolInfo.pool_size}} 只)</text>
+        </view>
+        <view class="stock-pool-list mt-20">
+          <view class="pool-item" wx:for="{{stockPoolInfo.current_pool}}" wx:key="*this">
+            <text class="pool-symbol">{{item}}</text>
+            <text class="text-danger" bindtap="removeFromPool" data-symbol="{{item}}">删除</text>
+          </view>
+        </view>
+        <view class="mt-20">
+          <input class="input" placeholder="输入股票代码添加到股票池" value="{{newStockCode}}" bindinput="onStockCodeInput" />
+          <button class="btn btn-primary mt-10" bindtap="addToPool">添加股票</button>
+        </view>
+        <view class="mt-20">
+          <button class="btn btn-success" bindtap="updateStockPool" loading="{{updatingPool}}">更新股票池（基于沪深300）</button>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{activeTab === 'params'}}">
+      <view class="card">
+        <text class="title">策略参数</text>
+        <view class="mt-20">
+          <view class="flex flex-between flex-align-center mb-10">
+            <text class="text">PE阈值</text>
+            <text class="text text-primary">≤ {{strategyParams.peThreshold}}</text>
+          </view>
+          <view class="flex flex-between flex-align-center mb-10">
+            <text class="text">ROE阈值</text>
+            <text class="text text-primary">≥ {{strategyParams.roeThreshold}}%</text>
+          </view>
+          <view class="flex flex-between flex-align-center mb-10">
+            <text class="text">均线短期</text>
+            <text class="text text-primary">{{strategyParams.smaShort}} 日均线</text>
+          </view>
+          <view class="flex flex-between flex-align-center mb-10">
+            <text class="text">均线长期</text>
+            <text class="text text-primary">{{strategyParams.smaLong}} 日均线</text>
+          </view>
+          <view class="flex flex-between flex-align-center">
+            <text class="text">仓位比例</text>
+            <text class="text text-primary">{{strategyParams.position_pct}}%</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{activeTab === 'backtest'}}">
+      <view class="card">
+        <text class="title">回测结果概览</text>
+        <view class="mt-20">
+          <view class="flex flex-between flex-align-center mb-10">
+            <text class="text">回测期间</text>
+            <text class="text text-primary">{{backtest.start_date}} 至 {{backtest.end_date}}</text>
+          </view>
+          <view class="flex flex-between flex-align-center mb-10">
+            <text class="text">总收益率</text>
+            <text class="text {{backtest.total_return > 0 ? 'text-danger' : 'text-success'}}">
+              {{backtest.total_return > 0 ? '+' : ''}}{{backtest.total_return}}%
+            </text>
+          </view>
+          <view class="flex flex-between flex-align-center mb-10">
+            <text class="text">最大回撤</text>
+            <text class="text text-danger">-{{backtest.max_drawdown}}%</text>
+          </view>
+          <view class="flex flex-between flex-align-center mb-10">
+            <text class="text">夏普比率</text>
+            <text class="text text-primary">{{backtest.sharpe_ratio}}</text>
+          </view>
+          <view class="flex flex-between flex-align-center mb-10">
+            <text class="text">胜率</text>
+            <text class="text text-primary">{{backtest.win_rate}}%</text>
+          </view>
+          <view class="flex flex-between flex-align-center">
+            <text class="text">总交易次数</text>
+            <text class="text">{{backtest.total_trades}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

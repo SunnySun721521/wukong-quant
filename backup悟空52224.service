@@ -1,0 +1,17 @@
+[Unit]
+Description=备份悟空52224 Flask Application
+After=network.target
+
+[Service]
+Type=simple
+User=youruser
+WorkingDirectory=/path/to/backup悟空52224/backend
+Environment="PATH=/path/to/backup悟空52224/venv/bin"
+ExecStart=/path/to/backup悟空52224/venv/bin/python app.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/var/log/backup悟空52224/app.log
+StandardError=append:/var/log/backup悟空52224/error.log
+
+[Install]
+WantedBy=multi-user.target
