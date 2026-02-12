@@ -122,13 +122,13 @@
         
         <form id="loginForm" onsubmit="handleLogin(event)">
             <div class="form-group">
-                <label for="username">用户�?/label>
+                <label for="username">用户名</label>
                 <input type="text" id="username" name="username" required autocomplete="username" placeholder="请输入用户名">
             </div>
             
             <div class="form-group">
                 <label for="password">密码</label>
-                <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="请输入密�?>
+                <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="请输入密码">
             </div>
             
             <button type="submit" class="login-btn" id="loginBtn">登录</button>
@@ -145,13 +145,13 @@
             const errorMessage = document.getElementById('errorMessage');
             
             if (!username || !password) {
-                errorMessage.textContent = '请输入用户名和密�?;
+                errorMessage.textContent = '请输入用户名和密码';
                 errorMessage.classList.add('show');
                 return;
             }
             
             loginBtn.disabled = true;
-            loginBtn.textContent = '登录�?..';
+            loginBtn.textContent = '登录中...';
             errorMessage.classList.remove('show');
             
             fetch('/api/login', {
@@ -171,7 +171,7 @@
                     localStorage.setItem('username', username);
                     window.location.href = 'index.html';
                 } else {
-                    errorMessage.textContent = data.message || '登录失败，请检查用户名和密�?;
+                    errorMessage.textContent = data.message || '登录失败，请检查用户名和密码';
                     errorMessage.classList.add('show');
                     loginBtn.disabled = false;
                     loginBtn.textContent = '登录';

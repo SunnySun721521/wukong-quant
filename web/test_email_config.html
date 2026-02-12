@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     <h1>邮件配置测试</h1>
     
     <div>
-        <label>邮件发送功�?</label>
+        <label>邮件发送功能:</label>
         <select id="emailEnabled">
             <option value="false">禁用</option>
             <option value="true">启用</option>
@@ -21,7 +21,7 @@
     </div>
     
     <div>
-        <label>邮箱授权�?</label>
+        <label>邮箱授权码:</label>
         <input type="password" id="senderAuthCode">
     </div>
     
@@ -29,7 +29,7 @@
         <label>邮件模板:</label>
         <select id="emailTemplate">
             <option value="simple">简洁版</option>
-            <option value="detailed">详细�?/option>
+            <option value="detailed">详细版</option>
         </select>
     </div>
     
@@ -97,7 +97,8 @@
             });
         }
         
-        // 页面加载时自动加载配�?        window.onload = loadEmailConfig;
+        // 页面加载时自动加载配置
+        window.onload = loadEmailConfig;
     </script>
 </body>
 </html>

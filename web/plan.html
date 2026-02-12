@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -405,7 +405,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- 导航�?-->
+        <!-- 导航栏 -->
         <div class="nav-bar">
             <div class="nav-item" data-page="home" onclick="window.location.href='index.html'">首页</div>
             <div class="nav-item active" data-page="plan">计划</div>
@@ -419,23 +419,24 @@
         <div class="header" style="display: flex; align-items: center; justify-content: space-between;">
             <div>
                 <span class="title">每日操作计划</span>
-                <span class="subtitle">基于量化策略的智能交易决策支�?/span>
+                <span class="subtitle">基于量化策略的智能交易决策支持</span>
                 <div style="margin-top: 8px; font-size: 12px; opacity: 0.8;">
-                    最后更�? <span id="lastUpdateTime">--</span>
+                    最后更新: <span id="lastUpdateTime">--</span>
                 </div>
             </div>
             <button class="header-btn" onclick="exportPDF()">PDF</button>
         </div>
         
-        <!-- 市场状态判断模�?-->
+        <!-- 市场状态判断模块 -->
         <div class="section">
             <div class="section-title">
-                市场状态判�?                <button class="refresh-btn" onclick="refreshMarketStatus()">刷新</button>
+                市场状态判断
+                <button class="refresh-btn" onclick="refreshMarketStatus()">刷新</button>
             </div>
             <div class="card">
                 <div class="grid-2">
                     <div>
-                        <div class="card-title">当前市场状�?/div>
+                        <div class="card-title">当前市场状态</div>
                         <div style="margin-top: 10px;">
                             <span class="stat-value" id="marketStatus">牛市</span>
                         </div>
@@ -455,7 +456,7 @@
                         </div>
                     </div>
                     <div>
-                        <div class="card-title">120日均�?/div>
+                        <div class="card-title">120日均线</div>
                         <div style="margin-top: 10px;">
                             <span class="stat-value" id="ma120">3760.50</span>
                         </div>
@@ -479,15 +480,15 @@
                     <div class="stat-value" id="originalCash">--</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">总资�?/div>
+                    <div class="stat-label">总资产</div>
                     <div class="stat-value" id="totalAssets">--</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">总盈�?/div>
+                    <div class="stat-label">总盈亏</div>
                     <div class="stat-value" id="totalProfitLoss">--</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">持仓市�?/div>
+                    <div class="stat-label">持仓市值</div>
                     <div class="stat-value" id="positionValue">--</div>
                 </div>
                 <div class="stat-card">
@@ -503,7 +504,7 @@
                             <th>股票代码</th>
                             <th>股票名称</th>
                             <th>持仓数量</th>
-                            <th>成本�?/th>
+                            <th>成本价</th>
                             <th>现价</th>
                             <th>持仓金额</th>
                             <th>盈亏金额</th>
@@ -529,16 +530,17 @@
                 <div class="card-title">调仓规则</div>
                 <div style="margin-top: 15px;">
                     <div style="margin-bottom: 10px;">
-                        <strong>止盈规则�?/strong>盈利达到10%时，触发止盈建议
+                        <strong>止盈规则：</strong>盈利达到10%时，触发止盈建议
                     </div>
                     <div style="margin-bottom: 10px;">
-                        <strong>止损规则�?/strong>亏损达到4%时，触发止损建议
+                        <strong>止损规则：</strong>亏损达到4%时，触发止损建议
                     </div>
                     <div style="margin-bottom: 10px;">
-                        <strong>牛熊转换规则�?/strong>牛市转熊市：仓位�?0%降至30%
+                        <strong>牛熊转换规则：</strong>牛市转熊市：仓位从80%降至30%
                     </div>
                     <div>
-                        <strong>盘中调整�?/strong>�?0分钟检查一次持�?                    </div>
+                        <strong>盘中调整：</strong>每30分钟检查一次持仓
+                    </div>
                 </div>
             </div>
             <div class="card" style="margin-top: 20px;">
@@ -548,13 +550,13 @@
                         <span class="action-type action-sell">止盈</span>
                         <div class="action-content">
                             <div class="action-title">600519 贵州茅台</div>
-                            <div class="action-detail">当前盈利12.3%，建议止盈部分仓�?/div>
+                            <div class="action-detail">当前盈利12.3%，建议止盈部分仓位</div>
                         </div>
                     </li>
                     <li class="action-item">
                         <span class="action-type action-buy">买入</span>
                         <div class="action-content">
-                            <div class="action-title">000858 五粮�?/div>
+                            <div class="action-title">000858 五粮液</div>
                             <div class="action-detail">技术回调至关键支撑位，建议建仓</div>
                         </div>
                     </li>
@@ -572,11 +574,14 @@
                 <div class="card-title">买入条件</div>
                 <div style="margin-top: 15px;">
                     <div style="margin-bottom: 10px;">
-                        <strong>市场环境�?/strong>整体处于牛市或熊市，无重大系统性风�?                    </div>
+                        <strong>市场环境：</strong>整体处于牛市或熊市，无重大系统性风险
+                    </div>
                     <div style="margin-bottom: 10px;">
-                        <strong>技术条件：</strong>目标股票处于上升趋势，出现健康的技术性回�?                    </div>
+                        <strong>技术条件：</strong>目标股票处于上升趋势，出现健康的技术性回调
+                    </div>
                     <div>
-                        <strong>风险控制�?/strong>单只股票仓位限制，买入价格区间控制，止损位预�?                    </div>
+                        <strong>风险控制：</strong>单只股票仓位限制，买入价格区间控制，止损位预设
+                    </div>
                 </div>
             </div>
             <div class="card" style="margin-top: 20px;">
@@ -594,19 +599,19 @@
             </div>
             <div id="newsContainer">
                 <div class="news-item">
-                    <div class="news-title">央行：继续实施稳健货币政�?/div>
+                    <div class="news-title">央行：继续实施稳健货币政策</div>
                     <div class="news-time">2026-01-26 10:30</div>
-                    <div class="news-content">央行表示将继续实施稳健的货币政策，保持流动性合理充裕，支持实体经济发展�?/div>
+                    <div class="news-content">央行表示将继续实施稳健的货币政策，保持流动性合理充裕，支持实体经济发展。</div>
                 </div>
                 <div class="news-item">
                     <div class="news-title">沪深300指数上涨1.2%</div>
                     <div class="news-time">2026-01-26 15:00</div>
-                    <div class="news-content">今日沪深300指数收报3850点，上涨1.2%，成交额放大�?500亿元�?/div>
+                    <div class="news-content">今日沪深300指数收报3850点，上涨1.2%，成交额放大至3500亿元。</div>
                 </div>
                 <div class="news-item">
                     <div class="news-title">科技板块领涨市场</div>
                     <div class="news-time">2026-01-26 14:45</div>
-                    <div class="news-content">科技板块今日表现强势，多只个股涨停，市场情绪明显回暖�?/div>
+                    <div class="news-content">科技板块今日表现强势，多只个股涨停，市场情绪明显回暖。</div>
                 </div>
             </div>
         </div>
@@ -633,28 +638,33 @@
             }
         }
         
-        // 加载市场状�?        async function loadMarketStatus() {
+        // 加载市场状态
+        async function loadMarketStatus() {
             try {
                 const response = await fetch('/api/plan/market-status');
                 const data = await response.json();
                 
-                // 更新市场状态显�?                const statusBadge = document.getElementById('marketStatus');
+                // 更新市场状态显示
+                const statusBadge = document.getElementById('marketStatus');
                 statusBadge.textContent = data.status_text;
                 statusBadge.className = `stat-value ${data.status === 'bull' ? 'positive' : 'negative'}`;
                 
                 // 更新仓位建议
                 document.getElementById('positionSuggestion').textContent = data.position_suggestion;
                 
-                // 更新沪深300指数�?20日均�?                document.getElementById('hs300Index').textContent = data.hs300_index.toFixed(2);
+                // 更新沪深300指数和120日均线
+                document.getElementById('hs300Index').textContent = data.hs300_index.toFixed(2);
                 document.getElementById('ma120').textContent = data.ma120.toFixed(2);
                 
-                // 初始化图�?                initMarketChart(data.chart_data);
+                // 初始化图表
+                initMarketChart(data.chart_data);
             } catch (error) {
-                console.error('加载市场状态失�?', error);
+                console.error('加载市场状态失败:', error);
             }
         }
         
-        // 初始化市场状态图�?        function initMarketChart(chartData) {
+        // 初始化市场状态图表
+        function initMarketChart(chartData) {
             const ctx = document.getElementById('marketChart').getContext('2d');
             
             new Chart(ctx, {
@@ -672,7 +682,7 @@
                             fill: true
                         },
                         {
-                            label: '120日均�?,
+                            label: '120日均线',
                             data: chartData.ma120,
                             borderColor: '#ff9800',
                             backgroundColor: 'transparent',
@@ -709,7 +719,8 @@
         // 加载持仓分析
         async function loadPositionAnalysis() {
             try {
-                // 优先从localStorage获取可用现金�?                let availableCashParam = '';
+                // 优先从localStorage获取可用现金值
+                let availableCashParam = '';
                 try {
                     const storedCash = localStorage.getItem('availableCash');
                     if (storedCash) {
@@ -719,10 +730,11 @@
                     console.error('读取localStorage中的可用现金失败:', error);
                 }
                 
-                // 优先从localStorage获取原始资金�?                let originalCashParam = '';
+                // 优先从localStorage获取原始资金值
+                let originalCashParam = '';
                 try {
                     const storedCash = localStorage.getItem('originalCash');
-                    console.log('从localStorage读取的原始资�?', storedCash);
+                    console.log('从localStorage读取的原始资金:', storedCash);
                     if (storedCash) {
                         if (availableCashParam) {
                             originalCashParam = `&original_cash=${storedCash}`;
@@ -741,9 +753,11 @@
                 let data = null;
                 let retryCount = 0;
                 const maxRetries = 10;
-                const retryInterval = 1000; // 1�?                
+                const retryInterval = 1000; // 1秒
+                
                 while (retryCount < maxRetries) {
-                    // 添加时间戳参数禁用缓�?                    const cacheBuster = `&_t=${Date.now()}`;
+                    // 添加时间戳参数禁用缓存
+                    const cacheBuster = `&_t=${Date.now()}`;
                     const response = await fetch(`/api/plan/position${availableCashParam}${originalCashParam}${cacheBuster}`, {
                         cache: 'no-store',
                         headers: {
@@ -752,9 +766,10 @@
                         }
                     });
                     data = await response.json();
-                    console.log(`[DEBUG] �?${retryCount + 1} 次获取持仓数�?`, data);
+                    console.log(`[DEBUG] 第 ${retryCount + 1} 次获取持仓数据:`, data);
                     
-                    // 检查所有持仓的现价是否有效（不�?、不为null、不为undefined�?                    const allPricesValid = data.positions && data.positions.every(pos => 
+                    // 检查所有持仓的现价是否有效（不为0、不为null、不为undefined）
+                    const allPricesValid = data.positions && data.positions.every(pos => 
                         pos.current_price !== null && 
                         pos.current_price !== undefined && 
                         pos.current_price > 0
@@ -764,7 +779,7 @@
                         console.log(`持仓数据读取成功，共尝试 ${retryCount + 1} 次`);
                         break;
                     } else {
-                        console.warn(`�?${retryCount + 1} 次读取：现价数据不完整，等待 ${retryInterval}ms 后重�?..`);
+                        console.warn(`第 ${retryCount + 1} 次读取：现价数据不完整，等待 ${retryInterval}ms 后重试...`);
                         retryCount++;
                         if (retryCount < maxRetries) {
                             await new Promise(resolve => setTimeout(resolve, retryInterval));
@@ -773,12 +788,12 @@
                 }
                 
                 if (retryCount >= maxRetries) {
-                    console.warn(`已达到最大重试次�?${maxRetries}，使用最后一次读取的数据`);
+                    console.warn(`已达到最大重试次数 ${maxRetries}，使用最后一次读取的数据`);
                 }
                 
                 // 更新总体概况
                 const originalCash = localStorage.getItem('originalCash');
-                console.log('从localStorage读取的原始资�?', originalCash);
+                console.log('从localStorage读取的原始资金:', originalCash);
                 if (originalCash) {
                     document.getElementById('originalCash').textContent = formatCurrency(parseFloat(originalCash));
                 } else {
@@ -787,8 +802,9 @@
                 
                 document.getElementById('totalAssets').textContent = formatCurrency(data.total_assets);
                 
-                // 计算总盈亏：总盈�?= 总资�?- 本页的原始资金数�?                const totalProfitLoss = originalCash ? data.total_assets - parseFloat(originalCash) : data.total_profit_loss;
-                console.log('计算的总盈�?', totalProfitLoss);
+                // 计算总盈亏：总盈亏 = 总资产 - 本页的原始资金数值
+                const totalProfitLoss = originalCash ? data.total_assets - parseFloat(originalCash) : data.total_profit_loss;
+                console.log('计算的总盈亏:', totalProfitLoss);
                 
                 const profitLossElement = document.getElementById('totalProfitLoss');
                 profitLossElement.textContent = formatCurrency(totalProfitLoss);
@@ -848,7 +864,8 @@
                     
                     if (filteredSuggestions.length > 0) {
                         adjustmentList.innerHTML = filteredSuggestions.map(suggestion => {
-                            // 只为卖出类型的建议添加执行按�?                            const executeButton = suggestion.action === 'sell' ? 
+                            // 只为卖出类型的建议添加执行按钮
+                            const executeButton = suggestion.action === 'sell' ? 
                                 `<button class="execute-btn" onclick="executeSell('${suggestion.symbol}', '${suggestion.name}', '${suggestion.action_text}')">执行</button>` : '';
                             
                             return `
@@ -873,7 +890,8 @@
                         `;
                     }
                 } else {
-                    // 当没有建议时，显示暂�?                    adjustmentList.innerHTML = `
+                    // 当没有建议时，显示暂无
+                    adjustmentList.innerHTML = `
                         <li class="action-item" style="justify-content: center; padding: 20px;">
                             <div class="action-content" style="text-align: center; color: #666;">
                                 暂无
@@ -893,25 +911,28 @@
                 const response = await fetch(`/api/plan/buy?_t=${timestamp}`);
                 const data = await response.json();
                 
-                // 获取当前持仓列表，用于过滤已持仓的股�?                let heldSymbols = [];
+                // 获取当前持仓列表，用于过滤已持仓的股票
+                let heldSymbols = [];
                 try {
                     const positionResponse = await fetch(`/api/plan/position?_t=${timestamp}`);
                     const positionData = await positionResponse.json();
                     if (positionData.positions && positionData.positions.length > 0) {
                         heldSymbols = positionData.positions.map(pos => pos.symbol);
-                        console.log('已持仓股票代�?', heldSymbols);
+                        console.log('已持仓股票代码:', heldSymbols);
                     }
                 } catch (error) {
                     console.error('获取持仓数据失败:', error);
                 }
                 
-                // 更新买入建议列表，剔除已持仓的股�?                const buyList = document.getElementById('buyList');
+                // 更新买入建议列表，剔除已持仓的股票
+                const buyList = document.getElementById('buyList');
                 if (data.suggestions && data.suggestions.length > 0) {
                     const filteredSuggestions = data.suggestions.filter(suggestion => !heldSymbols.includes(suggestion.symbol));
                     
                     if (filteredSuggestions.length > 0) {
                         buyList.innerHTML = filteredSuggestions.map(suggestion => {
-                            // 只为买入类型的建议添加执行按�?                            const executeButton = suggestion.action === 'buy' ? 
+                            // 只为买入类型的建议添加执行按钮
+                            const executeButton = suggestion.action === 'buy' ? 
                                 `<button class="execute-btn" onclick="executeBuy('${suggestion.symbol}', '${suggestion.name}', ${suggestion.price_range ? suggestion.price_range.split('-')[1] : 0})">执行</button>` : '';
                             
                             return `
@@ -919,7 +940,7 @@
                                 <span class="action-type action-${suggestion.action}">${suggestion.action_text}</span>
                                 <div class="action-content">
                                     <div class="action-title">${suggestion.symbol} ${suggestion.name} ${suggestion.current_price !== undefined ? `- 当前价格: ¥${suggestion.current_price.toFixed(2)}` : ''}</div>
-                                    <div class="action-detail">${suggestion.reason} ${suggestion.price_range ? `- 建议价格区间�?{suggestion.price_range}元，止损位：${suggestion.stop_loss}元` : ''}</div>
+                                    <div class="action-detail">${suggestion.reason} ${suggestion.price_range ? `- 建议价格区间：${suggestion.price_range}元，止损位：${suggestion.stop_loss}元` : ''}</div>
                                 </div>
                                 ${executeButton}
                             </li>
@@ -930,12 +951,14 @@
                         buyList.innerHTML = `
                             <li class="action-item" style="justify-content: center; padding: 20px;">
                                 <div class="action-content" style="text-align: center; color: #666;">
-                                    暂无买入建议（已过滤持仓股票�?                                </div>
+                                    暂无买入建议（已过滤持仓股票）
+                                </div>
                             </li>
                         `;
                     }
                 } else {
-                    // 当没有建议时，显示提示信�?                    buyList.innerHTML = `
+                    // 当没有建议时，显示提示信息
+                    buyList.innerHTML = `
                         <li class="action-item" style="justify-content: center; padding: 20px;">
                             <div class="action-content" style="text-align: center; color: #666;">
                                 暂无买入建议
@@ -968,20 +991,22 @@
             }
         }
         
-        // 格式化货�?        function formatCurrency(value) {
+        // 格式化货币
+        function formatCurrency(value) {
             return '¥' + value.toLocaleString('zh-CN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
         
-        // 刷新市场状�?        async function refreshMarketStatus() {
+        // 刷新市场状态
+        async function refreshMarketStatus() {
             const btn = event.target;
-            btn.textContent = '刷新�?..';
+            btn.textContent = '刷新中...';
             btn.disabled = true;
             
             try {
                 await loadMarketStatus();
                 alert('市场状态已更新');
             } catch (error) {
-                console.error('刷新市场状态失�?', error);
+                console.error('刷新市场状态失败:', error);
                 alert('刷新失败，请稍后重试');
             } finally {
                 btn.textContent = '刷新';
@@ -992,12 +1017,12 @@
         // 刷新持仓分析
         async function refreshPositionAnalysis() {
             const btn = event.target;
-            btn.textContent = '刷新�?..';
+            btn.textContent = '刷新中...';
             btn.disabled = true;
             
             try {
                 await loadPositionAnalysis();
-                alert('持仓分析已更�?);
+                alert('持仓分析已更新');
             } catch (error) {
                 console.error('刷新持仓分析失败:', error);
                 alert('刷新失败，请稍后重试');
@@ -1010,12 +1035,12 @@
         // 刷新调仓策略
         async function refreshAdjustStrategy() {
             const btn = event.target;
-            btn.textContent = '刷新�?..';
+            btn.textContent = '刷新中...';
             btn.disabled = true;
             
             try {
                 await loadAdjustmentStrategy();
-                alert('调仓策略已更�?);
+                alert('调仓策略已更新');
             } catch (error) {
                 console.error('刷新调仓策略失败:', error);
                 alert('刷新失败，请稍后重试');
@@ -1028,12 +1053,12 @@
         // 刷新买入策略
         async function refreshBuyStrategy() {
             const btn = event.target;
-            btn.textContent = '刷新�?..';
+            btn.textContent = '刷新中...';
             btn.disabled = true;
             
             try {
                 await loadBuyStrategy();
-                alert('买入策略已更�?);
+                alert('买入策略已更新');
             } catch (error) {
                 console.error('刷新买入策略失败:', error);
                 alert('刷新失败，请稍后重试');
@@ -1060,16 +1085,17 @@
                 let currentPrice = suggestedPrice;
                 if (data && data.kline && data.kline.length > 0) {
                     currentPrice = data.kline[data.kline.length - 1].close;
-                    console.log(`获取�?${symbol} 的最新价�? ${currentPrice}`);
+                    console.log(`获取到 ${symbol} 的最新价格: ${currentPrice}`);
                 } else {
                     console.warn(`无法获取 ${symbol} 的最新价格，使用建议价格: ${suggestedPrice}`);
                     currentPrice = suggestedPrice;
                 }
                 
-                // 获取市场状�?                const marketStatusResponse = await fetch('/api/plan/market-status');
+                // 获取市场状态
+                const marketStatusResponse = await fetch('/api/plan/market-status');
                 
                 if (!marketStatusResponse.ok) {
-                    console.error(`获取市场状态失�? ${marketStatusResponse.status}`);
+                    console.error(`获取市场状态失败: ${marketStatusResponse.status}`);
                     alert(`获取市场状态失败，请稍后重试`);
                     return;
                 }
@@ -1090,9 +1116,11 @@
                 const positionData = await positionResponse.json();
                 const positions = positionData.positions || [];
                 
-                // 使用后端返回的可用资�?                let availableCash = positionData.available_cash || 187500.00;
+                // 使用后端返回的可用资金
+                let availableCash = positionData.available_cash || 187500.00;
                 
-                // 更新localStorage以保持同�?                try {
+                // 更新localStorage以保持同步
+                try {
                     localStorage.setItem('availableCash', availableCash.toString());
                 } catch (error) {
                     console.error('更新localStorage失败:', error);
@@ -1105,11 +1133,12 @@
                 
                 const totalAssets = availableCash + positionValue;
                 
-                // 计算目标持仓市�?                const targetPositionValue = totalAssets * targetPositionPct;
+                // 计算目标持仓市值
+                const targetPositionValue = totalAssets * targetPositionPct;
                 
                 // 检查当前仓位是否已超过目标仓位
                 if (positionValue >= targetPositionValue) {
-                    alert(`当前仓位已达到目标仓�?{(targetPositionPct * 100).toFixed(0)}%，无法继续买入`);
+                    alert(`当前仓位已达到目标仓位${(targetPositionPct * 100).toFixed(0)}%，无法继续买入`);
                     return;
                 }
                 
@@ -1126,7 +1155,7 @@
                 if (existingPosition) {
                     const existingValue = parseFloat(existingPosition.quantity) * currentPrice;
                     if (existingValue >= maxSingleStockValue) {
-                        alert(`股票 ${symbol} 已达到单只股票持仓上�?0%`);
+                        alert(`股票 ${symbol} 已达到单只股票持仓上限20%`);
                         return;
                     }
                     availableForStock = Math.min(availableBuyAmount, maxSingleStockValue - existingValue);
@@ -1138,26 +1167,28 @@
                 let maxQuantity = Math.floor(availableForStock / currentPrice);
                 maxQuantity = Math.floor(maxQuantity / 100) * 100;
                 
-                // 确保至少买入100�?                if (maxQuantity < 100) {
-                    alert(`可用资金不足，无法买�?00股`);
+                // 确保至少买入100股
+                if (maxQuantity < 100) {
+                    alert(`可用资金不足，无法买入100股`);
                     return;
                 }
                 
                 const quantity = maxQuantity;
                 const buyAmount = currentPrice * quantity;
                 
-                // 显示确认对话�?                const confirmMsg = `确认买入 ${name} (${symbol})？\n\n` +
-                    `当前价格�?{currentPrice.toFixed(2)} 元\n` +
-                    `建议价格�?{suggestedPrice} 元\n` +
-                    `买入数量�?{quantity} 股\n` +
-                    `买入金额�?{buyAmount.toFixed(2)} 元\n\n` +
+                // 显示确认对话框
+                const confirmMsg = `确认买入 ${name} (${symbol})？\n\n` +
+                    `当前价格：${currentPrice.toFixed(2)} 元\n` +
+                    `建议价格：${suggestedPrice} 元\n` +
+                    `买入数量：${quantity} 股\n` +
+                    `买入金额：${buyAmount.toFixed(2)} 元\n\n` +
                     `市场状态：${isBullMarket ? '牛市' : '熊市'}\n` +
-                    `目标仓位�?{(targetPositionPct * 100).toFixed(0)}%\n` +
-                    `当前仓位�?{((positionValue / totalAssets) * 100).toFixed(1)}%\n\n` +
+                    `目标仓位：${(targetPositionPct * 100).toFixed(0)}%\n` +
+                    `当前仓位：${((positionValue / totalAssets) * 100).toFixed(1)}%\n\n` +
                     `系统将自动应用以下规则：\n` +
-                    `- 仓位控制：牛�?0%，熊�?0%\n` +
+                    `- 仓位控制：牛市80%，熊市30%\n` +
                     `- 单只股票上限：总资产的20%\n` +
-                    `- 交易数量�?00股整数倍`;
+                    `- 交易数量：100股整数倍`;
                 
                 if (!confirm(confirmMsg)) {
                     return;
@@ -1181,7 +1212,7 @@
                     console.error(`创建持仓失败: ${createPositionResponse.status}`);
                     const errorData = await createPositionResponse.json();
                     const errorMsg = errorData.error || errorData.message || '创建持仓失败';
-                    alert(`买入失败�?{errorMsg}`);
+                    alert(`买入失败：${errorMsg}`);
                     return;
                 }
                 
@@ -1192,15 +1223,16 @@
                     const actualPrice = positionResult.position ? positionResult.position.cost_price : currentPrice;
                     const actualAmount = actualPrice * actualQuantity;
                     
-                    // 更新本地存储的可用资�?                    const newAvailableCash = availableCash - actualAmount;
+                    // 更新本地存储的可用资金
+                    const newAvailableCash = availableCash - actualAmount;
                     localStorage.setItem('availableCash', newAvailableCash.toString());
                     
                     alert(`买入成功！\n\n` +
-                        `股票�?{name} (${symbol})\n` +
-                        `价格�?{actualPrice.toFixed(2)} 元\n` +
-                        `数量�?{actualQuantity} 股\n` +
-                        `金额�?{actualAmount.toFixed(2)} 元\n` +
-                        `剩余可用资金�?{newAvailableCash.toFixed(2)} 元\n\n` +
+                        `股票：${name} (${symbol})\n` +
+                        `价格：${actualPrice.toFixed(2)} 元\n` +
+                        `数量：${actualQuantity} 股\n` +
+                        `金额：${actualAmount.toFixed(2)} 元\n` +
+                        `剩余可用资金：${newAvailableCash.toFixed(2)} 元\n\n` +
                         `系统已自动应用仓位控制策略`);
                     
                     // 刷新持仓分析
@@ -1209,7 +1241,7 @@
                     await loadBuyStrategy();
                 } else {
                     const errorMsg = positionResult.error || positionResult.message || '未知错误';
-                    alert(`买入失败�?{errorMsg}`);
+                    alert(`买入失败：${errorMsg}`);
                     console.error('买入失败:', positionResult);
                 }
                 
@@ -1245,13 +1277,15 @@
                     // 止盈或止损：卖出全部持仓
                     sellQuantity = totalQuantity;
                     sellReason = actionText;
-                } else if (actionText === '牛转�?) {
-                    // 牛转熊：卖出持仓数量�?5/8（股数取整，100的倍数�?                    const rawQuantity = Math.floor(totalQuantity * 5 / 8);
+                } else if (actionText === '牛转熊') {
+                    // 牛转熊：卖出持仓数量的 5/8（股数取整，100的倍数）
+                    const rawQuantity = Math.floor(totalQuantity * 5 / 8);
                     sellQuantity = Math.floor(rawQuantity / 100) * 100;
-                    sellReason = '牛转�?;
+                    sellReason = '牛转熊';
                 }
                 
-                // 确保至少卖出100股（如果是牛转熊�?                if (actionText === '牛转�? && sellQuantity < 100) {
+                // 确保至少卖出100股（如果是牛转熊）
+                if (actionText === '牛转熊' && sellQuantity < 100) {
                     sellQuantity = 100;
                 }
                 
@@ -1259,7 +1293,7 @@
                 const profitLoss = (currentPrice - parseFloat(position.cost_price)) * sellQuantity;
                 const remainingQuantity = totalQuantity - sellQuantity;
                 
-                const confirmMsg = `确认卖出 ${name} (${symbol})？\n\n卖出原因�?{sellReason}\n卖出数量�?{sellQuantity} 股（总持�?${totalQuantity} 股）\n当前价格�?{currentPrice.toFixed(2)} 元\n卖出金额�?{sellAmount.toFixed(2)} 元\n盈亏金额�?{profitLoss.toFixed(2)} 元\n盈亏比例�?{profitLossPercent.toFixed(2)}%\n\n此操作将：\n1. 按现价卖�?${sellQuantity} 股\n2. ${remainingQuantity > 0 ? '更新持仓，剩�?' + remainingQuantity + ' �? : '从持仓中删除'}\n3. 增加卖出金额到可用资金`;
+                const confirmMsg = `确认卖出 ${name} (${symbol})？\n\n卖出原因：${sellReason}\n卖出数量：${sellQuantity} 股（总持仓 ${totalQuantity} 股）\n当前价格：${currentPrice.toFixed(2)} 元\n卖出金额：${sellAmount.toFixed(2)} 元\n盈亏金额：${profitLoss.toFixed(2)} 元\n盈亏比例：${profitLossPercent.toFixed(2)}%\n\n此操作将：\n1. 按现价卖出 ${sellQuantity} 股\n2. ${remainingQuantity > 0 ? '更新持仓，剩余 ' + remainingQuantity + ' 股' : '从持仓中删除'}\n3. 增加卖出金额到可用资金`;
                 
                 if (!confirm(confirmMsg)) {
                     return;
@@ -1268,7 +1302,8 @@
                 let sellResult;
                 
                 if (remainingQuantity > 0) {
-                    // 还有剩余股票，更新持�?                    const updateResponse = await fetch(`/api/plan/position/${symbol}`, {
+                    // 还有剩余股票，更新持仓
+                    const updateResponse = await fetch(`/api/plan/position/${symbol}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json'
@@ -1280,7 +1315,8 @@
                     
                     sellResult = await updateResponse.json();
                 } else {
-                    // 没有剩余股票，删除持�?                    const deleteResponse = await fetch(`/api/plan/position/${symbol}`, {
+                    // 没有剩余股票，删除持仓
+                    const deleteResponse = await fetch(`/api/plan/position/${symbol}`, {
                         method: 'DELETE'
                     });
                     
@@ -1319,14 +1355,14 @@
                         console.error('记录已执行的调仓建议失败:', error);
                     }
                     
-                    alert(`卖出成功！\n\n股票�?{name} (${symbol})\n原因�?{sellReason}\n价格�?{currentPrice.toFixed(2)} 元\n卖出数量�?{sellQuantity} 股\n剩余数量�?{remainingQuantity} 股\n卖出金额�?{sellAmount.toFixed(2)} 元\n盈亏�?{profitLoss.toFixed(2)} �?(${profitLossPercent.toFixed(2)}%)\n\n可用资金�?{newAvailableCash.toFixed(2)} 元`);
+                    alert(`卖出成功！\n\n股票：${name} (${symbol})\n原因：${sellReason}\n价格：${currentPrice.toFixed(2)} 元\n卖出数量：${sellQuantity} 股\n剩余数量：${remainingQuantity} 股\n卖出金额：${sellAmount.toFixed(2)} 元\n盈亏：${profitLoss.toFixed(2)} 元 (${profitLossPercent.toFixed(2)}%)\n\n可用资金：${newAvailableCash.toFixed(2)} 元`);
                     
                     // 刷新持仓分析
                     await loadPositionAnalysis();
                     // 刷新调仓策略
                     await loadAdjustmentStrategy();
                 } else {
-                    alert(`卖出失败�?{sellResult.message || '未知错误'}`);
+                    alert(`卖出失败：${sellResult.message || '未知错误'}`);
                 }
                 
             } catch (error) {
@@ -1338,14 +1374,14 @@
         // 刷新资讯
         async function refreshNews() {
             const btn = event.target;
-            btn.textContent = '刷新�?..';
+            btn.textContent = '刷新中...';
             btn.disabled = true;
             
             try {
                 await loadNews();
                 btn.textContent = '刷新';
                 btn.disabled = false;
-                alert('资讯已更�?);
+                alert('资讯已更新');
             } catch (error) {
                 console.error('刷新资讯失败:', error);
                 btn.textContent = '刷新';
@@ -1357,7 +1393,8 @@
         // 导出PDF
         async function exportPDF() {
             try {
-                // 从localStorage获取可用现金和原始资�?                let availableCash = 187500.00;
+                // 从localStorage获取可用现金和原始资金
+                let availableCash = 187500.00;
                 let originalCash = 200000.00;
                 
                 try {
@@ -1447,7 +1484,8 @@
             console.log('自动刷新已设置，间隔:', dataUpdateInterval, '分钟');
         }
         
-        // 更新最后更新时�?        function updateLastUpdateTime() {
+        // 更新最后更新时间
+        function updateLastUpdateTime() {
             const now = new Date();
             const timeStr = now.toLocaleString('zh-CN', {
                 year: 'numeric',
