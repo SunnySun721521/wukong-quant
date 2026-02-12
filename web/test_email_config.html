@@ -8,7 +8,7 @@
     <h1>邮件配置测试</h1>
     
     <div>
-        <label>邮件发送功能:</label>
+        <label>邮件发送功�?</label>
         <select id="emailEnabled">
             <option value="false">禁用</option>
             <option value="true">启用</option>
@@ -21,7 +21,7 @@
     </div>
     
     <div>
-        <label>邮箱授权码:</label>
+        <label>邮箱授权�?</label>
         <input type="password" id="senderAuthCode">
     </div>
     
@@ -29,7 +29,7 @@
         <label>邮件模板:</label>
         <select id="emailTemplate">
             <option value="simple">简洁版</option>
-            <option value="detailed">详细版</option>
+            <option value="detailed">详细�?/option>
         </select>
     </div>
     
@@ -40,7 +40,7 @@
     
     <script>
         function loadEmailConfig() {
-            fetch('http://127.0.0.1:5006/api/email/config')
+            fetch('/api/email/config')
                 .then(response => response.json())
                 .then(data => {
                     console.log('加载配置响应:', data);
@@ -75,7 +75,7 @@
             
             console.log('保存配置:', config);
             
-            fetch('http://127.0.0.1:5006/api/email/config', {
+            fetch('/api/email/config', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -97,8 +97,7 @@
             });
         }
         
-        // 页面加载时自动加载配置
-        window.onload = loadEmailConfig;
+        // 页面加载时自动加载配�?        window.onload = loadEmailConfig;
     </script>
 </body>
 </html>

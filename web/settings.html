@@ -294,7 +294,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- 导航栏 -->
+        <!-- 导航�?-->
         <div class="nav-bar">
             <div class="nav-item" data-page="home" onclick="window.location.href='index.html'">首页</div>
             <div class="nav-item" data-page="plan" onclick="window.location.href='plan.html'">计划</div>
@@ -307,17 +307,17 @@
         <!-- 头部 -->
         <div class="header">
             <span class="title">系统设置</span>
-            <span class="subtitle">系统配置与参数调整</span>
+            <span class="subtitle">系统配置与参数调�?/span>
         </div>
         
         <!-- 设置内容 -->
         <div class="settings-section">
-            <!-- 设置选项卡 -->
+            <!-- 设置选项�?-->
             <div class="settings-tabs">
                 <div class="tab-item active" data-tab="general">通用设置</div>
                 <div class="tab-item" data-tab="data">数据设置</div>
                 <div class="tab-item" data-tab="strategy">策略设置</div>
-                <div class="tab-item" data-tab="stock_pool">股票池管理</div>
+                <div class="tab-item" data-tab="stock_pool">股票池管�?/div>
                 <div class="tab-item" data-tab="position">持仓管理</div>
                 <div class="tab-item" data-tab="scheduler">定时任务</div>
             </div>
@@ -327,7 +327,7 @@
                 <div class="form-group">
                     <label class="form-label">系统语言</label>
                     <select class="form-control" id="systemLanguage">
-                        <option value="zh-CN">简体中文</option>
+                        <option value="zh-CN">简体中�?/option>
                         <option value="en-US">English</option>
                     </select>
                 </div>
@@ -351,7 +351,7 @@
                 
                 <div class="form-group form-checkbox">
                     <input type="checkbox" id="autoUpdate">
-                    <label for="autoUpdate">自动检查更新</label>
+                    <label for="autoUpdate">自动检查更�?/label>
                 </div>
                 
                 <div class="form-group form-checkbox">
@@ -365,14 +365,14 @@
                 <div class="form-group">
                     <label class="form-label">数据来源</label>
                     <select class="form-control" id="dataSource">
-                        <option value="efinance">efinance (A股)</option>
+                        <option value="efinance">efinance (A�?</option>
                         <option value="yfinance">yfinance (美股)</option>
-                        <option value="tushare">Tushare (A股)</option>
+                        <option value="tushare">Tushare (A�?</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label">缓存有效期 (秒)</label>
+                    <label class="form-label">缓存有效�?(�?</label>
                     <input type="number" class="form-control" id="cacheExpiry" value="3600" min="60" max="86400">
                 </div>
                 
@@ -392,11 +392,11 @@
                 <div class="form-group">
                     <label class="form-label">默认策略</label>
                     <select class="form-control" id="defaultStrategy">
-                        <option value="moving_average">移动平均线策略</option>
-                        <option value="mean_reversion">均值回归策略</option>
+                        <option value="moving_average">移动平均线策�?/option>
+                        <option value="mean_reversion">均值回归策�?/option>
                         <option value="momentum">动量策略</option>
                         <option value="breakout">突破策略</option>
-                        <option value="niu_huicai" selected>牛回测策略</option>
+                        <option value="niu_huicai" selected>牛回测策�?/option>
                     </select>
                 </div>
                 
@@ -406,17 +406,17 @@
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label">默认交易成本 (‰)</label>
+                    <label class="form-label">默认交易成本 (�?</label>
                     <input type="number" class="form-control" id="defaultTransactionCost" value="0.3" min="0" max="1" step="0.01">
                 </div>
                 
                 <div class="form-group">
                     <label class="form-label">默认回测周期</label>
                     <select class="form-control" id="defaultBacktestPeriod">
-                        <option value="1y">1年</option>
-                        <option value="2y">2年</option>
-                        <option value="3y">3年</option>
-                        <option value="5y">5年</option>
+                        <option value="1y">1�?/option>
+                        <option value="2y">2�?/option>
+                        <option value="3y">3�?/option>
+                        <option value="5y">5�?/option>
                     </select>
                 </div>
                 
@@ -425,12 +425,12 @@
                 <h3>策略参数</h3>
                 
                 <div class="form-group">
-                    <label class="form-label">PE阈值</label>
+                    <label class="form-label">PE阈�?/label>
                     <input type="number" class="form-control" id="peThreshold" min="0" step="1">
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label">ROE阈值</label>
+                    <label class="form-label">ROE阈�?/label>
                     <input type="number" class="form-control" id="roeThreshold" min="0" step="1">
                 </div>
                 
@@ -450,16 +450,16 @@
                 </div>
             </div>
             
-            <!-- 股票池管理 -->
+            <!-- 股票池管�?-->
             <div class="tab-content" id="stock_pool">
                 <div class="stock-pool">
                     <div class="stock-pool-header">
-                        <div class="stock-pool-title">默认股票池</div>
+                        <div class="stock-pool-title">默认股票�?/div>
                         <div class="stock-pool-actions">
                             <button class="btn btn-primary" onclick="importStockPool()">导入</button>
                             <button class="btn btn-secondary" onclick="exportStockPool()">导出</button>
                             <button class="btn btn-secondary" onclick="addStock()">添加</button>
-                            <button class="btn btn-info" onclick="updateStockNames()">映射表</button>
+                            <button class="btn btn-info" onclick="updateStockNames()">映射�?/button>
                             <button class="btn btn-danger" onclick="clearStockPool()">清空</button>
                         </div>
                     </div>
@@ -482,7 +482,7 @@
                         <div class="stock-item">
                             <div class="stock-info">
                                 <span class="stock-symbol">000858</span>
-                                <span class="stock-name">五粮液</span>
+                                <span class="stock-name">五粮�?/span>
                             </div>
                             <button class="btn btn-secondary" onclick="removeStock('000858')">删除</button>
                         </div>
@@ -515,31 +515,31 @@
                             <div style="font-size: 14px; color: #666; margin-bottom: 5px;">原始资金</div>
                             <div style="font-size: 18px; font-weight: bold; color: #333;" id="originalCash">--</div>
                             <div style="margin-top: 10px;">
-                                <input type="number" id="customOriginalCash" placeholder="自定义原始资金" style="width: 80%; padding: 5px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px;" step="0.01" min="0">
+                                <input type="number" id="customOriginalCash" placeholder="自定义原始资�? style="width: 80%; padding: 5px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px;" step="0.01" min="0">
                                 <button class="btn btn-secondary" onclick="updateOriginalCash()" style="margin-top: 5px; font-size: 12px; padding: 3px 8px;">更新</button>
                             </div>
                         </div>
                         <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center;">
-                            <div style="font-size: 14px; color: #666; margin-bottom: 5px;">总资产</div>
+                            <div style="font-size: 14px; color: #666; margin-bottom: 5px;">总资�?/div>
                             <div style="font-size: 18px; font-weight: bold; color: #333;" id="totalAssets">--</div>
                         </div>
                         <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center;">
-                            <div style="font-size: 14px; color: #666; margin-bottom: 5px;">持仓市值</div>
+                            <div style="font-size: 14px; color: #666; margin-bottom: 5px;">持仓市�?/div>
                             <div style="font-size: 18px; font-weight: bold; color: #333;" id="positionValue">--</div>
                         </div>
                         <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center;">
                             <div style="font-size: 14px; color: #666; margin-bottom: 5px;">可用现金</div>
                             <div style="font-size: 18px; font-weight: bold; color: #333;" id="availableCash">--</div>
                             <div style="margin-top: 10px;">
-                                <input type="number" id="customAvailableCash" placeholder="自定义现金" style="width: 80%; padding: 5px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px;" step="0.01" min="0">
+                                <input type="number" id="customAvailableCash" placeholder="自定义现�? style="width: 80%; padding: 5px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px;" step="0.01" min="0">
                                 <button class="btn btn-secondary" onclick="updateAvailableCash()" style="margin-top: 5px; font-size: 12px; padding: 3px 8px;">更新</button>
                             </div>
                         </div>
                     </div>
                     
                     <div class="stock-list" id="position-list">
-                        <!-- 持仓列表将通过JavaScript动态加载 -->
-                        <div style="text-align: center; color: #666; padding: 20px;">请点击"刷新"按钮加载持仓数据</div>
+                        <!-- 持仓列表将通过JavaScript动态加�?-->
+                        <div style="text-align: center; color: #666; padding: 20px;">请点�?刷新"按钮加载持仓数据</div>
                     </div>
                 </div>
             </div>
@@ -552,9 +552,9 @@
                         <div class="section-title">PDF自动导出定时任务</div>
                         
                         <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                            <div style="font-size: 14px; color: #666; margin-bottom: 10px;">任务状态</div>
+                            <div style="font-size: 14px; color: #666; margin-bottom: 10px;">任务状�?/div>
                             <div style="display: flex; align-items: center; gap: 15px;">
-                                <div style="font-size: 16px; font-weight: bold; color: #333;" id="schedulerStatus">加载中...</div>
+                                <div style="font-size: 16px; font-weight: bold; color: #333;" id="schedulerStatus">加载�?..</div>
                                 <button class="btn btn-primary" onclick="startScheduler()">启动</button>
                                 <button class="btn btn-secondary" onclick="stopScheduler()">停止</button>
                             </div>
@@ -565,7 +565,7 @@
                             <div style="font-size: 12px; color: #999; margin-bottom: 15px;">定时任务仅在工作日（周一至周五）执行</div>
                             
                             <div id="scheduledTimesList" style="margin-bottom: 15px;">
-                                <!-- 定时时间列表将通过JavaScript动态加载 -->
+                                <!-- 定时时间列表将通过JavaScript动态加�?-->
                             </div>
                             
                             <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px;">
@@ -615,17 +615,17 @@
                         </div>
                         
                         <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
-                            <div style="font-size: 14px; color: #666; margin-bottom: 10px;">最近执行记录</div>
+                            <div style="font-size: 14px; color: #666; margin-bottom: 10px;">最近执行记�?/div>
                             <div id="schedulerLogs" style="font-size: 12px; color: #999;">
                                 暂无执行记录
                             </div>
                         </div>
                         
                         <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 20px;">
-                            <div style="font-size: 14px; color: #666; margin-bottom: 10px;">邮件发送配置</div>
+                            <div style="font-size: 14px; color: #666; margin-bottom: 10px;">邮件发送配�?/div>
                             
                             <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-                                <label style="font-size: 12px; color: #666;">邮件发送功能:</label>
+                                <label style="font-size: 12px; color: #666;">邮件发送功�?</label>
                                 <select class="form-control" id="emailEnabled" style="width: 100px;" onchange="toggleEmailConfig()">
                                     <option value="false">禁用</option>
                                     <option value="true">启用</option>
@@ -642,7 +642,7 @@
                                 </div>
                                 
                                 <div style="margin-bottom: 15px;">
-                                    <label style="font-size: 12px; color: #666; display: block; margin-bottom: 5px;">邮箱授权码:</label>
+                                    <label style="font-size: 12px; color: #666; display: block; margin-bottom: 5px;">邮箱授权�?</label>
                                     <div style="display: flex; gap: 5px;">
                                         <input type="password" class="form-control" id="senderAuthCode" placeholder="请输入邮箱授权码" style="flex: 1;">
                                         <button class="btn btn-secondary" onclick="toggleAuthCodeVisibility()" style="padding: 5px 10px;">显示</button>
@@ -652,7 +652,7 @@
                                 <div style="margin-bottom: 15px;">
                                     <label style="font-size: 12px; color: #666; display: block; margin-bottom: 5px;">接收邮箱列表:</label>
                                     <div id="recipientsList" style="margin-bottom: 10px; max-height: 200px; overflow-y: auto;">
-                                        <!-- 接收人列表将通过JavaScript动态加载 -->
+                                        <!-- 接收人列表将通过JavaScript动态加�?-->
                                     </div>
                                     <div style="display: flex; gap: 5px; margin-bottom: 10px;">
                                         <input type="email" class="form-control" id="newRecipient" placeholder="请输入接收邮箱地址" style="flex: 1;">
@@ -670,25 +670,25 @@
                                     <label style="font-size: 12px; color: #666; display: block; margin-bottom: 5px;">邮件模板:</label>
                                     <select class="form-control" id="emailTemplate">
                                         <option value="simple">简洁版</option>
-                                        <option value="detailed">详细版</option>
+                                        <option value="detailed">详细�?/option>
                                     </select>
                                 </div>
                                 
                                 <div style="display: flex; gap: 10px; margin-bottom: 15px;">
                                     <button class="btn btn-primary" onclick="saveEmailConfig()">保存邮件配置</button>
-                                    <button class="btn btn-secondary" onclick="sendTestEmail()">发送测试邮件</button>
+                                    <button class="btn btn-secondary" onclick="sendTestEmail()">发送测试邮�?/button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- 右侧：数据自动更新配置 -->
+                    <!-- 右侧：数据自动更新配�?-->
                     <div style="flex: 1;">
                         <div class="section-title">数据自动更新配置</div>
                         
                         <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
                             <div style="font-size: 14px; color: #666; margin-bottom: 10px;">数据自动更新配置</div>
-                            <div style="font-size: 12px; color: #999; margin-bottom: 15px;">自动更新计划页面中的市场状态判断、持仓分析、调仓策略、买入策略数据</div>
+                            <div style="font-size: 12px; color: #999; margin-bottom: 15px;">自动更新计划页面中的市场状态判断、持仓分析、调仓策略、买入策略数�?/div>
                             
                             <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
                                 <div style="flex: 1;">
@@ -711,14 +711,14 @@
                             <div style="font-size: 12px; color: #999; margin-bottom: 10px;">上次更新时间: <span id="lastDataUpdateTime" style="color: #27ae60; font-weight: 500;">--</span></div>
                             
                             <div id="dataUpdateLogs" style="max-height: 200px; overflow-y: auto; font-size: 11px; color: #999;">
-                                <!-- 数据更新日志将通过JavaScript动态加载 -->
+                                <!-- 数据更新日志将通过JavaScript动态加�?-->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- 按钮组 -->
+            <!-- 按钮�?-->
             <div class="button-group">
                 <button class="btn btn-primary btn-large" onclick="saveSettings()">保存设置</button>
                 <button class="btn btn-secondary btn-large" onclick="resetSettings()">恢复默认</button>
@@ -727,27 +727,25 @@
     </div>
     
     <script>
-        // 全局股票名称映射表（优先从localStorage加载）
-        let globalStockNames = (function() {
+        // 全局股票名称映射表（优先从localStorage加载�?        let globalStockNames = (function() {
             try {
                 const stored = localStorage.getItem('stockNames');
                 if (stored) {
                     return JSON.parse(stored);
                 }
             } catch (error) {
-                console.error('解析localStorage中的股票名称映射表失败:', error);
+                console.error('解析localStorage中的股票名称映射表失�?', error);
             }
-            // 默认股票名称映射（当localStorage中没有数据时使用）
-            return {
+            // 默认股票名称映射（当localStorage中没有数据时使用�?            return {
                 '300308': '中际旭创',
-                '603000': '人民网',
-                '300502': '新易盛',
+                '603000': '人民�?,
+                '300502': '新易�?,
                 '300274': '阳光电源',
                 '002371': '北方华创',
                 '300750': '宁德时代',
                 '601899': '紫金矿业',
                 '600519': '贵州茅台',
-                '000858': '五粮液',
+                '000858': '五粮�?,
                 '000333': '美的集团',
                 '000651': '格力电器',
                 '600031': '三一重工',
@@ -765,11 +763,11 @@
                 '600030': '中信证券',
                 '601688': '华泰证券',
                 '601211': '国泰君安',
-                '600837': '海通证券',
+                '600837': '海通证�?,
                 '601901': '方正证券',
                 '000568': '泸州老窖',
                 '600809': '山西汾酒',
-                '000799': '酒鬼酒',
+                '000799': '酒鬼�?,
                 '000001': '平安银行',
                 '600036': '招商银行',
                 '600276': '恒瑞医药',
@@ -779,10 +777,10 @@
                 '301269': '华大九天',
                 '688981': '中芯国际',
                 '688599': '天合光能',
-                '688396': '华润微',
+                '688396': '华润�?,
                 '601766': '中国中车',
                 '600157': '永泰能源',
-                '688256': '寒武纪',
+                '688256': '寒武�?,
                 '300563': '神宇股份',
                 '002079': '苏州固锝'
             };
@@ -798,20 +796,16 @@
         // 页面加载完成后初始化
         document.addEventListener('DOMContentLoaded', function() {
             checkLogin();
-            // 选项卡切换
-            document.querySelectorAll('.tab-item').forEach(item => {
+            // 选项卡切�?            document.querySelectorAll('.tab-item').forEach(item => {
                 item.addEventListener('click', function() {
-                    // 移除所有活动状态
-                    document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
+                    // 移除所有活动状�?                    document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
                     document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
                     
-                    // 添加当前活动状态
-                    this.classList.add('active');
+                    // 添加当前活动状�?                    this.classList.add('active');
                     const tabId = this.getAttribute('data-tab');
                     document.getElementById(tabId).classList.add('active');
                     
-                    // 如果切换到股票池管理选项卡，加载股票池数据
-                    if (tabId === 'stock_pool') {
+                    // 如果切换到股票池管理选项卡，加载股票池数�?                    if (tabId === 'stock_pool') {
                         loadStockPool();
                     }
                 });
@@ -826,7 +820,7 @@
             console.log('加载设置');
             
             // 从后端加载通用设置
-            fetch('http://127.0.0.1:5006/api/general/settings')
+            fetch('/api/general/settings')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('HTTP error, status = ' + response.status);
@@ -836,8 +830,7 @@
                 .then(data => {
                     console.log('通用设置:', data);
                     
-                    // 将通用设置应用到表单
-                    if (data.systemLanguage) {
+                    // 将通用设置应用到表�?                    if (data.systemLanguage) {
                         document.getElementById('systemLanguage').value = data.systemLanguage;
                     }
                     if (data.timezone) {
@@ -858,8 +851,7 @@
                     console.error('错误详情:', error.message);
                 });
             
-            // 从后端加载策略参数
-            fetch('http://127.0.0.1:5006/api/strategy/params')
+            // 从后端加载策略参�?            fetch('/api/strategy/params')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('HTTP error, status = ' + response.status);
@@ -891,8 +883,7 @@
                     console.error('错误详情:', error.message);
                 });
             
-            // 从后端加载数据设置
-            fetch('http://127.0.0.1:5006/api/data/settings')
+            // 从后端加载数据设�?            fetch('/api/data/settings')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('HTTP error, status = ' + response.status);
@@ -935,8 +926,7 @@
                 enableNotification: document.getElementById('enableNotification').checked
             };
             
-            // 从表单获取数据设置
-            const dataSettings = {
+            // 从表单获取数据设�?            const dataSettings = {
                 dataSource: document.getElementById('dataSource').value,
                 cacheExpiry: parseInt(document.getElementById('cacheExpiry').value),
                 enableCache: document.getElementById('enableCache').checked,
@@ -946,8 +936,7 @@
             console.log('通用设置:', generalSettings);
             console.log('数据设置:', dataSettings);
             
-            // 保存通用设置到后端
-            fetch('http://127.0.0.1:5006/api/general/settings', {
+            // 保存通用设置到后�?            fetch('/api/general/settings', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -963,8 +952,7 @@
             .then(data => {
                 console.log('保存通用设置结果:', data);
                 
-                // 保存数据设置到后端
-                return fetch('http://127.0.0.1:5006/api/data/settings', {
+                // 保存数据设置到后�?                return fetch('/api/data/settings', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -986,26 +974,25 @@
                 console.error('保存设置失败:', error);
                 console.error('错误详情:', error.message);
                 console.error('错误堆栈:', error.stack);
-                alert('设置保存失败，请检查网络连接。错误详情: ' + error.message);
+                alert('设置保存失败，请检查网络连接。错误详�? ' + error.message);
             });
         }
         
         // 恢复默认设置
         function resetSettings() {
-            if (confirm('确定要恢复默认设置吗？')) {
+            if (confirm('确定要恢复默认设置吗�?)) {
                 console.log('恢复默认设置');
                 // 这里可以添加恢复默认设置的逻辑
-                alert('默认设置已恢复');
+                alert('默认设置已恢�?);
             }
         }
         
-        // 加载股票池
-        function loadStockPool() {
-            console.log('加载股票池');
-            fetch('http://127.0.0.1:5006/api/stockpool/info')
+        // 加载股票�?        function loadStockPool() {
+            console.log('加载股票�?);
+            fetch('/api/stockpool/info')
                 .then(response => response.json())
                 .then(data => {
-                    console.log('股票池数据:', data);
+                    console.log('股票池数�?', data);
                     
                     // 注意：映射表内容只能在系统设置的股票池管理里的映射表功能修改
                     // 此处不再从后端更新映射表，确保用户修改的映射表不会被覆盖
@@ -1013,8 +1000,8 @@
                     updateStockList(data.current_pool);
                 })
                 .catch(error => {
-                    console.error('加载股票池失败:', error);
-                    alert('加载股票池失败，请检查网络连接');
+                    console.error('加载股票池失�?', error);
+                    alert('加载股票池失败，请检查网络连�?);
                 });
         }
         
@@ -1024,7 +1011,7 @@
             stockList.innerHTML = '';
             
             if (stocks.length === 0) {
-                stockList.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">股票池为空</div>';
+                stockList.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">股票池为�?/div>';
                 return;
             }
             
@@ -1044,13 +1031,13 @@
                     const prefix3 = symbol.substring(0, 3);
                     
                     if (prefix3 === '688') {
-                        stockName = `科创板股票 (${symbol})`;
+                        stockName = `科创板股�?(${symbol})`;
                     } else if (prefix === '6') {
                         stockName = `沪市股票 (${symbol})`;
                     } else if (prefix === '0') {
                         stockName = `深市股票 (${symbol})`;
                     } else if (prefix === '3') {
-                        stockName = `创业板股票 (${symbol})`;
+                        stockName = `创业板股�?(${symbol})`;
                     } else if (prefix === '8') {
                         stockName = `北交所股票 (${symbol})`;
                     } else {
@@ -1070,9 +1057,8 @@
             });
         }
         
-        // 导入股票池
-        function importStockPool() {
-            console.log('导入股票池');
+        // 导入股票�?        function importStockPool() {
+            console.log('导入股票�?);
             
             // 创建文件输入元素
             const input = document.createElement('input');
@@ -1106,7 +1092,7 @@
                         }
                         
                         // 调用后端API更新股票池，设置adjust: false以保留所有导入的股票
-                        fetch('http://127.0.0.1:5006/api/stockpool/update', {
+                        fetch('/api/stockpool/update', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -1115,17 +1101,16 @@
                         })
                         .then(response => response.json())
                         .then(data => {
-                            console.log('导入股票池结果:', data);
+                            console.log('导入股票池结�?', data);
                             if (data.error) {
                                 alert(`导入失败: ${data.error}`);
                             } else {
-                                alert(`导入成功: 共导入 ${stocks.length} 只股票`);
-                                loadStockPool(); // 重新加载股票池
-                            }
+                                alert(`导入成功: 共导�?${stocks.length} 只股票`);
+                                loadStockPool(); // 重新加载股票�?                            }
                         })
                         .catch(error => {
-                            console.error('导入股票池失败:', error);
-                            alert('导入股票池失败，请检查网络连接');
+                            console.error('导入股票池失�?', error);
+                            alert('导入股票池失败，请检查网络连�?);
                         });
                     } catch (error) {
                         console.error('文件解析失败:', error);
@@ -1139,12 +1124,10 @@
             input.click();
         }
         
-        // 导出股票池
-        function exportStockPool() {
-            console.log('导出股票池');
+        // 导出股票�?        function exportStockPool() {
+            console.log('导出股票�?);
             
-            // 获取股票池数据
-            fetch('http://127.0.0.1:5006/api/stockpool/info')
+            // 获取股票池数�?            fetch('/api/stockpool/info')
                 .then(response => response.json())
                 .then(data => {
                     const stocks = data.current_pool || [];
@@ -1161,8 +1144,7 @@
                         pool_size: stocks.length
                     };
                     
-                    // 创建JSON字符串
-                    const jsonString = JSON.stringify(exportData, null, 2);
+                    // 创建JSON字符�?                    const jsonString = JSON.stringify(exportData, null, 2);
                     
                     // 创建Blob对象
                     const blob = new Blob([jsonString], { type: 'application/json' });
@@ -1183,21 +1165,19 @@
                         URL.revokeObjectURL(url);
                     }, 100);
                     
-                    console.log('股票池导出成功:', stocks.length, '只股票');
+                    console.log('股票池导出成�?', stocks.length, '只股�?);
                 })
                 .catch(error => {
-                    console.error('导出股票池失败:', error);
-                    alert('导出股票池失败，请检查网络连接');
+                    console.error('导出股票池失�?', error);
+                    alert('导出股票池失败，请检查网络连�?);
                 });
         }
         
-        // 清空股票池
-        function clearStockPool() {
-            if (confirm('确定要清空股票池吗？此操作不可撤销。')) {
-                console.log('清空股票池');
+        // 清空股票�?        function clearStockPool() {
+            if (confirm('确定要清空股票池吗？此操作不可撤销�?)) {
+                console.log('清空股票�?);
                 
-                // 调用后端API清空股票池
-                fetch('http://127.0.0.1:5006/api/stockpool/clear', {
+                // 调用后端API清空股票�?                fetch('/api/stockpool/clear', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -1205,24 +1185,23 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    console.log('清空股票池结果:', data);
+                    console.log('清空股票池结�?', data);
                     if (data.error) {
                         alert(`清空失败: ${data.error}`);
                     } else {
                         alert(`清空成功: ${data.message}`);
-                        loadStockPool(); // 重新加载股票池
-                    }
+                        loadStockPool(); // 重新加载股票�?                    }
                 })
                 .catch(error => {
-                    console.error('清空股票池失败:', error);
-                    alert('清空股票池失败，请检查网络连接');
+                    console.error('清空股票池失�?', error);
+                    alert('清空股票池失败，请检查网络连�?);
                 });
             }
         }
         
         // 打开股票名称映射表编辑模态框
         function updateStockNames() {
-            console.log('打开股票名称映射表编辑');
+            console.log('打开股票名称映射表编�?);
             
             // 创建模态框
             const modal = document.createElement('div');
@@ -1254,12 +1233,11 @@
             
             // 模态框标题
             const modalTitle = document.createElement('h2');
-            modalTitle.textContent = '编辑股票名称映射表';
+            modalTitle.textContent = '编辑股票名称映射�?;
             modalTitle.style.marginBottom = '20px';
             modalContent.appendChild(modalTitle);
             
-            // 搜索和添加区域
-            const searchAddArea = document.createElement('div');
+            // 搜索和添加区�?            const searchAddArea = document.createElement('div');
             searchAddArea.style.cssText = `
                 display: flex;
                 gap: 10px;
@@ -1273,7 +1251,7 @@
             // 搜索输入
             const searchInput = document.createElement('input');
             searchInput.type = 'text';
-            searchInput.placeholder = '搜索股票代码或名称';
+            searchInput.placeholder = '搜索股票代码或名�?;
             searchInput.style.flex = '1';
             searchInput.style.minWidth = '200px';
             searchInput.style.padding = '10px';
@@ -1350,8 +1328,7 @@
             searchAddArea.appendChild(addButton);
             modalContent.appendChild(searchAddArea);
             
-            // 映射表容器
-            const mappingContainer = document.createElement('div');
+            // 映射表容�?            const mappingContainer = document.createElement('div');
             mappingContainer.id = 'mappingContainer';
             mappingContainer.style.cssText = `
                 display: grid;
@@ -1385,8 +1362,7 @@
             headerAction.style.background = '#f0f0f0';
             mappingContainer.appendChild(headerAction);
             
-            // 填充当前映射表
-            Object.entries(globalStockNames).forEach(([code, name]) => {
+            // 填充当前映射�?            Object.entries(globalStockNames).forEach(([code, name]) => {
                 addMappingRow(mappingContainer, code, name);
             });
             
@@ -1449,12 +1425,11 @@
             modal.appendChild(modalContent);
             document.body.appendChild(modal);
             
-            // 添加新映射
-            function addNewMapping() {
-                const newCode = prompt('请输入股票代码:');
+            // 添加新映�?            function addNewMapping() {
+                const newCode = prompt('请输入股票代�?');
                 if (newCode && /^\d{6}$/.test(newCode)) {
                     if (!globalStockNames[newCode]) {
-                        const newName = prompt('请输入股票名称:');
+                        const newName = prompt('请输入股票名�?');
                         if (newName) {
                             globalStockNames[newCode] = newName;
                             addMappingRow(mappingContainer, newCode, newName);
@@ -1463,12 +1438,11 @@
                         alert('该股票代码已存在映射');
                     }
                 } else {
-                    alert('请输入有效的6位股票代码');
+                    alert('请输入有效的6位股票代�?);
                 }
             }
             
-            // 添加映射行
-            function addMappingRow(container, code, name) {
+            // 添加映射�?            function addMappingRow(container, code, name) {
                 // 代码输入
                 const codeInput = document.createElement('input');
                 codeInput.type = 'text';
@@ -1523,8 +1497,7 @@
                     }
                 }
                 
-                // 清空旧映射表并更新
-                Object.keys(globalStockNames).forEach(key => {
+                // 清空旧映射表并更�?                Object.keys(globalStockNames).forEach(key => {
                     delete globalStockNames[key];
                 });
                 Object.assign(globalStockNames, newMappings);
@@ -1541,11 +1514,10 @@
                 // 更新股票列表显示
                 loadStockPool();
                 
-                alert('股票名称映射表更新成功');
+                alert('股票名称映射表更新成�?);
             }
             
-            // 导入映射表
-            function importMappings() {
+            // 导入映射�?            function importMappings() {
                 const input = document.createElement('input');
                 input.type = 'file';
                 input.accept = '.csv,.txt';
@@ -1593,8 +1565,7 @@
                 input.click();
             }
             
-            // 导出映射表
-            function exportMappings() {
+            // 导出映射�?            function exportMappings() {
                 const mappings = Object.entries(globalStockNames);
                 if (mappings.length === 0) {
                     alert('映射表为空，无法导出');
@@ -1611,7 +1582,7 @@
                 const url = URL.createObjectURL(blob);
                 
                 link.setAttribute('href', url);
-                link.setAttribute('download', '股票名称映射表.csv');
+                link.setAttribute('download', '股票名称映射�?csv');
                 link.style.visibility = 'hidden';
                 document.body.appendChild(link);
                 link.click();
@@ -1620,7 +1591,7 @@
             
             // 批量删除映射
             function batchDeleteMappings() {
-                const codesToDelete = prompt('请输入要删除的股票代码，多个代码用逗号分隔：');
+                const codesToDelete = prompt('请输入要删除的股票代码，多个代码用逗号分隔�?);
                 if (!codesToDelete) return;
                 
                 const codes = codesToDelete.split(/[,，\s]+/).filter(code => /^\d{6}$/.test(code));
@@ -1655,18 +1626,18 @@
         
         // 添加股票
         function addStock() {
-            const symbol = prompt('请输入股票代码');
+            const symbol = prompt('请输入股票代�?);
             if (symbol) {
                 console.log('添加股票:', symbol);
                 
                 // 验证股票代码格式
                 if (!/^\d{6}$/.test(symbol)) {
-                    alert('股票代码格式错误，请输入6位数字');
+                    alert('股票代码格式错误，请输入6位数�?);
                     return;
                 }
                 
                 // 调用后端API添加股票
-                fetch('http://127.0.0.1:5006/api/stockpool/add', {
+                fetch('/api/stockpool/add', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -1685,13 +1656,12 @@
                         alert(`添加失败: ${data.error}`);
                     } else {
                         alert(`添加成功: ${data.message}`);
-                        loadStockPool(); // 重新加载股票池
-                    }
+                        loadStockPool(); // 重新加载股票�?                    }
                 })
                 .catch(error => {
                     console.error('添加股票失败:', error);
                     console.error('错误详情:', error.message);
-                    alert('添加股票失败，请检查网络连接。错误详情: ' + error.message);
+                    alert('添加股票失败，请检查网络连接。错误详�? ' + error.message);
                 });
             }
         }
@@ -1702,7 +1672,7 @@
                 console.log('移除股票:', symbol);
                 
                 // 调用后端API移除股票
-                fetch('http://127.0.0.1:5006/api/stockpool/remove', {
+                fetch('/api/stockpool/remove', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -1721,13 +1691,12 @@
                         alert(`移除失败: ${data.error}`);
                     } else {
                         alert(`移除成功: ${data.message}`);
-                        loadStockPool(); // 重新加载股票池
-                    }
+                        loadStockPool(); // 重新加载股票�?                    }
                 })
                 .catch(error => {
                     console.error('移除股票失败:', error);
                     console.error('错误详情:', error.message);
-                    alert('移除股票失败，请检查网络连接。错误详情: ' + error.message);
+                    alert('移除股票失败，请检查网络连接。错误详�? ' + error.message);
                 });
             }
         }
@@ -1736,19 +1705,19 @@
         function initPositionTable() {
             const warningMessage = '⚠️ 警告：此操作将清空现有持仓数据并创建默认持仓！\n\n' +
                                   '默认持仓包含以下股票：\n' +
-                                  '• 600519 贵州茅台\n' +
-                                  '• 000858 五粮液\n' +
-                                  '• 002371 北方华创\n\n' +
+                                  '�?600519 贵州茅台\n' +
+                                  '�?000858 五粮液\n' +
+                                  '�?002371 北方华创\n\n' +
                                   '注意：这些默认股票可能不在您的股票池中！\n\n' +
-                                  '确定要继续吗？';
+                                  '确定要继续吗�?;
             
             if (confirm(warningMessage)) {
-                const secondConfirm = '再次确认：您确定要清空所有持仓并创建默认数据吗？\n\n此操作不可撤销！';
+                const secondConfirm = '再次确认：您确定要清空所有持仓并创建默认数据吗？\n\n此操作不可撤销�?;
                 if (confirm(secondConfirm)) {
                     console.log('初始化持仓表');
                     
                     // 调用后端API初始化持仓表
-                    fetch('http://127.0.0.1:5006/api/plan/position/init', {
+                    fetch('/api/plan/position/init', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -1763,16 +1732,16 @@
                     .then(data => {
                         console.log('初始化持仓表结果:', data);
                         if (data.error) {
-                            alert(`初始化失败: ${data.error}`);
+                            alert(`初始化失�? ${data.error}`);
                         } else {
-                            alert(`初始化成功: ${data.message}`);
+                            alert(`初始化成�? ${data.message}`);
                             loadPositions(); // 重新加载持仓数据
                         }
                     })
                     .catch(error => {
                         console.error('初始化持仓表失败:', error);
                         console.error('错误详情:', error.message);
-                        alert('初始化持仓表失败，请检查网络连接。错误详情: ' + error.message);
+                        alert('初始化持仓表失败，请检查网络连接。错误详�? ' + error.message);
                     });
                 }
             }
@@ -1782,8 +1751,7 @@
         function loadPositions() {
             console.log('加载持仓数据');
             
-            // 从后端获取现金配置
-            fetch('http://127.0.0.1:5006/api/config/available_cash')
+            // 从后端获取现金配�?            fetch('/api/config/available_cash')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('HTTP error, status = ' + response.status);
@@ -1797,8 +1765,7 @@
                     localStorage.setItem('availableCash', config.available_cash.toString());
                     localStorage.setItem('originalCash', config.original_cash.toString());
                     
-                    // 更新输入框的值
-                    document.getElementById('customAvailableCash').value = config.available_cash;
+                    // 更新输入框的�?                    document.getElementById('customAvailableCash').value = config.available_cash;
                     
                     // 构建请求参数
                     const availableCashParam = `?available_cash=${config.available_cash}`;
@@ -1807,11 +1774,10 @@
                     console.log('可用现金参数:', availableCashParam);
                     console.log('原始资金参数:', originalCashParam);
                     
-                    // 添加时间戳避免缓存
-                    const timestamp = new Date().getTime();
+                    // 添加时间戳避免缓�?                    const timestamp = new Date().getTime();
                     
                     // 调用后端API获取持仓数据
-                    const url = `http://127.0.0.1:5006/api/plan/position${availableCashParam}${originalCashParam}&_t=${timestamp}`;
+                    const url = `/api/plan/position${availableCashParam}${originalCashParam}&_t=${timestamp}`;
                     console.log('完整URL:', url);
                     fetch(url)
                         .then(response => {
@@ -1834,18 +1800,16 @@
                         .catch(error => {
                             console.error('加载持仓数据失败:', error);
                             console.error('错误详情:', error.message);
-                            alert('加载持仓数据失败，请检查网络连接。错误详情: ' + error.message);
+                            alert('加载持仓数据失败，请检查网络连接。错误详�? ' + error.message);
                         });
                 })
                 .catch(error => {
                     console.error('加载现金配置失败:', error);
-                    // 出错时使用localStorage的值
-                    loadPositionsWithLocalStorage();
+                    // 出错时使用localStorage的�?                    loadPositionsWithLocalStorage();
                 });
         }
         
-        // 格式化货币
-        function formatCurrency(value) {
+        // 格式化货�?        function formatCurrency(value) {
             return '¥' + value.toLocaleString('zh-CN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
         
@@ -1853,47 +1817,40 @@
         function loadPositionsWithLocalStorage() {
             console.log('使用localStorage加载持仓数据');
             
-            // 优先从localStorage获取可用现金值
-            let availableCashParam = '';
+            // 优先从localStorage获取可用现金�?            let availableCashParam = '';
             try {
                 const storedCash = localStorage.getItem('availableCash');
-                console.log('从localStorage读取的可用现金:', storedCash);
+                console.log('从localStorage读取的可用现�?', storedCash);
                 if (storedCash) {
                     availableCashParam = `?available_cash=${storedCash}`;
-                    // 更新输入框的值
-                    document.getElementById('customAvailableCash').value = storedCash;
+                    // 更新输入框的�?                    document.getElementById('customAvailableCash').value = storedCash;
                 } else {
-                    // 获取自定义可用现金值
-                    const customCash = document.getElementById('customAvailableCash').value;
-                    console.log('从输入框获取的可用现金:', customCash);
+                    // 获取自定义可用现金�?                    const customCash = document.getElementById('customAvailableCash').value;
+                    console.log('从输入框获取的可用现�?', customCash);
                     availableCashParam = customCash ? `?available_cash=${customCash}` : '';
                 }
             } catch (error) {
                 console.error('读取localStorage中的可用现金失败:', error);
-                // 出错时使用输入框的值
-                const customCash = document.getElementById('customAvailableCash').value;
+                // 出错时使用输入框的�?                const customCash = document.getElementById('customAvailableCash').value;
                 availableCashParam = customCash ? `?available_cash=${customCash}` : '';
             }
             
             console.log('可用现金参数:', availableCashParam);
             
-            // 优先从localStorage获取原始资金值
-            let originalCashParam = '';
+            // 优先从localStorage获取原始资金�?            let originalCashParam = '';
             try {
                 const storedCash = localStorage.getItem('originalCash');
-                console.log('从localStorage读取的原始资金:', storedCash);
+                console.log('从localStorage读取的原始资�?', storedCash);
                 if (storedCash) {
                     if (availableCashParam) {
                         originalCashParam = `&original_cash=${storedCash}`;
                     } else {
                         originalCashParam = `?original_cash=${storedCash}`;
                     }
-                    // 更新输入框的值
-                    document.getElementById('customOriginalCash').value = storedCash;
+                    // 更新输入框的�?                    document.getElementById('customOriginalCash').value = storedCash;
                 } else {
-                    // 获取自定义原始资金值
-                    const customCash = document.getElementById('customOriginalCash').value;
-                    console.log('从输入框获取的原始资金:', customCash);
+                    // 获取自定义原始资金�?                    const customCash = document.getElementById('customOriginalCash').value;
+                    console.log('从输入框获取的原始资�?', customCash);
                     if (customCash) {
                         if (availableCashParam) {
                             originalCashParam = `&original_cash=${customCash}`;
@@ -1904,8 +1861,7 @@
                 }
             } catch (error) {
                 console.error('读取localStorage中的原始资金失败:', error);
-                // 出错时使用输入框的值
-                const customCash = document.getElementById('customOriginalCash').value;
+                // 出错时使用输入框的�?                const customCash = document.getElementById('customOriginalCash').value;
                 if (customCash) {
                     if (availableCashParam) {
                         originalCashParam = `&original_cash=${customCash}`;
@@ -1917,11 +1873,10 @@
             
             console.log('原始资金参数:', originalCashParam);
             
-            // 添加时间戳避免缓存
-            const timestamp = new Date().getTime();
+            // 添加时间戳避免缓�?            const timestamp = new Date().getTime();
             
             // 调用后端API获取持仓数据
-            const url = `http://127.0.0.1:5006/api/plan/position${availableCashParam}${originalCashParam}&_t=${timestamp}`;
+            const url = `/api/plan/position${availableCashParam}${originalCashParam}&_t=${timestamp}`;
             console.log('完整URL:', url);
             fetch(url)
                 .then(response => {
@@ -1938,9 +1893,8 @@
                     document.getElementById('positionValue').textContent = data.position_value ? data.position_value.toFixed(2) : '--';
                     document.getElementById('availableCash').textContent = data.available_cash ? data.available_cash.toFixed(2) : '--';
                     
-                    // 直接从localStorage读取并显示原始资金
-                    const originalCash = localStorage.getItem('originalCash');
-                    console.log('从localStorage读取的原始资金:', originalCash);
+                    // 直接从localStorage读取并显示原始资�?                    const originalCash = localStorage.getItem('originalCash');
+                    console.log('从localStorage读取的原始资�?', originalCash);
                     if (originalCash) {
                         document.getElementById('originalCash').textContent = parseFloat(originalCash).toFixed(2);
                         document.getElementById('customOriginalCash').value = originalCash;
@@ -1953,7 +1907,7 @@
                 .catch(error => {
                     console.error('加载持仓数据失败:', error);
                     console.error('错误详情:', error.message);
-                    alert('加载持仓数据失败，请检查网络连接。错误详情: ' + error.message);
+                    alert('加载持仓数据失败，请检查网络连接。错误详�? ' + error.message);
                 });
         }
         
@@ -1964,9 +1918,8 @@
                 // 保存到localStorage
                 localStorage.setItem('availableCash', customCash);
                 
-                // 保存到后端配置文件
-                const originalCash = localStorage.getItem('originalCash') || 200000.00;
-                fetch('http://127.0.0.1:5006/api/config/available_cash', {
+                // 保存到后端配置文�?                const originalCash = localStorage.getItem('originalCash') || 200000.00;
+                fetch('/api/config/available_cash', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -1984,11 +1937,11 @@
                 })
                 .then(data => {
                     console.log('现金配置已保存到后端:', data);
-                    alert('可用现金已更新');
+                    alert('可用现金已更�?);
                 })
                 .catch(error => {
                     console.error('保存现金配置失败:', error);
-                    alert('保存现金配置失败，但已更新本地显示');
+                    alert('保存现金配置失败，但已更新本地显�?);
                 });
             }
             loadPositions();
@@ -2010,7 +1963,7 @@
             positionList.innerHTML = '';
             
             if (!positions || positions.length === 0) {
-                positionList.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">持仓表为空</div>';
+                positionList.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">持仓表为�?/div>';
                 return;
             }
             
@@ -2081,7 +2034,7 @@
             form.innerHTML = `
                 <div style="margin-bottom: 15px;">
                     <label style="display: block; margin-bottom: 5px; font-weight: 500;">股票代码</label>
-                    <input type="text" id="symbol" placeholder="请输入6位股票代码" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    <input type="text" id="symbol" placeholder="请输�?位股票代�? style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
                 </div>
                 <div style="margin-bottom: 15px;">
                     <label style="display: block; margin-bottom: 5px; font-weight: 500;">股票名称</label>
@@ -2089,21 +2042,20 @@
                 </div>
                 <div style="margin-bottom: 15px;">
                     <label style="display: block; margin-bottom: 5px; font-weight: 500;">持仓数量</label>
-                    <input type="number" id="quantity" placeholder="请输入持仓数量" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    <input type="number" id="quantity" placeholder="请输入持仓数�? style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <label style="display: block; margin-bottom: 5px; font-weight: 500;">成本价</label>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 500;">成本�?/label>
                     <input type="number" id="cost_price" step="0.01" placeholder="请输入成本价" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
                 </div>
                 <div style="margin-bottom: 20px;">
-                    <label style="display: block; margin-bottom: 5px; font-weight: 500;">当前价</label>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 500;">当前�?/label>
                     <input type="number" id="current_price" step="0.01" placeholder="实时获取" disabled style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background-color: #f5f5f5;">
                 </div>
             `;
             modalContent.appendChild(form);
             
-            // 添加股票代码输入事件，自动填充股票名称
-            const symbolInput = form.querySelector('#symbol');
+            // 添加股票代码输入事件，自动填充股票名�?            const symbolInput = form.querySelector('#symbol');
             symbolInput.addEventListener('input', function() {
                 const symbol = this.value.trim();
                 const nameInput = form.querySelector('#name');
@@ -2148,24 +2100,23 @@
                 
                 // 验证输入
                 if (!symbol || !quantity || !cost_price) {
-                    alert('请填写所有必填字段');
+                    alert('请填写所有必填字�?);
                     return;
                 }
                 
                 if (!/^\d{6}$/.test(symbol)) {
-                    alert('股票代码格式错误，请输入6位数字');
+                    alert('股票代码格式错误，请输入6位数�?);
                     return;
                 }
                 
-                // 构建持仓数据（只包含必填字段，股票名称和当前价由后端处理）
-                const positionData = {
+                // 构建持仓数据（只包含必填字段，股票名称和当前价由后端处理�?                const positionData = {
                     symbol: symbol,
                     quantity: parseInt(quantity),
                     cost_price: parseFloat(cost_price)
                 };
                 
                 // 调用后端API添加持仓
-                fetch('http://127.0.0.1:5006/api/plan/position', {
+                fetch('/api/plan/position', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -2191,7 +2142,7 @@
                 .catch(error => {
                     console.error('添加持仓失败:', error);
                     console.error('错误详情:', error.message);
-                    alert('添加持仓失败，请检查网络连接。错误详情: ' + error.message);
+                    alert('添加持仓失败，请检查网络连接。错误详�? ' + error.message);
                 });
             };
             buttonArea.appendChild(saveButton);
@@ -2230,7 +2181,7 @@
             console.log('编辑持仓:', symbol);
             
             // 调用后端API获取持仓数据
-            fetch('http://127.0.0.1:5006/api/plan/position')
+            fetch('/api/plan/position')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('HTTP error, status = ' + response.status);
@@ -2240,7 +2191,7 @@
                 .then(data => {
                     const position = data.positions.find(p => p.symbol === symbol);
                     if (!position) {
-                        alert('持仓数据不存在');
+                        alert('持仓数据不存�?);
                         return;
                     }
                     
@@ -2291,11 +2242,11 @@
                             <input type="number" id="quantity" value="${position.quantity}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
                         </div>
                         <div style="margin-bottom: 15px;">
-                            <label style="display: block; margin-bottom: 5px; font-weight: 500;">成本价</label>
+                            <label style="display: block; margin-bottom: 5px; font-weight: 500;">成本�?/label>
                             <input type="number" id="cost_price" step="0.01" value="${position.cost_price}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
                         </div>
                         <div style="margin-bottom: 20px;">
-                            <label style="display: block; margin-bottom: 5px; font-weight: 500;">当前价</label>
+                            <label style="display: block; margin-bottom: 5px; font-weight: 500;">当前�?/label>
                             <input type="number" id="current_price" step="0.01" value="${position.current_price}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
                         </div>
                     `;
@@ -2330,7 +2281,7 @@
                         
                         // 验证输入
                         if (!name || !quantity || !cost_price || !current_price) {
-                            alert('请填写所有必填字段');
+                            alert('请填写所有必填字�?);
                             return;
                         }
                         
@@ -2343,7 +2294,7 @@
                         };
                         
                         // 调用后端API更新持仓
-                        fetch(`http://127.0.0.1:5006/api/plan/position/${symbol}`, {
+                        fetch(`/api/plan/position/${symbol}`, {
                             method: 'PUT',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -2369,7 +2320,7 @@
                         .catch(error => {
                             console.error('更新持仓失败:', error);
                             console.error('错误详情:', error.message);
-                            alert('更新持仓失败，请检查网络连接。错误详情: ' + error.message);
+                            alert('更新持仓失败，请检查网络连接。错误详�? ' + error.message);
                         });
                     };
                     buttonArea.appendChild(saveButton);
@@ -2405,17 +2356,17 @@
                 .catch(error => {
                     console.error('获取持仓数据失败:', error);
                     console.error('错误详情:', error.message);
-                    alert('获取持仓数据失败，请检查网络连接。错误详情: ' + error.message);
+                    alert('获取持仓数据失败，请检查网络连接。错误详�? ' + error.message);
                 });
         }
         
         // 删除持仓
         function deletePosition(symbol) {
-            if (confirm(`确定要删除持仓 ${symbol} 吗？`)) {
+            if (confirm(`确定要删除持�?${symbol} 吗？`)) {
                 console.log('删除持仓:', symbol);
                 
                 // 调用后端API删除持仓
-                fetch(`http://127.0.0.1:5006/api/plan/position/${symbol}`, {
+                fetch(`/api/plan/position/${symbol}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
@@ -2439,7 +2390,7 @@
                 .catch(error => {
                     console.error('删除持仓失败:', error);
                     console.error('错误详情:', error.message);
-                    alert('删除持仓失败，请检查网络连接。错误详情: ' + error.message);
+                    alert('删除持仓失败，请检查网络连接。错误详�? ' + error.message);
                 });
             }
         }
@@ -2449,7 +2400,7 @@
         
         // 加载定时任务配置
         function loadSchedulerConfig() {
-            fetch('http://127.0.0.1:5006/api/scheduler/config')
+            fetch('/api/scheduler/config')
                 .then(response => response.json())
                 .then(data => {
                     scheduledTimes = data.scheduled_times || [];
@@ -2462,14 +2413,13 @@
                 });
         }
         
-        // 更新调度器状态显示
-        function updateSchedulerStatus(isRunning) {
+        // 更新调度器状态显�?        function updateSchedulerStatus(isRunning) {
             const statusElement = document.getElementById('schedulerStatus');
             if (isRunning) {
-                statusElement.textContent = '运行中';
+                statusElement.textContent = '运行�?;
                 statusElement.style.color = '#27ae60';
             } else {
-                statusElement.textContent = '已停止';
+                statusElement.textContent = '已停�?;
                 statusElement.style.color = '#e74c3c';
             }
         }
@@ -2520,7 +2470,7 @@
         
         // 保存定时任务配置
         function saveSchedulerConfig() {
-            fetch('http://127.0.0.1:5006/api/scheduler/config', {
+            fetch('/api/scheduler/config', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -2534,18 +2484,17 @@
                 if (data.error) {
                     alert(`保存失败: ${data.error}`);
                 } else {
-                    console.log('定时任务配置已保存');
+                    console.log('定时任务配置已保�?);
                 }
             })
             .catch(error => {
                 console.error('保存定时任务配置失败:', error);
-                alert('保存失败，请检查网络连接');
+                alert('保存失败，请检查网络连�?);
             });
         }
         
-        // 启动调度器
-        function startScheduler() {
-            fetch('http://127.0.0.1:5006/api/scheduler/start', {
+        // 启动调度�?        function startScheduler() {
+            fetch('/api/scheduler/start', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -2557,18 +2506,17 @@
                     alert(`启动失败: ${data.error}`);
                 } else {
                     updateSchedulerStatus(true);
-                    alert('定时任务已启动');
+                    alert('定时任务已启�?);
                 }
             })
             .catch(error => {
                 console.error('启动定时任务失败:', error);
-                alert('启动失败，请检查网络连接');
+                alert('启动失败，请检查网络连�?);
             });
         }
         
-        // 停止调度器
-        function stopScheduler() {
-            fetch('http://127.0.0.1:5006/api/scheduler/stop', {
+        // 停止调度�?        function stopScheduler() {
+            fetch('/api/scheduler/stop', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -2580,18 +2528,18 @@
                     alert(`停止失败: ${data.error}`);
                 } else {
                     updateSchedulerStatus(false);
-                    alert('定时任务已停止');
+                    alert('定时任务已停�?);
                 }
             })
             .catch(error => {
                 console.error('停止定时任务失败:', error);
-                alert('停止失败，请检查网络连接');
+                alert('停止失败，请检查网络连�?);
             });
         }
         
         // 加载执行记录
         function loadSchedulerExecutionLog() {
-            fetch('http://127.0.0.1:5006/api/scheduler/execution-log')
+            fetch('/api/scheduler/execution-log')
                 .then(response => response.json())
                 .then(data => {
                     if (data.error) {
@@ -2615,8 +2563,7 @@
                 return;
             }
             
-            // 去重：只保留每个时间点的第一条记录
-            const uniqueExecutions = [];
+            // 去重：只保留每个时间点的第一条记�?            const uniqueExecutions = [];
             const seenTimes = new Set();
             
             for (const exec of executions) {
@@ -2639,7 +2586,7 @@
         
         // 加载数据更新配置
         function loadDataUpdateConfig() {
-            fetch('http://127.0.0.1:5006/api/data/settings')
+            fetch('/api/data/settings')
                 .then(response => response.json())
                 .then(data => {
                     if (data.error) {
@@ -2657,9 +2604,9 @@
         function saveDataUpdateConfig() {
             const interval = parseInt(document.getElementById('dataUpdateInterval').value);
             
-            console.log('保存数据更新配置，间隔:', interval, '分钟');
+            console.log('保存数据更新配置，间�?', interval, '分钟');
             
-            fetch('http://127.0.0.1:5006/api/data/settings', {
+            fetch('/api/data/settings', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -2669,7 +2616,7 @@
                 })
             })
             .then(response => {
-                console.log('响应状态:', response.status);
+                console.log('响应状�?', response.status);
                 if (!response.ok) {
                     throw new Error('HTTP error, status = ' + response.status);
                 }
@@ -2680,7 +2627,7 @@
                 if (data.error) {
                     alert('保存失败: ' + data.error);
                 } else {
-                    alert('数据更新配置已保存');
+                    alert('数据更新配置已保�?);
                     loadDataUpdateLogs();
                 }
             })
@@ -2693,7 +2640,7 @@
         
         // 加载数据更新日志
         function loadDataUpdateLogs() {
-            fetch('http://127.0.0.1:5006/api/dataupdatelog')
+            fetch('/api/dataupdatelog')
                 .then(response => response.json())
                 .then(data => {
                     if (data.error) {
@@ -2718,8 +2665,7 @@
             // 按时间倒序排列
             const sortedLogs = [...logs].reverse();
             
-            // 更新最后更新时间
-            if (sortedLogs.length > 0) {
+            // 更新最后更新时�?            if (sortedLogs.length > 0) {
                 const lastLog = sortedLogs[0];
                 document.getElementById('lastDataUpdateTime').textContent = lastLog.timestamp;
             }
@@ -2754,7 +2700,7 @@
         }
         
         function loadEmailConfig() {
-            fetch('http://127.0.0.1:5006/api/email/config')
+            fetch('/api/email/config')
                 .then(response => response.json())
                 .then(data => {
                     if (data.error) {
@@ -2781,7 +2727,7 @@
                 email_body_template: document.getElementById('emailTemplate').value
             };
             
-            fetch('http://127.0.0.1:5006/api/email/config', {
+            fetch('/api/email/config', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -2793,19 +2739,19 @@
                 if (data.error) {
                     alert(`保存失败: ${data.error}`);
                 } else {
-                    alert('邮件配置已保存');
+                    alert('邮件配置已保�?);
                 }
             })
             .catch(error => {
                 console.error('保存邮件配置失败:', error);
-                alert('保存失败，请检查网络连接');
+                alert('保存失败，请检查网络连�?);
             });
         }
         
         function renderRecipients(recipients) {
             const container = document.getElementById('recipientsList');
             if (recipients.length === 0) {
-                container.innerHTML = '<div style="font-size: 12px; color: #999;">暂无接收人</div>';
+                container.innerHTML = '<div style="font-size: 12px; color: #999;">暂无接收�?/div>';
                 return;
             }
             
@@ -2829,7 +2775,7 @@
         }
         
         function loadRecipients() {
-            fetch('http://127.0.0.1:5006/api/email/recipients')
+            fetch('/api/email/recipients')
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
@@ -2871,7 +2817,7 @@
                 return;
             }
             
-            fetch('http://127.0.0.1:5006/api/email/recipients', {
+            fetch('/api/email/recipients', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -2895,7 +2841,7 @@
                 })
                 .catch(error => {
                     console.error('添加接收邮箱失败:', error);
-                    alert('添加失败，请检查网络连接');
+                    alert('添加失败，请检查网络连�?);
                 });
         }
         
@@ -2904,7 +2850,7 @@
                 return;
             }
             
-            fetch(`http://127.0.0.1:5006/api/email/recipients/${recipientId}`, {
+            fetch(`/api/email/recipients/${recipientId}`, {
                 method: 'DELETE'
             })
                 .then(response => response.json())
@@ -2917,7 +2863,7 @@
                 })
                 .catch(error => {
                     console.error('删除接收邮箱失败:', error);
-                    alert('删除失败，请检查网络连接');
+                    alert('删除失败，请检查网络连�?);
                 });
         }
         
@@ -2925,7 +2871,7 @@
             const checkbox = document.getElementById(`recipient_active_${recipientId}`);
             const isActive = checkbox.checked;
             
-            fetch(`http://127.0.0.1:5006/api/email/recipients/${recipientId}`, {
+            fetch(`/api/email/recipients/${recipientId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -2945,13 +2891,13 @@
                 })
                 .catch(error => {
                     console.error('更新接收邮箱失败:', error);
-                    alert('更新失败，请检查网络连接');
+                    alert('更新失败，请检查网络连�?);
                     checkbox.checked = !isActive;
                 });
         }
         
         function updateRecipientName(recipientId, name) {
-            fetch(`http://127.0.0.1:5006/api/email/recipients/${recipientId}`, {
+            fetch(`/api/email/recipients/${recipientId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -2969,7 +2915,7 @@
                 })
                 .catch(error => {
                     console.error('更新接收邮箱失败:', error);
-                    alert('更新失败，请检查网络连接');
+                    alert('更新失败，请检查网络连�?);
                     loadRecipients();
                 });
         }
@@ -2985,7 +2931,7 @@
                 return;
             }
             
-            fetch(`http://127.0.0.1:5006/api/email/recipients/${recipientId}`, {
+            fetch(`/api/email/recipients/${recipientId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -3004,7 +2950,7 @@
                 })
                 .catch(error => {
                     console.error('更新接收邮箱失败:', error);
-                    alert('更新失败，请检查网络连接');
+                    alert('更新失败，请检查网络连�?);
                 });
         }
         
@@ -3029,7 +2975,7 @@
             const formData = new FormData();
             formData.append('file', file);
             
-            fetch('http://127.0.0.1:5006/api/email/recipients/import', {
+            fetch('/api/email/recipients/import', {
                 method: 'POST',
                 body: formData
             })
@@ -3045,12 +2991,12 @@
                 })
                 .catch(error => {
                     console.error('导入接收邮箱失败:', error);
-                    alert('导入失败，请检查网络连接');
+                    alert('导入失败，请检查网络连�?);
                 });
         }
         
         function exportRecipients() {
-            window.location.href = 'http://127.0.0.1:5006/api/email/recipients/export';
+            window.location.href = '/api/email/recipients/export';
         }
         
         function showClearRecipientsModal() {
@@ -3062,7 +3008,7 @@
         }
         
         function clearRecipients() {
-            fetch('http://127.0.0.1:5006/api/email/recipients', {
+            fetch('/api/email/recipients', {
                 method: 'DELETE'
             })
                 .then(response => response.json())
@@ -3077,7 +3023,7 @@
                 })
                 .catch(error => {
                     console.error('清空接收邮箱失败:', error);
-                    alert('清空失败，请检查网络连接');
+                    alert('清空失败，请检查网络连�?);
                 });
         }
         function validateEmail(email) {
@@ -3109,7 +3055,7 @@
                 return;
             }
             
-            fetch('http://127.0.0.1:5006/api/email/test', {
+            fetch('/api/email/test', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -3119,14 +3065,14 @@
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
-                    alert(`发送测试邮件失败: ${data.error}`);
+                    alert(`发送测试邮件失�? ${data.error}`);
                 } else {
-                    alert('测试邮件发送成功，请检查邮箱');
+                    alert('测试邮件发送成功，请检查邮�?);
                 }
             })
             .catch(error => {
-                console.error('发送测试邮件失败:', error);
-                alert('发送失败，请检查网络连接');
+                console.error('发送测试邮件失�?', error);
+                alert('发送失败，请检查网络连�?);
             });
         }
         
@@ -3145,7 +3091,7 @@
     <div id="importModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 10px; width: 400px; max-width: 90%;">
             <h3 style="margin-bottom: 15px;">导入接收邮箱</h3>
-            <p style="margin-bottom: 15px; font-size: 12px; color: #666;">支持CSV和Excel文件，文件中需包含email_address列（必填），可选包含name和description列。</p>
+            <p style="margin-bottom: 15px; font-size: 12px; color: #666;">支持CSV和Excel文件，文件中需包含email_address列（必填），可选包含name和description列�?/p>
             <input type="file" id="importFile" accept=".csv,.xlsx,.xls" style="width: 100%; margin-bottom: 15px;">
             <div style="display: flex; gap: 10px; justify-content: flex-end;">
                 <button class="btn btn-secondary" onclick="hideImportModal()">取消</button>
@@ -3158,7 +3104,7 @@
     <div id="clearRecipientsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 10px; width: 400px; max-width: 90%;">
             <h3 style="margin-bottom: 15px;">确认清空</h3>
-            <p style="margin-bottom: 15px; color: #e74c3c;">确定要清空所有接收邮箱吗？此操作不可恢复！</p>
+            <p style="margin-bottom: 15px; color: #e74c3c;">确定要清空所有接收邮箱吗？此操作不可恢复�?/p>
             <div style="display: flex; gap: 10px; justify-content: flex-end;">
                 <button class="btn btn-secondary" onclick="hideClearRecipientsModal()">取消</button>
                 <button class="btn btn-danger" onclick="clearRecipients()">确认清空</button>

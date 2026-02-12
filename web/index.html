@@ -315,7 +315,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- 导航栏 -->
+        <!-- 导航�?-->
         <div class="nav-bar">
             <div class="nav-item active" data-page="home">首页</div>
             <div class="nav-item" data-page="plan">计划</div>
@@ -329,14 +329,14 @@
         <div class="header">
             <span class="title">量化交易系统</span>
             <span class="subtitle">智能投资组合分析</span>
-            <span class="settings-btn" onclick="navigateTo('settings')">⚙ 设置</span>
+            <span class="settings-btn" onclick="navigateTo('settings')">�?设置</span>
         </div>
         
         <!-- 组合总体表现 -->
         <div class="portfolio-section" id="portfolioSection" style="display: none;">
             <div class="portfolio-header">
                 <span class="portfolio-title">组合总体表现</span>
-                <span class="portfolio-date" id="portfolioDate">2024-01-01 至 2024-12-31</span>
+                <span class="portfolio-date" id="portfolioDate">2024-01-01 �?2024-12-31</span>
             </div>
             
             <div class="portfolio-stats">
@@ -346,7 +346,7 @@
                 </div>
                 
                 <div class="stat-item">
-                    <span class="stat-label">最终价值</span>
+                    <span class="stat-label">最终价�?/span>
                     <span class="stat-value" id="finalValue">--</span>
                 </div>
                 
@@ -356,12 +356,12 @@
                 </div>
                 
                 <div class="stat-item">
-                    <span class="stat-label">最大回撤</span>
+                    <span class="stat-label">最大回�?/span>
                     <span class="stat-value" id="maxDrawdown">--</span>
                 </div>
                 
                 <div class="stat-item">
-                    <span class="stat-label">总交易次数</span>
+                    <span class="stat-label">总交易次�?/span>
                     <span class="stat-value" id="totalTrades">--</span>
                 </div>
                 
@@ -379,14 +379,14 @@
             </div>
             
             <div class="stock-list" id="stockList">
-                <!-- 个股卡片将通过JavaScript动态生成 -->
+                <!-- 个股卡片将通过JavaScript动态生�?-->
             </div>
         </div>
         
-        <!-- 加载中 -->
+        <!-- 加载�?-->
         <div class="loading-section" id="loadingSection">
             <div class="loading-spinner"></div>
-            <span class="loading-text">加载中...</span>
+            <span class="loading-text">加载�?..</span>
         </div>
         
         <!-- 暂无数据 -->
@@ -453,7 +453,7 @@
             stockNames: {
                 '000001': '平安银行',
                 '600519': '贵州茅台',
-                '000858': '五粮液',
+                '000858': '五粮�?,
                 '601318': '中国平安'
             },
             stockRealtimeData: {
@@ -461,41 +461,41 @@
                     price: 15.23,
                     open: 15.10,
                     change: 2.1,
-                    volume: '1.2亿'
+                    volume: '1.2�?
                 },
                 '600519': {
                     price: 1899.00,
                     open: 1880.00,
                     change: 1.5,
-                    volume: '234万'
+                    volume: '234�?
                 },
                 '000858': {
                     price: 168.50,
                     open: 167.20,
                     change: -0.8,
-                    volume: '567万'
+                    volume: '567�?
                 },
                 '601318': {
                     price: 48.25,
                     open: 48.00,
                     change: 1.2,
-                    volume: '890万'
+                    volume: '890�?
                 }
             }
         };
         
-        // 从localStorage获取股票名称映射表
+        // 从localStorage获取股票名称映射�?
         function getStockNamesFromLocalStorage() {
             const stored = localStorage.getItem('stockNames');
             if (stored) {
                 try {
                     return JSON.parse(stored);
                 } catch (error) {
-                    console.error('解析localStorage中的股票名称映射表失败:', error);
+                    console.error('解析localStorage中的股票名称映射表失�?', error);
                     return {};
                 }
             }
-            // 默认股票名称映射（当localStorage中没有数据时使用）
+            // 默认股票名称映射（当localStorage中没有数据时使用�?
             return {
                 '000001': '平安银行',
                 '600036': '招商银行',
@@ -513,13 +513,13 @@
                 '600030': '中信证券',
                 '601688': '华泰证券',
                 '601211': '国泰君安',
-                '600837': '海通证券',
+                '600837': '海通证�?,
                 '601901': '方正证券',
                 '600519': '贵州茅台',
-                '000858': '五粮液',
+                '000858': '五粮�?,
                 '000568': '泸州老窖',
                 '600809': '山西汾酒',
-                '000799': '酒鬼酒',
+                '000799': '酒鬼�?,
                 '000002': '万科A',
                 '600031': '三一重工',
                 '000333': '美的集团',
@@ -530,13 +530,13 @@
             };
         }
         
-        // 股票名称映射（从localStorage获取）
+        // 股票名称映射（从localStorage获取�?
         let stockNames = getStockNamesFromLocalStorage();
         
-        // 监听localStorage变化，实现实时同步
+        // 监听localStorage变化，实现实时同�?
         window.addEventListener('storage', function(e) {
             if (e.key === 'stockNames') {
-                console.log('localStorage中的股票名称映射表已更新，重新加载');
+                console.log('localStorage中的股票名称映射表已更新，重新加�?);
                 stockNames = getStockNamesFromLocalStorage();
                 // 这里可以添加重新渲染股票列表的逻辑
             }
@@ -547,12 +547,12 @@
             // 加载数据
             loadData();
             
-            // 导航栏点击事件
+            // 导航栏点击事�?
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.addEventListener('click', function() {
-                    // 移除所有活动状态
+                    // 移除所有活动状�?
                     document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-                    // 添加当前活动状态
+                    // 添加当前活动状�?
                     this.classList.add('active');
                     
                     const page = this.getAttribute('data-page');
@@ -564,10 +564,10 @@
         // 加载数据
         function loadData() {
             // 从股票池API获取数据
-            fetch('http://127.0.0.1:5006/api/stockpool/info')
+            fetch('/api/stockpool/info')
                 .then(response => response.json())
                 .then(stockPoolData => {
-                    console.log('股票池数据:', stockPoolData);
+                    console.log('股票池数�?', stockPoolData);
                     
                     // 构建模拟的组合数据（基于股票池）
                     const data = {
@@ -600,20 +600,20 @@
                             price: 10 + Math.random() * 990,
                             open: 10 + Math.random() * 990,
                             change: (Math.random() - 0.5) * 10,
-                            volume: Math.floor(Math.random() * 10000) + '万'
+                            volume: Math.floor(Math.random() * 10000) + '�?
                         };
                     });
                     
                     renderData(data);
                 })
                 .catch(error => {
-                    console.error('API加载失败，使用本地模拟数据:', error);
-                    // API失败时使用本地模拟数据
+                    console.error('API加载失败，使用本地模拟数�?', error);
+                    // API失败时使用本地模拟数�?
                     renderData(mockData);
                 });
         }
         
-        // 渲染数据到页面
+        // 渲染数据到页�?
         function renderData(data) {
             if (data.portfolioResult) {
                 // 隐藏加载和空数据
@@ -636,7 +636,7 @@
                 document.getElementById('maxDrawdown').textContent = (data.portfolioResult.max_drawdown || 0) + '%';
                 document.getElementById('totalTrades').textContent = data.portfolioResult.total_trades || 0;
                 document.getElementById('winRate').textContent = (data.portfolioResult.win_rate || 0) + '%';
-                document.getElementById('portfolioDate').textContent = (data.portfolioResult.start_date || '') + ' 至 ' + (data.portfolioResult.end_date || '');
+                document.getElementById('portfolioDate').textContent = (data.portfolioResult.start_date || '') + ' �?' + (data.portfolioResult.end_date || '');
                 
                 // 填充个股数据
                 const stockList = document.getElementById('stockList');
@@ -676,14 +676,14 @@
                             </div>
                             
                             <div class="stock-stat">
-                                <span class="stock-stat-label">涨跌幅</span>
+                                <span class="stock-stat-label">涨跌�?/span>
                                 <span class="stock-stat-value ${changeClass}">
                                     ${changeSign}${realtimeData.change ? realtimeData.change.toFixed(2) : '--'}%
                                 </span>
                             </div>
                             
                             <div class="stock-stat">
-                                <span class="stock-stat-label">成交量</span>
+                                <span class="stock-stat-label">成交�?/span>
                                 <span class="stock-stat-value">${realtimeData.volume || '--'}</span>
                             </div>
                             
@@ -693,12 +693,12 @@
                             </div>
                             
                             <div class="stock-stat">
-                                <span class="stock-stat-label">最终价值</span>
+                                <span class="stock-stat-label">最终价�?/span>
                                 <span class="stock-stat-value">${(item.final_value || 0).toLocaleString()}</span>
                             </div>
                             
                             <div class="stock-stat">
-                                <span class="stock-stat-label">最大回撤</span>
+                                <span class="stock-stat-label">最大回�?/span>
                                 <span class="stock-stat-value">${item.max_drawdown ? item.max_drawdown.toFixed(2) : 0}%</span>
                             </div>
                             
@@ -722,7 +722,7 @@
                     stockList.appendChild(stockCard);
                 });
             } else {
-                // 显示空数据
+                // 显示空数�?
                 document.getElementById('loadingSection').style.display = 'none';
                 document.getElementById('portfolioSection').style.display = 'none';
                 document.getElementById('stocksSection').style.display = 'none';
@@ -730,9 +730,9 @@
             }
         }
         
-        // 导航到指定页面
+        // 导航到指定页�?
         function navigateTo(page) {
-            console.log('导航到:', page);
+            console.log('导航�?', page);
             // 页面跳转逻辑
             switch(page) {
                 case 'home':

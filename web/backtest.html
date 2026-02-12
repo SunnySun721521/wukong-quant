@@ -435,7 +435,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- 导航栏 -->
+        <!-- 导航�?-->
         <div class="nav-bar">
             <div class="nav-item" data-page="home" onclick="window.location.href='index.html'">首页</div>
             <div class="nav-item" data-page="plan" onclick="window.location.href='plan.html'">计划</div>
@@ -448,7 +448,7 @@
         <!-- 头部 -->
         <div class="header">
             <span class="title">回测分析</span>
-            <span class="subtitle">智能策略回测与优化</span>
+            <span class="subtitle">智能策略回测与优�?/span>
         </div>
         
         <!-- 回测设置 -->
@@ -460,7 +460,7 @@
                 <label class="form-label">股票选择</label>
                 <div class="stock-selection">
                     <div class="stock-list">
-                            <!-- 股票列表将通过JavaScript动态加载 -->
+                            <!-- 股票列表将通过JavaScript动态加�?-->
                         </div>
                 </div>
             </div>
@@ -482,11 +482,11 @@
             <div class="form-group">
                 <label class="form-label">策略选择</label>
                 <div class="strategy-selector">
-                    <div class="strategy-option" data-strategy="moving_average">移动平均线策略</div>
-                    <div class="strategy-option" data-strategy="mean_reversion">均值回归策略</div>
+                    <div class="strategy-option" data-strategy="moving_average">移动平均线策�?/div>
+                    <div class="strategy-option" data-strategy="mean_reversion">均值回归策�?/div>
                     <div class="strategy-option" data-strategy="momentum">动量策略</div>
                     <div class="strategy-option" data-strategy="breakout">突破策略</div>
-                    <div class="strategy-option" data-strategy="niu_huicai">牛回踩策略</div>
+                    <div class="strategy-option" data-strategy="niu_huicai">牛回踩策�?/div>
                 </div>
             </div>
             
@@ -498,18 +498,18 @@
             
             <!-- 交易成本 -->
             <div class="form-group">
-                <label class="form-label">交易成本 (‰)</label>
+                <label class="form-label">交易成本 (�?</label>
                 <input type="number" class="form-control" id="transactionCost" value="0.3" min="0" max="1" step="0.01">
             </div>
             
-            <!-- 按钮组 -->
+            <!-- 按钮�?-->
             <div class="button-group">
-                <button class="btn btn-primary" onclick="runBacktest()">开始回测</button>
+                <button class="btn btn-primary" onclick="runBacktest()">开始回�?/button>
                 <button class="btn btn-secondary" onclick="resetForm()">重置</button>
             </div>
         </div>
         
-        <!-- 加载中 -->
+        <!-- 加载�?-->
         <div class="loading-section" id="loadingSection">
             <div class="loading-spinner"></div>
             <span class="loading-text">正在执行回测...</span>
@@ -528,7 +528,7 @@
                     <span class="result-stat-value" id="resultInitialCash">--</span>
                 </div>
                 <div class="result-stat">
-                    <span class="result-stat-label">最终价值</span>
+                    <span class="result-stat-label">最终价�?/span>
                     <span class="result-stat-value" id="resultFinalValue">--</span>
                 </div>
                 <div class="result-stat">
@@ -536,7 +536,7 @@
                     <span class="result-stat-value" id="resultTotalReturn">--</span>
                 </div>
                 <div class="result-stat">
-                    <span class="result-stat-label">最大回撤</span>
+                    <span class="result-stat-label">最大回�?/span>
                     <span class="result-stat-value" id="resultMaxDrawdown">--</span>
                 </div>
                 <div class="result-stat">
@@ -570,12 +570,12 @@
                                 <th>价格</th>
                                 <th>数量</th>
                                 <th>金额</th>
-                                <th>市场状态</th>
+                                <th>市场状�?/th>
                                 <th>收益</th>
                             </tr>
                         </thead>
                         <tbody id="tradeTableBody">
-                            <!-- 交易记录将通过JavaScript动态添加 -->
+                            <!-- 交易记录将通过JavaScript动态添�?-->
                         </tbody>
                     </table>
                 </div>
@@ -584,19 +584,17 @@
     </div>
     
     <script>
-        // 从后端API获取的股票详细信息
-        let stockDetails = {};
+        // 从后端API获取的股票详细信�?        let stockDetails = {};
 
-        // 加载股票池
-        function loadStockPool() {
-            console.log('加载股票池');
-            fetch('http://127.0.0.1:5006/api/stockpool/info')
+        // 加载股票�?        function loadStockPool() {
+            console.log('加载股票�?);
+            fetch('/api/stockpool/info')
                 .then(response => {
-                    console.log('API响应状态:', response.status);
+                    console.log('API响应状�?', response.status);
                     return response.json();
                 })
                 .then(data => {
-                    console.log('股票池数据:', data);
+                    console.log('股票池数�?', data);
                     console.log('是否包含stock_details:', 'stock_details' in data);
                     // 构建股票详细信息映射
                     if (data.stock_details) {
@@ -613,38 +611,35 @@
                     updateStockList(data.current_pool);
                 })
                 .catch(error => {
-                    console.error('加载股票池失败:', error);
-                    alert('加载股票池失败，请检查网络连接');
+                    console.error('加载股票池失�?', error);
+                    alert('加载股票池失败，请检查网络连�?);
                 });
         }
 
-        // 定期刷新股票池数据（每5秒）
+        // 定期刷新股票池数据（�?秒）
         setInterval(loadStockPool, 5000);
         
-        // 监听localStorage变化，实现实时同步
-        window.addEventListener('storage', function(e) {
+        // 监听localStorage变化，实现实时同�?        window.addEventListener('storage', function(e) {
             if (e.key === 'stockNames') {
                 console.log('localStorage中的股票名称映射表已更新，重新加载股票池');
                 loadStockPool();
             }
         });
 
-        // 从localStorage获取股票名称映射表
-        function getStockNamesFromLocalStorage() {
+        // 从localStorage获取股票名称映射�?        function getStockNamesFromLocalStorage() {
             const stored = localStorage.getItem('stockNames');
             if (stored) {
                 try {
                     return JSON.parse(stored);
                 } catch (error) {
-                    console.error('解析localStorage中的股票名称映射表失败:', error);
+                    console.error('解析localStorage中的股票名称映射表失�?', error);
                     return {};
                 }
             }
             return {};
         }
 
-        // 保存用户选择的股票
-        function saveSelectedStocks() {
+        // 保存用户选择的股�?        function saveSelectedStocks() {
             const selectedStocks = [];
             document.querySelectorAll('.stock-checkbox:checked').forEach(checkbox => {
                 selectedStocks.push(checkbox.value);
@@ -654,14 +649,13 @@
 
         // 更新股票列表
         function updateStockList(stocks) {
-            // 保存当前用户选择的股票
-            const selectedStocks = saveSelectedStocks();
+            // 保存当前用户选择的股�?            const selectedStocks = saveSelectedStocks();
             
             const stockList = document.querySelector('.stock-list');
             stockList.innerHTML = '';
             
             if (stocks.length === 0) {
-                stockList.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">股票池为空</div>';
+                stockList.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">股票池为�?/div>';
                 return;
             }
             
@@ -669,8 +663,7 @@
                 const stockItem = document.createElement('div');
                 stockItem.className = 'stock-item';
                 
-                // 每次都重新从localStorage获取最新的股票名称映射表，确保实时一致
-                const localStorageStockNames = getStockNamesFromLocalStorage();
+                // 每次都重新从localStorage获取最新的股票名称映射表，确保实时一�?                const localStorageStockNames = getStockNamesFromLocalStorage();
                 
                 // 获取股票名称（优先使用localStorage中的映射，然后是stockDetails，最后是默认值）
                 let stockName = localStorageStockNames[symbol];
@@ -689,8 +682,7 @@
                     </div>
                 `;
                 
-                // 如果被选中，添加selected类
-                if (isSelected) {
+                // 如果被选中，添加selected�?                if (isSelected) {
                     stockItem.classList.add('selected');
                 }
                 
@@ -699,8 +691,7 @@
                     // 检查点击的目标是否是复选框，如果是则不执行操作
                     if (e.target.type === 'checkbox') {
                         // 复选框的默认点击事件已经处理了选中状态的切换
-                        // 只需要同步股票项的selected类
-                        if (e.target.checked) {
+                        // 只需要同步股票项的selected�?                        if (e.target.checked) {
                             this.classList.add('selected');
                         } else {
                             this.classList.remove('selected');
@@ -708,8 +699,7 @@
                         return;
                     }
                     
-                    // 如果点击的不是复选框，则切换复选框的选中状态
-                    const checkbox = this.querySelector('.stock-checkbox');
+                    // 如果点击的不是复选框，则切换复选框的选中状�?                    const checkbox = this.querySelector('.stock-checkbox');
                     checkbox.checked = !checkbox.checked;
                     if (checkbox.checked) {
                         this.classList.add('selected');
@@ -740,8 +730,7 @@
             document.getElementById('startDate').value = formatDate(oneYearAgo);
             document.getElementById('endDate').value = formatDate(today);
             
-            // 加载股票池
-            loadStockPool();
+            // 加载股票�?            loadStockPool();
             
             // 策略选择事件
             document.querySelectorAll('.strategy-option').forEach(option => {
@@ -752,7 +741,7 @@
             });
             
             // 获取默认策略设置并选中对应选项
-            fetch('http://127.0.0.1:5006/api/general/settings')
+            fetch('/api/general/settings')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('HTTP error, status = ' + response.status);
@@ -772,20 +761,17 @@
                         strategyOption.classList.add('selected');
                         console.log('成功选中策略:', defaultStrategy);
                     } else {
-                        // 如果找不到对应策略，默认选中第一个
-                        console.log('未找到对应策略，默认选中第一个');
+                        // 如果找不到对应策略，默认选中第一�?                        console.log('未找到对应策略，默认选中第一�?);
                         document.querySelector('.strategy-option').classList.add('selected');
                     }
                 })
                 .catch(error => {
                     console.error('获取默认策略设置失败:', error);
-                    // 失败时默认选中第一个策略
-                    document.querySelector('.strategy-option').classList.add('selected');
+                    // 失败时默认选中第一个策�?                    document.querySelector('.strategy-option').classList.add('selected');
                 });
         });
         
-        // 获取用户选择的股票
-        function getSelectedStocks() {
+        // 获取用户选择的股�?        function getSelectedStocks() {
             const selectedStocks = [];
             document.querySelectorAll('.stock-checkbox:checked').forEach(checkbox => {
                 selectedStocks.push(checkbox.value);
@@ -798,7 +784,7 @@
             const canvas = document.getElementById('profitChart');
             const ctx = canvas.getContext('2d');
             
-            // 强制设置canvas宽度，确保不为0
+            // 强制设置canvas宽度，确保不�?
             canvas.width = 800;
             canvas.height = 400;
             
@@ -813,9 +799,7 @@
                 '#FFA500', // 橙色
                 '#800080', // 紫色
                 '#00CED1', // 青色
-                '#FF6347', // 番茄红
-                '#4169E1'  // 皇家蓝
-            ];
+                '#FF6347', // 番茄�?                '#4169E1'  // 皇家�?            ];
             
             // 准备数据
             let curves = [];
@@ -827,7 +811,7 @@
                     if (equityCurve[0].date && equityCurve[0].value) {
                         // 单条曲线情况
                         curves.push({
-                            name: '总收益',
+                            name: '总收�?,
                             dates: equityCurve.map(point => point.date),
                             values: equityCurve.map(point => point.value),
                             color: colors[0]
@@ -836,8 +820,7 @@
                         allValues = equityCurve.map(point => point.value);
                     }
                 } else if (typeof equityCurve === 'object') {
-                    // 多条曲线情况（按股票区分）
-                    let index = 0;
+                    // 多条曲线情况（按股票区分�?                    let index = 0;
                     for (const [stock, data] of Object.entries(equityCurve)) {
                         if (data && data.length > 0) {
                             const curveDates = data.map(point => point.date);
@@ -856,8 +839,7 @@
                 }
             }
             
-            // 如果没有数据，使用模拟数据
-            if (curves.length === 0) {
+            // 如果没有数据，使用模拟数�?            if (curves.length === 0) {
                 const mockDates = ['2024-01-01', '2024-02-01', '2024-03-01', '2024-04-01', '2024-05-01', '2024-06-01', 
                                   '2024-07-01', '2024-08-01', '2024-09-01', '2024-10-01', '2024-11-01', '2024-12-01'];
                 
@@ -887,8 +869,7 @@
             const chartWidth = canvas.width - padding * 2;
             const chartHeight = canvas.height - padding * 2;
             
-            // 计算最大值和最小值
-            const maxValue = Math.max(...allValues) * 1.05;
+            // 计算最大值和最小�?            const maxValue = Math.max(...allValues) * 1.05;
             const minValue = Math.min(...allValues) * 0.95;
             const valueRange = maxValue - minValue;
             
@@ -896,12 +877,10 @@
             ctx.fillStyle = '#FFFFFF';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // 绘制网格线
-            ctx.strokeStyle = '#E5E5E5';
+            // 绘制网格�?            ctx.strokeStyle = '#E5E5E5';
             ctx.lineWidth = 1;
             
-            // 水平网格线
-            for (let i = 0; i <= 5; i++) {
+            // 水平网格�?            for (let i = 0; i <= 5; i++) {
                 const y = padding + (i / 5) * chartHeight;
                 ctx.beginPath();
                 ctx.moveTo(padding, y);
@@ -909,8 +888,7 @@
                 ctx.stroke();
             }
             
-            // 垂直网格线
-            if (allDates.length > 0) {
+            // 垂直网格�?            if (allDates.length > 0) {
                 for (let i = 0; i <= allDates.length - 1; i++) {
                     const x = padding + (i / (allDates.length - 1)) * chartWidth;
                     ctx.beginPath();
@@ -920,8 +898,7 @@
                 }
             }
             
-            // 绘制坐标轴
-            ctx.strokeStyle = '#333333';
+            // 绘制坐标�?            ctx.strokeStyle = '#333333';
             ctx.lineWidth = 2;
             ctx.beginPath();
             ctx.moveTo(padding, padding);
@@ -997,28 +974,25 @@
                 });
             }
             
-            // 绘制数值标签
-            ctx.font = '11px Arial';
+            // 绘制数值标�?            ctx.font = '11px Arial';
             ctx.fillStyle = '#666666';
             ctx.textAlign = 'right';
             for (let i = 0; i <= 5; i++) {
                 const y = padding + (i / 5) * chartHeight;
                 const value = minValue + (i / 5) * valueRange;
                 const valueInWan = (value / 10000).toFixed(1);
-                ctx.fillText(valueInWan + '万', padding - 10, y + 4);
+                ctx.fillText(valueInWan + '�?, padding - 10, y + 4);
             }
             
-            // 绘制坐标轴标题
-            ctx.font = 'bold 13px Arial';
+            // 绘制坐标轴标�?            ctx.font = 'bold 13px Arial';
             ctx.fillStyle = '#333333';
             ctx.textAlign = 'center';
             ctx.fillText('日期', canvas.width / 2, canvas.height - 15);
             
             ctx.textAlign = 'left';
-            ctx.fillText('总资产 (万元)', 15, 20);
+            ctx.fillText('总资�?(万元)', 15, 20);
             
-            // 绘制图例（清晰的图例设计）
-            if (curves.length > 1) {
+            // 绘制图例（清晰的图例设计�?            if (curves.length > 1) {
                 const legendX = canvas.width - padding - 130;
                 const legendY = padding + 10;
                 
@@ -1032,8 +1006,7 @@
                     ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
                     ctx.fillRect(legendX - 5, y - 8, 120, 18);
                     
-                    // 绘制颜色块
-                    ctx.fillStyle = curve.color;
+                    // 绘制颜色�?                    ctx.fillStyle = curve.color;
                     ctx.fillRect(legendX, y - 5, 16, 12);
                     
                     // 绘制股票名称
@@ -1048,14 +1021,13 @@
             const tableBody = document.getElementById('tradeTableBody');
             tableBody.innerHTML = '';
             
-            // 获取用户选择的股票
-            const selectedStocks = getSelectedStocks();
+            // 获取用户选择的股�?            const selectedStocks = getSelectedStocks();
             
             // 股票信息映射
             const stockInfo = {
                 '000001': '平安银行',
                 '600519': '贵州茅台',
-                '000858': '五粮液',
+                '000858': '五粮�?,
                 '601318': '中国平安',
                 '000300': '沪深300'
             };
@@ -1087,7 +1059,7 @@
                     let currentPrice = 100 + Math.random() * 50; // 初始价格
                     let position = 0; // 当前持仓
                     
-                    // 为每个选中的股票生成30-50条交易记录（更符合实际交易次数）
+                    // 为每个选中的股票生�?0-50条交易记录（更符合实际交易次数）
                     const tradeCount = 30 + Math.floor(Math.random() * 21);
                     
                     for (let i = 0; i < tradeCount; i++) {
@@ -1107,8 +1079,7 @@
                         const quantity = Math.floor(1000 + Math.random() * 9000);
                         const amount = currentPrice * quantity;
                         
-                        // 计算收益（只有卖出时才有收益）
-                        let profit = 0;
+                        // 计算收益（只有卖出时才有收益�?                        let profit = 0;
                         if (type === 'sell' && position > 0) {
                             // 模拟卖出价格高于买入价格
                             profit = Math.floor(amount * (0.05 + Math.random() * 0.1));
@@ -1138,8 +1109,7 @@
                 allTrades = trades;
             }
             
-            // 按日期排序
-            allTrades.sort((a, b) => new Date(a.date) - new Date(b.date));
+            // 按日期排�?            allTrades.sort((a, b) => new Date(a.date) - new Date(b.date));
             
             // 显示所有交易记录，不加限制
             allTrades.forEach(trade => {
@@ -1151,12 +1121,10 @@
                 const profit = parseFloat(trade.profit || 0);
                 const amount = parseFloat(trade.amount || (price * quantity));
                 
-                // 使用后端传递的真实市场状态
-                let marketStatus = '';
+                // 使用后端传递的真实市场状�?                let marketStatus = '';
                 let marketStatusClass = '';
-                // 从后端数据中获取市场状态，如果没有则使用默认值
-                marketStatus = trade.market_state || (Math.random() > 0.5 ? '牛' : '熊');
-                marketStatusClass = marketStatus === '牛' ? 'trade-market-bull' : 'trade-market-bear';
+                // 从后端数据中获取市场状态，如果没有则使用默认�?                marketStatus = trade.market_state || (Math.random() > 0.5 ? '�? : '�?);
+                marketStatusClass = marketStatus === '�? ? 'trade-market-bull' : 'trade-market-bear';
                 
                 row.innerHTML = `
                     <td>${trade.date || ''}</td>
@@ -1175,12 +1143,10 @@
         
         // 运行回测
         function runBacktest() {
-            // 显示加载状态
-            document.getElementById('loadingSection').style.display = 'flex';
+            // 显示加载状�?            document.getElementById('loadingSection').style.display = 'flex';
             document.getElementById('resultsSection').style.display = 'none';
             
-            // 获取用户选择的股票
-            const selectedStocks = getSelectedStocks();
+            // 获取用户选择的股�?            const selectedStocks = getSelectedStocks();
             
             // 获取回测参数
             const startDate = document.getElementById('startDate').value;
@@ -1188,12 +1154,10 @@
             const initialCash = document.getElementById('initialCash').value;
             const transactionCost = document.getElementById('transactionCost').value;
             
-            // 选择的策略
-            const strategy = document.querySelector('.strategy-option.selected');
+            // 选择的策�?            const strategy = document.querySelector('.strategy-option.selected');
             const strategyType = strategy ? strategy.getAttribute('data-strategy') : 'moving_average';
             
-            // 转换日期格式（YYYY-MM-DD -> YYYYMMDD）
-            const formattedStartDate = startDate.replace(/-/g, '');
+            // 转换日期格式（YYYY-MM-DD -> YYYYMMDD�?            const formattedStartDate = startDate.replace(/-/g, '');
             const formattedEndDate = endDate.replace(/-/g, '');
             
             // 如果用户没有选择股票，默认选择平安银行
@@ -1202,7 +1166,7 @@
             }
             
             // 构建API请求URL
-            const apiUrl = `http://127.0.0.1:5006/api/backtest/multi`;
+            const apiUrl = `/api/backtest/multi`;
             
             // 准备请求数据
             const requestData = {
@@ -1231,8 +1195,7 @@
                 return response.json();
             })
             .then(data => {
-                // 隐藏加载状态
-                document.getElementById('loadingSection').style.display = 'none';
+                // 隐藏加载状�?                document.getElementById('loadingSection').style.display = 'none';
                 
                 if (data.result) {
                     // 显示结果
@@ -1258,14 +1221,13 @@
             populateTradeTable(data.result.individual_results || []);
                 } else {
                     // 显示错误信息
-                    alert('回测失败：' + (data.error || '未知错误'));
+                    alert('回测失败�? + (data.error || '未知错误'));
                 }
             })
             .catch(error => {
-                // 隐藏加载状态
-                document.getElementById('loadingSection').style.display = 'none';
+                // 隐藏加载状�?                document.getElementById('loadingSection').style.display = 'none';
                 console.error('回测错误:', error);
-                alert('回测失败：' + error.message);
+                alert('回测失败�? + error.message);
             });
         }
         
@@ -1282,8 +1244,7 @@
                 option.classList.remove('selected');
             });
             
-            // 重置表单值
-            const today = new Date();
+            // 重置表单�?            const today = new Date();
             const oneYearAgo = new Date();
             oneYearAgo.setFullYear(today.getFullYear() - 1);
             
