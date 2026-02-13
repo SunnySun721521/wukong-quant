@@ -137,6 +137,124 @@ class EmailConfigDB:
             print(f"获取配置失败: {e}")
             return None
     
+    def init_default_config(self):
+        """初始化默认配置"""
+        default_config = {
+            'enabled': ('true', 'boolean', '是否启用邮件发送'),
+            'sender_email': ('', 'string', '发送邮箱地址'),
+            'sender_auth_code': ('', 'string', '发送邮箱授权码'),
+            'smtp_server': ('smtp.qq.com', 'string', 'SMTP服务器地址'),
+            'smtp_port': ('465', 'integer', 'SMTP服务器端口'),
+            'use_ssl': ('true', 'boolean', '是否使用SSL'),
+            'timeout': ('30', 'integer', '连接超时时间(秒)'),
+            'retry_times': ('3', 'integer', '重试次数'),
+            'retry_interval': ('5', 'integer', '重试间隔(秒)'),
+            'email_subject_template': ('每日操作计划 - {date}', 'string', '邮件主题模板'),
+            'email_body_template': ('simple', 'string', '邮件正文模板'),
+            'recipients': ('[]', 'json', '收件人列表')
+        }
+        
+        for key, (value, config_type, description) in default_config.items():
+            if self.get_config(key) is None:
+                self.set_config(key, value, config_type, description)
+    
+    def init_default_templates(self):
+        """初始化默认模板"""
+        default_templates = [
+            {
+                'template_name': 'simple',
+                'template_type': 'text',
+                'subject_template': '每日操作计划 - {date}',
+                'body_template': '您好！\n\n附件是今日的操作计划PDF文件，请查收。\n\n市场状态：{market_status}\n当前仓位：{current_position}\n总资产：{total_assets}\n\n发送时间：{datetime}\n\n祝好！',
+                'description': '简单文本模板'
+            },
+            {
+                'template_name': 'detailed',
+                'template_type': 'html',
+                'subject_template': '每日操作计划 - {date}',
+                'body_template': '<!DOCTYPE html><html><head><meta charset="utf-8"><title>每日操作计划</title></head><body><h2>每日操作计划</h2><p>您好！</p><p>附件是今日的操作计划PDF文件，请查收。</p><table border="1"><tr><td>市场状态</td><td>{market_status}</td></tr><tr><td>当前仓位</td><td>{current_position}</td></tr><tr><td>总资产</td><td>{total_assets}</td></tr></table><p>发送时间：{datetime}</p><p>祝好！</p></body></html>',
+                'description': 'HTML详细模板'
+            }
+        ]
+        
+        for template in default_templates:
+            if self.get_template(template['template_name']) is None:
+                self.save_template(**template)
+    
+    def save_template(self, template_name: str, template_type: str, 
+                   subject_template: str = None, body_template: str = None, 
+                   description: str = None):
+        """保存邮件模板"""
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                
+                cursor.execute('''
+                    INSERT OR REPLACE INTO email_template
+                    (template_name, template_type, subject_template, body_template, description, updated_at)
+                    VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+                ''', (template_name, template_type, subject_template, body_template, description))
+                
+                conn.commit()
+                return True
+        except Exception as e:
+            print(f"保存邮件模板失败: {e}")
+            return False
+    
+    def get_template(self, template_name: str) -> Optional[Dict[str, Any]]:
+        """获取邮件模板"""
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                cursor.execute('''
+                    SELECT template_name, template_type, subject_template, body_template, description
+                    FROM email_template
+                    WHERE template_name = ?
+                ''', (template_name,))
+                
+                result = cursor.fetchone()
+                if result:
+                    return {
+                        'template_name': result[0],
+                        'template_type': result[1],
+                        'subject_template': result[2],
+                        'body_template': result[3],
+                        'description': result[4]
+                    }
+                return None
+        except Exception as e:
+            print(f"获取邮件模板失败: {e}")
+            return None
+    
+    def get_all_templates(self) -> List[Dict[str, Any]]:
+        """获取所有邮件模板"""
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                cursor.execute('''
+                    SELECT template_name, template_type, subject_template, body_template, description
+                    FROM email_template
+                    ORDER BY template_name
+                ''')
+                
+                results = cursor.fetchall()
+                templates = []
+                
+                for row in results:
+                    template = {
+                        'template_name': row[0],
+                        'template_type': row[1],
+                        'subject_template': row[2],
+                        'body_template': row[3],
+                        'description': row[4]
+                    }
+                    templates.append(template)
+                
+                return templates
+        except Exception as e:
+            print(f"获取所有邮件模板失败: {e}")
+            return []
+    
     def set_config(self, key: str, value: str, config_type: str = 'string', description: str = None) -> bool:
         """设置配置值"""
         try:
