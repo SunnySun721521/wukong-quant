@@ -1,32 +1,8 @@
 {
   "scheduled_times": [
     {
-      "hour": 11,
-      "minute": 25
-    },
-    {
-      "hour": 11,
-      "minute": 40
-    },
-    {
       "hour": 12,
       "minute": 0
-    },
-    {
-      "hour": 12,
-      "minute": 20
-    },
-    {
-      "hour": 12,
-      "minute": 55
-    },
-    {
-      "hour": 13,
-      "minute": 5
-    },
-    {
-      "hour": 13,
-      "minute": 20
     },
     {
       "hour": 15,
