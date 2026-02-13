@@ -3351,6 +3351,27 @@ def handle_data_update_config():
         print(f"处理数据更新配置失败: {e}")
         return jsonify({'error': f'处理失败: {str(e)}'}), 500
 
+# API: 测试数据库连接
+@app.route('/api/email/db/test', methods=['GET'])
+def test_email_db():
+    try:
+        # 测试数据库连接
+        test_result = email_config_manager.db.test_connection()
+        
+        return jsonify({
+            'success': True,
+            'message': '数据库连接正常',
+            'test_result': test_result
+        })
+    except Exception as e:
+        print(f"测试数据库连接失败: {e}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': f'数据库连接失败: {str(e)}'
+        }), 500
+
 # API: 获取邮件配置
 @app.route('/api/email/config', methods=['GET'])
 def get_email_config():
@@ -3642,10 +3663,12 @@ def import_email_recipients():
                     success_count += 1
                 else:
                     error_count += 1
-                    errors.append(f"第{index+2}行: 邮箱地址 {email_address} 已存在")
+                    errors.append(f"第{index+2}行: 邮箱地址 {email_address} 已存在或添加失败")
             except Exception as e:
                 error_count += 1
                 errors.append(f"第{index+2}行: {str(e)}")
+        
+        print(f"邮箱导入完成: 成功 {success_count} 条，失败 {error_count} 条")
         
         return jsonify({
             'success': True,
@@ -3656,6 +3679,8 @@ def import_email_recipients():
         })
     except Exception as e:
         print(f"导入接收邮箱失败: {e}")
+        import traceback
+        traceback.print_exc()
         return jsonify({'success': False, 'error': f'导入失败: {str(e)}'}), 500
 
 # API: 导出接收邮箱

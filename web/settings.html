@@ -3045,7 +3045,9 @@
                 })
                 .catch(error => {
                     console.error('导入接收邮箱失败:', error);
-                    alert('导入失败，请检查网络连接');
+                    console.error('错误详情:', error.message);
+                    console.error('错误堆栈:', error.stack);
+                    alert('导入失败，请检查网络连接。错误详情: ' + error.message);
                 });
         }
         
