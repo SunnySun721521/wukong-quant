@@ -204,11 +204,11 @@ class PDFScheduler:
         
         for i, scheduled in enumerate(self.scheduled_times):
             scheduled_time = dt_time(scheduled['hour'], scheduled['minute'], 0)
-            # 检查是否是当前时间点（允许1分钟的误差）
+            # 检查是否是当前时间点（允许2分钟的误差）
             time_diff = abs((current_time.hour * 3600 + current_time.minute * 60 + current_time.second) - 
                           (scheduled_time.hour * 3600 + scheduled_time.minute * 60))
             
-            if time_diff <= 60 and time_diff < closest_diff:
+            if time_diff <= 120 and time_diff < closest_diff:  # 放宽到2分钟
                 closest_diff = time_diff
                 closest_index = i
         
@@ -219,6 +219,7 @@ class PDFScheduler:
                 # 立即标记为已执行，防止重复执行
                 self.last_execution_dates[execution_key] = now.strftime('%H:%M:%S')
                 self.save_execution_log()
+                print(f"触发定时任务: {current_date_str} {closest_index} {now.strftime('%H:%M:%S')}")
                 return True
         
         return False
@@ -248,6 +249,15 @@ class PDFScheduler:
                         print(f"邮件发送失败: {e}")
                         import traceback
                         traceback.print_exc()
+                
+                # 记录实际执行时间
+                now = datetime.now()
+                current_date_str = now.strftime('%Y-%m-%d')
+                execution_key = f"{current_date_str}_{len(self.last_execution_dates)}"
+                self.last_execution_dates[execution_key] = now.strftime('%H:%M:%S')
+                self.save_execution_log()
+                print(f"PDF导出任务已记录: {execution_key} {now.strftime('%H:%M:%S')}")
+                
             except Exception as e:
                 print(f"定时PDF导出任务失败: {e}")
                 import traceback
@@ -265,20 +275,24 @@ class PDFScheduler:
         last_data_update_time = None
         last_task_execution_time = None
         
+        print(f"调度器启动，当前时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"定时任务配置: {self.scheduled_times}")
+        print(f"数据更新间隔: {self.data_update_interval}分钟")
+        
         while self.running:
             try:
                 now = datetime.now()
-                current_time_str = f"{now.hour:02d}:{now.minute:02d}"
+                current_time_str = f"{now.hour:02d}:{now.minute:02d}:{now.second:02d}"
                 
                 # 检查是否需要执行PDF导出
                 if self.should_execute_now():
                     # 检查距离上次任务执行是否足够间隔（至少5分钟）
                     if last_task_execution_time is None or (now - last_task_execution_time).total_seconds() >= 300:
-                        print(f"触发定时任务: {current_time_str}")
+                        print(f"触发定时PDF导出任务: {current_time_str}")
                         self.execute_pdf_export()
                         last_task_execution_time = now
                     else:
-                        print(f"任务间隔不足5分钟，跳过执行: {current_time_str}")
+                        print(f"PDF任务间隔不足5分钟，跳过执行: {current_time_str}")
                 
                 # 检查是否需要更新数据（只在交易时间段内执行）
                 if self.is_trading_time(now):
@@ -286,9 +300,11 @@ class PDFScheduler:
                         print(f"触发数据更新: {now.strftime('%H:%M:%S')}")
                         self._execute_data_updates()
                         last_data_update_time = now
+                        print(f"数据更新完成: {now.strftime('%H:%M:%S')}")
                 else:
                     # 非交易时间，重置last_data_update_time以便下次进入交易时间时立即更新
                     last_data_update_time = None
+                    print(f"非交易时间，重置数据更新时间: {now.strftime('%H:%M:%S')}")
                 
                 time.sleep(10)
             except Exception as e:
