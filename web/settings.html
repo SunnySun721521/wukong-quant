@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -2754,11 +2754,18 @@
         }
         
         function loadEmailConfig() {
+            console.log("开始加载邮件配置...");
             fetch('/api/email/config')
                 .then(response => response.json())
                 .then(data => {
+                    console.log("邮件配置数据:", data);
                     if (data.error) {
                         console.error('加载邮件配置失败:', data.error);
+                        // 如果是数据库未初始化的错误，延迟重试
+                        if (data.error && data.error.includes('no such table')) {
+                            console.log("数据库未初始化，延迟重试...");
+                            setTimeout(loadEmailConfig, 2000);
+                        }
                     } else {
                         const config = data;
                         document.getElementById('emailEnabled').value = config.enabled ? 'true' : 'false';
@@ -2766,10 +2773,13 @@
                         document.getElementById('senderAuthCode').value = config.sender_auth_code || '';
                         document.getElementById('emailTemplate').value = config.email_body_template || 'simple';
                         toggleEmailConfig();
+                        console.log("邮件配置加载成功");
                     }
                 })
                 .catch(error => {
                     console.error('加载邮件配置失败:', error);
+                    // 网络错误时延迟重试
+                    setTimeout(loadEmailConfig, 3000);
                 });
         }
         
@@ -2829,17 +2839,27 @@
         }
         
         function loadRecipients() {
+            console.log("开始加载接收邮箱列表...");
             fetch('/api/email/recipients')
                 .then(response => response.json())
                 .then(data => {
+                    console.log("接收邮箱数据:", data);
                     if (data.success) {
                         renderRecipients(data.data);
+                        console.log("接收邮箱列表加载成功");
                     } else {
                         console.error('加载接收邮箱失败:', data.error);
+                        // 如果是数据库未初始化的错误，延迟重试
+                        if (data.error && data.error.includes('no such table')) {
+                            console.log("数据库未初始化，延迟重试...");
+                            setTimeout(loadRecipients, 2000);
+                        }
                     }
                 })
                 .catch(error => {
                     console.error('加载接收邮箱失败:', error);
+                    // 网络错误时延迟重试
+                    setTimeout(loadRecipients, 3000);
                 });
         }
 
@@ -3008,6 +3028,36 @@
                 });
         }
         
+        function checkSchedulerStatus() {
+            console.log("检查定时任务状态...");
+            fetch('/api/scheduler/status')
+                .then(response => response.json())
+                .then(data => {
+                    console.log("定时任务状态:", data);
+                    if (data.success) {
+                        const status = data.status;
+                        updateSchedulerStatus(status.is_running);
+                        
+                        if (status.is_running) {
+                            console.log("✅ 定时任务运行正常");
+                            const timeStrs = status.scheduled_times.map(t => 
+                                `${t.hour.toString().padStart(2, '0')}:${t.minute.toString().padStart(2, '0')}`
+                            );
+                            console.log(`定时执行时间: ${timeStrs.join(', ')}`);
+                        } else {
+                            console.log("❌ 定时任务未运行");
+                            // 尝试启动定时任务
+                            startScheduler();
+                        }
+                    } else {
+                        console.error('检查定时任务状态失败:', data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('检查定时任务状态失败:', error);
+                });
+        }
+        
         function showImportModal() {
             document.getElementById('importModal').style.display = 'block';
         }
@@ -3134,12 +3184,23 @@
         
         // 页面加载时初始化定时任务配置
         document.addEventListener('DOMContentLoaded', function() {
+            console.log("页面加载完成，开始初始化...");
+            
+            // 先加载基础配置
             loadSchedulerConfig();
             loadSchedulerExecutionLog();
             loadDataUpdateConfig();
             loadDataUpdateLogs();
-            loadEmailConfig();
-            loadRecipients();
+            
+            // 延迟加载邮箱相关配置，确保数据库初始化完成
+            setTimeout(function() {
+                console.log("延迟加载邮箱配置...");
+                loadEmailConfig();
+                loadRecipients();
+                
+                // 检查定时任务状态
+                checkSchedulerStatus();
+            }, 1000);
         });
     </script>
     

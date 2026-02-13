@@ -3372,6 +3372,27 @@ def test_email_db():
             'error': f'数据库连接失败: {str(e)}'
         }), 500
 
+# API: 检查定时任务状态
+@app.route('/api/scheduler/status', methods=['GET'])
+def check_scheduler_status():
+    try:
+        status = {
+            'is_running': pdf_scheduler.is_running(),
+            'scheduled_times': pdf_scheduler.get_scheduled_times(),
+            'execution_log': pdf_scheduler.get_execution_log()
+        }
+        
+        return jsonify({
+            'success': True,
+            'status': status
+        })
+    except Exception as e:
+        print(f"检查定时任务状态失败: {e}")
+        return jsonify({
+            'success': False,
+            'error': f'检查失败: {str(e)}'
+        }), 500
+
 # API: 获取邮件配置
 @app.route('/api/email/config', methods=['GET'])
 def get_email_config():
@@ -4038,7 +4059,17 @@ def run_app():
     pdf_scheduler.set_email_send_callback(_send_email_notification)
     
     # 启动PDF定时任务调度器
+    print("正在启动PDF定时任务调度器...")
     pdf_scheduler.start()
+    
+    # 确认定时任务已启动
+    if pdf_scheduler.is_running():
+        print("✅ PDF定时任务调度器启动成功")
+        scheduled_times = pdf_scheduler.get_scheduled_times()
+        time_strs = [f"{t['hour']:02d}:{t['minute']:02d}" for t in scheduled_times]
+        print(f"定时执行时间: {time_strs}")
+    else:
+        print("❌ PDF定时任务调度器启动失败")
     
     app.run(host='0.0.0.0', port=5006, debug=False, threaded=True)
 
