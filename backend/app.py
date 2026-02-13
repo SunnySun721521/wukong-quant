@@ -3600,7 +3600,15 @@ def import_email_recipients():
         if file.filename.endswith('.csv'):
             df = pd.read_csv(file)
         else:
-            df = pd.read_excel(file)
+            try:
+                df = pd.read_excel(file)
+            except ImportError as e:
+                if 'xlrd' in str(e):
+                    return jsonify({'success': False, 'error': '导入失败: xlrd 模块未安装。请联系管理员安装 xlrd>=2.0.1'}), 500
+                else:
+                    return jsonify({'success': False, 'error': f'导入失败: {str(e)}'}), 500
+            except Exception as e:
+                return jsonify({'success': False, 'error': f'导入失败: {str(e)}'}), 500
         
         # 清理列名（去除前后空格）
         df.columns = df.columns.str.strip()
