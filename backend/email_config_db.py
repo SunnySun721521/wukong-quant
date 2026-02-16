@@ -165,12 +165,16 @@ class EmailConfigDB:
             except Exception as e:
                 print(f"初始化配置项 {key} 失败: {e}")
         
-        # 强制将enabled设置为true（确保邮件发送功能默认启用）
+        # 如果enabled未设置，则默认启用
         try:
-            self.set_config('enabled', 'true', 'boolean', '是否启用邮件发送')
-            print("强制设置邮件发送功能为启用状态")
+            existing_enabled = self.get_config('enabled')
+            if existing_enabled is None:
+                self.set_config('enabled', 'true', 'boolean', '是否启用邮件发送')
+                print("默认启用邮件发送功能")
+            else:
+                print(f"邮件发送功能当前状态: {existing_enabled}")
         except Exception as e:
-            print(f"强制设置enabled失败: {e}")
+            print(f"设置enabled默认状态失败: {e}")
         
         if initialized_count > 0:
             print(f"成功初始化 {initialized_count} 个默认配置项")
