@@ -3211,15 +3211,28 @@ def _send_email_notification(pdf_file_path: str):
             
             # 获取邮件配置并建立SMTP连接
             email_config = email_sender.config_manager.get_config()
-            if email_config.get('enabled', False):
-                # 确保没有其他SMTP连接
-                if email_sender.smtp_connection:
-                    email_sender.disconnect_smtp()
-                
-                # 建立新的SMTP连接
-                if not email_sender.connect_smtp(email_config):
-                    print(f"SMTP连接失败，无法发送邮件")
-                    return
+            print(f"邮件配置: enabled={email_config.get('enabled', False)}, sender={email_config.get('sender_email', '')}")
+            
+            if not email_config.get('enabled', False):
+                print(f"邮件发送功能已禁用，跳过发送")
+                return
+            
+            # 检查是否有收件人
+            recipients = email_config.get('recipients', [])
+            if not recipients:
+                print(f"没有配置收件人，跳过发送")
+                return
+            
+            print(f"准备发送邮件到 {len(recipients)} 个收件人")
+            
+            # 确保没有其他SMTP连接
+            if email_sender.smtp_connection:
+                email_sender.disconnect_smtp()
+            
+            # 建立新的SMTP连接
+            if not email_sender.connect_smtp(email_config):
+                print(f"SMTP连接失败，无法发送邮件")
+                return
             
             # 发送邮件
             success, error_msg = email_sender.send_email(pdf_file_path, market_data)
