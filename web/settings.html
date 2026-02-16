@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -2807,7 +2807,12 @@
                     } else {
                         const config = data;
                         document.getElementById('emailEnabled').value = config.enabled ? 'true' : 'false';
-                        document.getElementById('senderEmail').value = config.sender_email || '';
+                        // 处理发件人邮箱 - 如果是QQ邮箱，只显示前缀部分
+                        let senderEmail = config.sender_email || '';
+                        if (senderEmail.endsWith('@qq.com')) {
+                            senderEmail = senderEmail.replace('@qq.com', '');
+                        }
+                        document.getElementById('senderEmail').value = senderEmail;
                         document.getElementById('senderAuthCode').value = config.sender_auth_code || '';
                         document.getElementById('emailTemplate').value = config.email_body_template || 'simple';
                         toggleEmailConfig();
@@ -2822,9 +2827,15 @@
         }
         
         function saveEmailConfig() {
+            // 处理发件人邮箱 - 如果用户只输入了前缀，自动添加@qq.com
+            let senderEmail = document.getElementById('senderEmail').value.trim();
+            if (senderEmail && !senderEmail.includes('@')) {
+                senderEmail = senderEmail + '@qq.com';
+            }
+            
             const config = {
                 enabled: document.getElementById('emailEnabled').value === 'true',
-                sender_email: document.getElementById('senderEmail').value,
+                sender_email: senderEmail,
                 sender_auth_code: document.getElementById('senderAuthCode').value,
                 email_body_template: document.getElementById('emailTemplate').value
             };
