@@ -241,7 +241,7 @@ class PDFScheduler:
             time_diff = abs((current_time.hour * 3600 + current_time.minute * 60 + current_time.second) - 
                           (scheduled_time.hour * 3600 + scheduled_time.minute * 60))
             
-            if time_diff <= 300 and time_diff < closest_diff:  # 放宽到5分钟
+            if time_diff <= 600 and time_diff < closest_diff:  # 放宽到10分钟
                 closest_diff = time_diff
                 closest_index = i
         
@@ -252,7 +252,8 @@ class PDFScheduler:
                 # 立即标记为已执行，防止重复执行
                 self.last_execution_dates[execution_key] = get_beijing_time_str()
                 self.save_execution_log()
-                print(f"触发定时任务: {current_date_str} {closest_index} {get_beijing_time_str()} (北京时间)")
+                scheduled = self.scheduled_times[closest_index]
+                print(f"触发定时任务: 设定时间 {scheduled['hour']:02d}:{scheduled['minute']:02d}, 当前时间 {now.hour:02d}:{now.minute:02d}:{now.second:02d}, 索引 {closest_index} (北京时间)")
                 return True
             else:
                 # 已执行过，检查是否超过1小时（防止跨天时重复执行）
