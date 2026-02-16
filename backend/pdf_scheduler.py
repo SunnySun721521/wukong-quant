@@ -1,9 +1,28 @@
 import threading
 import time
-from datetime import datetime, time as dt_time
+from datetime import datetime, time as dt_time, timedelta
 import json
 import os
 from typing import List, Dict, Callable, Optional
+
+# 时区配置 - 使用北京时间 (UTC+8)
+TIMEZONE_OFFSET = timedelta(hours=8)
+
+def get_beijing_time():
+    """获取北京时间"""
+    return datetime.utcnow() + TIMEZONE_OFFSET
+
+def get_beijing_date_str():
+    """获取北京日期字符串"""
+    return (datetime.utcnow() + TIMEZONE_OFFSET).strftime('%Y-%m-%d')
+
+def get_beijing_time_str():
+    """获取北京时间字符串"""
+    return (datetime.utcnow() + TIMEZONE_OFFSET).strftime('%H:%M:%S')
+
+def get_beijing_datetime_str():
+    """获取北京日期时间字符串"""
+    return (datetime.utcnow() + TIMEZONE_OFFSET).strftime('%Y-%m-%d %H:%M:%S')
 
 class PDFScheduler:
     def __init__(self, config_file: str = None):
@@ -138,7 +157,7 @@ class PDFScheduler:
         """记录数据更新日志"""
         try:
             log_entry = {
-                'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                'timestamp': get_beijing_datetime_str(),
                 'module': module,
                 'success': success,
                 'error': error
@@ -158,20 +177,20 @@ class PDFScheduler:
             
             status = "成功" if success else "失败"
             error_msg = f", 错误: {error}" if error else ""
-            print(f"数据更新日志: [{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {module} {status}{error_msg}")
+            print(f"数据更新日志: [{get_beijing_datetime_str()}] {module} {status}{error_msg}")
         except Exception as e:
             print(f"记录数据更新日志失败: {e}")
     
     def is_weekday(self, dt: datetime = None) -> bool:
         """判断是否为工作日（周一至周五）"""
         if dt is None:
-            dt = datetime.now()
+            dt = get_beijing_time()
         return dt.weekday() < 5
     
     def is_trading_time(self, dt: datetime = None) -> bool:
         """判断当前时间是否在股票交易时间段内"""
         if dt is None:
-            dt = datetime.now()
+            dt = get_beijing_time()
         
         if not self.is_weekday(dt):
             return False
@@ -189,13 +208,13 @@ class PDFScheduler:
         return (morning_start <= current_time <= morning_end) or (afternoon_start <= current_time <= afternoon_end)
     
     def should_execute_now(self) -> bool:
-        """判断当前时间是否应该执行任务"""
-        now = datetime.now()
+        """判断当前时间是否应该执行任务（使用北京时间）"""
+        now = get_beijing_time()
         
         if not self.is_weekday(now):
             return False
         
-        current_date_str = now.strftime('%Y-%m-%d')
+        current_date_str = get_beijing_date_str()
         current_time = dt_time(now.hour, now.minute, now.second)
         
         # 找到最接近的调度时间
@@ -217,9 +236,9 @@ class PDFScheduler:
             execution_key = f"{current_date_str}_{closest_index}"
             if execution_key not in self.last_execution_dates:
                 # 立即标记为已执行，防止重复执行
-                self.last_execution_dates[execution_key] = now.strftime('%H:%M:%S')
+                self.last_execution_dates[execution_key] = get_beijing_time_str()
                 self.save_execution_log()
-                print(f"触发定时任务: {current_date_str} {closest_index} {now.strftime('%H:%M:%S')}")
+                print(f"触发定时任务: {current_date_str} {closest_index} {get_beijing_time_str()} (北京时间)")
                 return True
             else:
                 # 已执行过，检查是否超过1小时（防止跨天时重复执行）
@@ -228,7 +247,7 @@ class PDFScheduler:
                     last_exec_time = datetime.strptime(f"{current_date_str} {last_exec_time_str}", "%Y-%m-%d %H:%M:%S")
                     if (now - last_exec_time).total_seconds() > 3600:  # 超过1小时
                         print(f"任务已执行但超过1小时，允许重新执行: {execution_key}")
-                        self.last_execution_dates[execution_key] = now.strftime('%H:%M:%S')
+                        self.last_execution_dates[execution_key] = get_beijing_time_str()
                         self.save_execution_log()
                         return True
                 except:
@@ -247,28 +266,27 @@ class PDFScheduler:
         
         if self.pdf_export_callback:
             try:
-                print(f"执行定时PDF导出任务: {datetime.now()}")
+                print(f"执行定时PDF导出任务: {get_beijing_datetime_str()}")
                 pdf_file_path = self.pdf_export_callback()
-                print(f"定时PDF导出任务完成: {datetime.now()}")
+                print(f"定时PDF导出任务完成: {get_beijing_datetime_str()}")
                 
                 # 触发邮件发送
                 if self.email_send_callback and pdf_file_path:
                     try:
-                        print(f"触发邮件发送: {datetime.now()}")
+                        print(f"触发邮件发送: {get_beijing_datetime_str()}")
                         self.email_send_callback(pdf_file_path)
-                        print(f"邮件发送任务完成: {datetime.now()}")
+                        print(f"邮件发送任务完成: {get_beijing_datetime_str()}")
                     except Exception as e:
                         print(f"邮件发送失败: {e}")
                         import traceback
                         traceback.print_exc()
                 
-                # 记录实际执行时间
-                now = datetime.now()
-                current_date_str = now.strftime('%Y-%m-%d')
+                # 记录实际执行时间（使用北京时间）
+                current_date_str = get_beijing_date_str()
                 execution_key = f"{current_date_str}_{len(self.last_execution_dates)}"
-                self.last_execution_dates[execution_key] = now.strftime('%H:%M:%S')
+                self.last_execution_dates[execution_key] = get_beijing_time_str()
                 self.save_execution_log()
-                print(f"PDF导出任务已记录: {execution_key} {now.strftime('%H:%M:%S')}")
+                print(f"PDF导出任务已记录: {execution_key} {get_beijing_time_str()} (北京时间)")
                 
             except Exception as e:
                 print(f"定时PDF导出任务失败: {e}")
@@ -277,7 +295,7 @@ class PDFScheduler:
             finally:
                 # 无论成功还是失败，都重置任务执行状态
                 self.task_executing = False
-                print(f"任务执行状态已重置: {datetime.now()}")
+                print(f"任务执行状态已重置: {get_beijing_datetime_str()}")
         else:
             print("PDF导出回调函数未设置")
             self.task_executing = False
@@ -287,36 +305,36 @@ class PDFScheduler:
         last_data_update_time = None
         last_task_execution_time = None
         
-        print(f"调度器启动，当前时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"调度器启动，当前时间: {get_beijing_datetime_str()} (北京时间)")
         print(f"定时任务配置: {self.scheduled_times}")
         print(f"数据更新间隔: {self.data_update_interval}分钟")
         
         while self.running:
             try:
-                now = datetime.now()
-                current_time_str = f"{now.hour:02d}:{now.minute:02d}:{now.second:02d}"
+                now = get_beijing_time()
+                current_time_str = get_beijing_time_str()
                 
                 # 检查是否需要执行PDF导出
                 if self.should_execute_now():
                     # 检查距离上次任务执行是否足够间隔（至少5分钟）
                     if last_task_execution_time is None or (now - last_task_execution_time).total_seconds() >= 300:
-                        print(f"触发定时PDF导出任务: {current_time_str}")
+                        print(f"触发定时PDF导出任务: {current_time_str} (北京时间)")
                         self.execute_pdf_export()
                         last_task_execution_time = now
                     else:
-                        print(f"PDF任务间隔不足5分钟，跳过执行: {current_time_str}")
+                        print(f"PDF任务间隔不足5分钟，跳过执行: {current_time_str} (北京时间)")
                 
                 # 检查是否需要更新数据（只在交易时间段内执行）
                 if self.is_trading_time(now):
                     if last_data_update_time is None or (now - last_data_update_time).total_seconds() >= self.data_update_interval * 60:
-                        print(f"触发数据更新: {now.strftime('%H:%M:%S')}")
+                        print(f"触发数据更新: {get_beijing_time_str()} (北京时间)")
                         self._execute_data_updates()
                         last_data_update_time = now
-                        print(f"数据更新完成: {now.strftime('%H:%M:%S')}")
+                        print(f"数据更新完成: {get_beijing_time_str()} (北京时间)")
                 else:
                     # 非交易时间，重置last_data_update_time以便下次进入交易时间时立即更新
                     last_data_update_time = None
-                    print(f"非交易时间，重置数据更新时间: {now.strftime('%H:%M:%S')}")
+                    print(f"非交易时间，重置数据更新时间: {get_beijing_time_str()} (北京时间)")
                 
                 time.sleep(10)
             except Exception as e:
