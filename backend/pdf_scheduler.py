@@ -39,6 +39,7 @@ class PDFScheduler:
         self.data_update_interval = 10
         self.last_data_update_time = None
         self.task_executing = False  # 添加任务执行状态跟踪
+        self.only_weekday = True  # 默认只在工作日执行
         self.load_config()
         self.load_execution_log()
         self.load_data_update_config()
@@ -50,28 +51,34 @@ class PDFScheduler:
                 with open(self.config_file, 'r', encoding='utf-8') as f:
                     config = json.load(f)
                     self.scheduled_times = config.get('scheduled_times', [])
-                    print(f"加载定时任务配置: {self.scheduled_times}")
+                    self.only_weekday = config.get('only_weekday', True)
+                    print(f"加载定时任务配置: {self.scheduled_times}, 仅工作日执行: {self.only_weekday}")
             else:
                 self.scheduled_times = [
                     {'hour': 12, 'minute': 0},
                     {'hour': 15, 'minute': 30}
                 ]
+                self.only_weekday = True
                 self.save_config()
-                print(f"使用默认定时任务配置: {self.scheduled_times}")
+                print(f"使用默认定时任务配置: {self.scheduled_times}, 仅工作日执行: {self.only_weekday}")
         except Exception as e:
             print(f"加载配置文件失败: {e}")
             self.scheduled_times = [
                 {'hour': 12, 'minute': 0},
                 {'hour': 15, 'minute': 30}
             ]
+            self.only_weekday = True
     
     def save_config(self):
         """保存配置到文件"""
         try:
             os.makedirs(os.path.dirname(self.config_file), exist_ok=True)
             with open(self.config_file, 'w', encoding='utf-8') as f:
-                json.dump({'scheduled_times': self.scheduled_times}, f, ensure_ascii=False, indent=2)
-            print(f"保存定时任务配置: {self.scheduled_times}")
+                json.dump({
+                    'scheduled_times': self.scheduled_times,
+                    'only_weekday': self.only_weekday
+                }, f, ensure_ascii=False, indent=2)
+            print(f"保存定时任务配置: {self.scheduled_times}, 仅工作日执行: {self.only_weekday}")
         except Exception as e:
             print(f"保存配置文件失败: {e}")
     
@@ -108,6 +115,16 @@ class PDFScheduler:
     def get_scheduled_times(self) -> List[Dict[str, int]]:
         """获取定时执行时间"""
         return self.scheduled_times
+    
+    def set_only_weekday(self, only_weekday: bool):
+        """设置是否只在工作日执行"""
+        self.only_weekday = only_weekday
+        self.save_config()
+        print(f"更新仅工作日执行设置: {self.only_weekday}")
+    
+    def get_only_weekday(self) -> bool:
+        """获取是否只在工作日执行"""
+        return self.only_weekday
     
     def set_pdf_export_callback(self, callback: Callable):
         """设置PDF导出回调函数"""
@@ -211,7 +228,9 @@ class PDFScheduler:
         """判断当前时间是否应该执行任务（使用北京时间）"""
         now = get_beijing_time()
         
-        if not self.is_weekday(now):
+        # 检查是否只在工作日执行
+        if self.only_weekday and not self.is_weekday(now):
+            print(f"非工作日，跳过执行: {get_beijing_datetime_str()} (仅工作日执行模式)")
             return False
         
         current_date_str = get_beijing_date_str()

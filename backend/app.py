@@ -3259,7 +3259,8 @@ def get_scheduler_config():
     config = pdf_scheduler.get_scheduled_times()
     return jsonify({
         'scheduled_times': config,
-        'is_running': pdf_scheduler.is_running()
+        'is_running': pdf_scheduler.is_running(),
+        'only_weekday': pdf_scheduler.get_only_weekday()
     })
 
 # API: 设置定时任务配置
@@ -3286,9 +3287,14 @@ def set_scheduler_config():
         
         pdf_scheduler.set_scheduled_times(scheduled_times)
         
+        # 更新仅工作日执行设置
+        if 'only_weekday' in data:
+            pdf_scheduler.set_only_weekday(data.get('only_weekday', True))
+        
         return jsonify({
             'message': '定时任务配置已更新',
-            'scheduled_times': scheduled_times
+            'scheduled_times': scheduled_times,
+            'only_weekday': pdf_scheduler.get_only_weekday()
         })
     except Exception as e:
         print(f"设置定时任务配置失败: {e}")
