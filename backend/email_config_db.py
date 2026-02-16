@@ -154,9 +154,21 @@ class EmailConfigDB:
             'recipients': ('[]', 'json', '收件人列表')
         }
         
+        initialized_count = 0
         for key, (value, config_type, description) in default_config.items():
-            if self.get_config(key) is None:
-                self.set_config(key, value, config_type, description)
+            try:
+                existing_value = self.get_config(key)
+                if existing_value is None:
+                    if self.set_config(key, value, config_type, description):
+                        initialized_count += 1
+                        print(f"初始化默认配置: {key} = {value}")
+            except Exception as e:
+                print(f"初始化配置项 {key} 失败: {e}")
+        
+        if initialized_count > 0:
+            print(f"成功初始化 {initialized_count} 个默认配置项")
+        
+        return initialized_count
     
     def init_default_templates(self):
         """初始化默认模板"""

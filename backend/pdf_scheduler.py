@@ -204,11 +204,11 @@ class PDFScheduler:
         
         for i, scheduled in enumerate(self.scheduled_times):
             scheduled_time = dt_time(scheduled['hour'], scheduled['minute'], 0)
-            # 检查是否是当前时间点（允许2分钟的误差）
+            # 检查是否是当前时间点（允许5分钟的误差，适应云平台休眠情况）
             time_diff = abs((current_time.hour * 3600 + current_time.minute * 60 + current_time.second) - 
                           (scheduled_time.hour * 3600 + scheduled_time.minute * 60))
             
-            if time_diff <= 120 and time_diff < closest_diff:  # 放宽到2分钟
+            if time_diff <= 300 and time_diff < closest_diff:  # 放宽到5分钟
                 closest_diff = time_diff
                 closest_index = i
         
@@ -221,6 +221,18 @@ class PDFScheduler:
                 self.save_execution_log()
                 print(f"触发定时任务: {current_date_str} {closest_index} {now.strftime('%H:%M:%S')}")
                 return True
+            else:
+                # 已执行过，检查是否超过1小时（防止跨天时重复执行）
+                last_exec_time_str = self.last_execution_dates[execution_key]
+                try:
+                    last_exec_time = datetime.strptime(f"{current_date_str} {last_exec_time_str}", "%Y-%m-%d %H:%M:%S")
+                    if (now - last_exec_time).total_seconds() > 3600:  # 超过1小时
+                        print(f"任务已执行但超过1小时，允许重新执行: {execution_key}")
+                        self.last_execution_dates[execution_key] = now.strftime('%H:%M:%S')
+                        self.save_execution_log()
+                        return True
+                except:
+                    pass
         
         return False
     
