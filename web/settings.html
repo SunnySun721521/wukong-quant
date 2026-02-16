@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -562,15 +562,6 @@
                         
                         <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
                             <div style="font-size: 14px; color: #666; margin-bottom: 10px;">执行时间设置</div>
-                            
-                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-                                <label style="font-size: 12px; color: #666;">仅工作日执行:</label>
-                                <select class="form-control" id="onlyWeekday" style="width: 100px;" onchange="saveOnlyWeekday()">
-                                    <option value="true">是</option>
-                                    <option value="false">否</option>
-                                </select>
-                                <span style="font-size: 11px; color: #999;">(周一至周五，或每天执行)</span>
-                            </div>
                             
                             <div id="scheduledTimesList" style="margin-bottom: 15px;">
                                 <!-- 定时时间列表将通过JavaScript动态加载 -->
@@ -2462,42 +2453,12 @@
                 .then(data => {
                     scheduledTimes = data.scheduled_times || [];
                     updateSchedulerStatus(data.is_running);
-                    // 加载仅工作日执行设置
-                    const onlyWeekday = data.only_weekday !== false; // 默认为true
-                    document.getElementById('onlyWeekday').value = onlyWeekday ? 'true' : 'false';
                     renderScheduledTimes();
                 })
                 .catch(error => {
                     console.error('加载定时任务配置失败:', error);
                     document.getElementById('schedulerStatus').textContent = '加载失败';
                 });
-        }
-        
-        // 保存仅工作日执行设置
-        function saveOnlyWeekday() {
-            const onlyWeekday = document.getElementById('onlyWeekday').value === 'true';
-            
-            fetch('/api/scheduler/config', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    scheduled_times: scheduledTimes,
-                    only_weekday: onlyWeekday
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    console.error('保存仅工作日执行设置失败:', data.error);
-                } else {
-                    console.log('仅工作日执行设置已保存:', onlyWeekday ? '是' : '否');
-                }
-            })
-            .catch(error => {
-                console.error('保存仅工作日执行设置失败:', error);
-            });
         }
         
         // 更新调度器状态显示

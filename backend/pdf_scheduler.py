@@ -228,11 +228,6 @@ class PDFScheduler:
         """判断当前时间是否应该执行任务（使用北京时间）"""
         now = get_beijing_time()
         
-        # 检查是否只在工作日执行
-        if self.only_weekday and not self.is_weekday(now):
-            print(f"非工作日，跳过执行: {get_beijing_datetime_str()} (仅工作日执行模式)")
-            return False
-        
         current_date_str = get_beijing_date_str()
         current_time = dt_time(now.hour, now.minute, now.second)
         

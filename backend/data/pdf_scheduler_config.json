@@ -10,7 +10,11 @@
     },
     {
       "hour": 22,
-      "minute": 10
+      "minute": 15
+    },
+    {
+      "hour": 22,
+      "minute": 25
     }
   ]
 }
