@@ -3285,11 +3285,12 @@ def set_scheduler_config():
             if time_config['minute'] < 0 or time_config['minute'] > 59:
                 return jsonify({'error': 'minute必须在0-59之间'}), 400
         
-        pdf_scheduler.set_scheduled_times(scheduled_times)
-        
-        # 更新仅工作日执行设置
+        # 更新仅工作日执行设置（先设置，避免被覆盖）
         if 'only_weekday' in data:
             pdf_scheduler.set_only_weekday(data.get('only_weekday', True))
+        
+        # 更新定时时间设置
+        pdf_scheduler.set_scheduled_times(scheduled_times)
         
         return jsonify({
             'message': '定时任务配置已更新',
