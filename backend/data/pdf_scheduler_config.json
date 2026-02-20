@@ -5,24 +5,25 @@
       "minute": 0
     },
     {
+      "hour": 14,
+      "minute": 25
+    },
+    {
       "hour": 15,
       "minute": 30
     },
     {
-      "hour": 22,
-      "minute": 15
+      "hour": 21,
+      "minute": 35
     },
     {
       "hour": 22,
-      "minute": 25
+      "minute": 5
     },
     {
       "hour": 22,
-      "minute": 40
-    },
-    {
-      "hour": 23,
-      "minute": 0
+      "minute": 20
     }
-  ]
+  ],
+  "only_weekday": true
 }

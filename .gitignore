@@ -1,45 +1,52 @@
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
+*.py[cod]
+*$py.class
 *.so
-*.egg
+.Python
+env/
+venv/
 *.egg-info/
 dist/
 build/
-venv/
-env/
-.venv
-logs/
+
+# Logs
 *.log
+logs/
+
+# Database
 *.db
 *.sqlite
 *.sqlite3
-*.xlsx
-*.xls
+email_config.db
+
+# Cache
+price_cache.json
+*.cache
+
+# PDF
+scheduled_pdfs/
 *.pdf
-.DS_Store
-Thumbs.db
+
+# IDE
+.vscode/
+.idea/
 *.swp
 *.swo
-*~
-.idea/
-.vscode/
-*.sublime-project
-*.sublime-workspace
-node_modules/
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-.hypothesis/
-.mypy_cache/
-.dmypy.json
-dmypy.json
-.pyrepl_history/
-.env
-.env.local
-.env.*.local
-cloudflared*.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files
+test_*.py
+check_*.py
+fix_*.py
+monitor_*.py
+test_*.xlsx
+
+# Config (个人配置)
+scheduler_config.json
+email_config.json
 ngrok.yml
+start_server.bat

@@ -140,7 +140,6 @@ class EmailConfigDB:
     def init_default_config(self):
         """初始化默认配置"""
         default_config = {
-            'enabled': ('true', 'boolean', '是否启用邮件发送'),
             'sender_email': ('', 'string', '发送邮箱地址'),
             'sender_auth_code': ('', 'string', '发送邮箱授权码'),
             'smtp_server': ('smtp.qq.com', 'string', 'SMTP服务器地址'),
@@ -165,16 +164,12 @@ class EmailConfigDB:
             except Exception as e:
                 print(f"初始化配置项 {key} 失败: {e}")
         
-        # 如果enabled未设置，则默认启用
+        # 强制启用邮件发送功能（每次启动都设置为启用）
         try:
-            existing_enabled = self.get_config('enabled')
-            if existing_enabled is None:
-                self.set_config('enabled', 'true', 'boolean', '是否启用邮件发送')
-                print("默认启用邮件发送功能")
-            else:
-                print(f"邮件发送功能当前状态: {existing_enabled}")
+            self.set_config('enabled', 'true', 'boolean', '是否启用邮件发送')
+            print("邮件发送功能已强制启用")
         except Exception as e:
-            print(f"设置enabled默认状态失败: {e}")
+            print(f"启用邮件发送功能失败: {e}")
         
         if initialized_count > 0:
             print(f"成功初始化 {initialized_count} 个默认配置项")
@@ -448,3 +443,61 @@ class EmailConfigDB:
         except Exception as e:
             print(f"获取接收邮箱信息失败: {e}")
             return None
+    
+    def log_email_send(self, log_id: str, pdf_file: str = None, status: str = None, 
+                      recipients: List[Dict[str, Any]] = None, error_message: str = None,
+                      retry_count: int = 0, task_id: str = None) -> bool:
+        """记录邮件发送日志"""
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                
+                # 将recipients列表转换为JSON字符串
+                recipients_json = json.dumps(recipients, ensure_ascii=False) if recipients else None
+                
+                cursor.execute('''
+                    INSERT INTO email_send_log 
+                    (log_id, task_id, pdf_file, status, recipients, error_message, retry_count)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                ''', (log_id, task_id, pdf_file, status, recipients_json, error_message, retry_count))
+                
+                conn.commit()
+                print(f"记录邮件发送日志成功: {log_id}, 状态: {status}")
+                return True
+        except Exception as e:
+            print(f"记录邮件发送日志失败: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
+    
+    def get_email_logs(self, limit: int = 50) -> List[Dict[str, Any]]:
+        """获取邮件发送日志"""
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                conn.row_factory = sqlite3.Row
+                cursor = conn.cursor()
+                
+                cursor.execute('''
+                    SELECT * FROM email_send_log 
+                    ORDER BY created_at DESC 
+                    LIMIT ?
+                ''', (limit,))
+                
+                rows = cursor.fetchall()
+                logs = []
+                for row in rows:
+                    log = dict(row)
+                    # 解析recipients JSON
+                    if log.get('recipients'):
+                        try:
+                            log['recipients'] = json.loads(log['recipients'])
+                        except:
+                            log['recipients'] = []
+                    else:
+                        log['recipients'] = []
+                    logs.append(log)
+                
+                return logs
+        except Exception as e:
+            print(f"获取邮件发送日志失败: {e}")
+            return []

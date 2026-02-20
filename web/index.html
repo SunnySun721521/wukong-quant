@@ -396,163 +396,16 @@
     </div>
     
     <script>
-        // 模拟数据
-        const mockData = {
-            portfolioResult: {
-                initial_cash: 1000000,
-                final_value: 1150000,
-                total_return: 15.0,
-                max_drawdown: 8.5,
-                total_trades: 56,
-                win_rate: 65.0,
-                start_date: '2024-01-01',
-                end_date: '2024-12-31',
-                individual_results: [
-                    {
-                        symbol: '000001',
-                        initial_cash: 200000,
-                        final_value: 230000,
-                        total_return: 15.0,
-                        max_drawdown: 6.2,
-                        sharpe_ratio: 1.2,
-                        total_trades: 12,
-                        win_rate: 66.7
-                    },
-                    {
-                        symbol: '600519',
-                        initial_cash: 300000,
-                        final_value: 350000,
-                        total_return: 16.7,
-                        max_drawdown: 7.8,
-                        sharpe_ratio: 1.3,
-                        total_trades: 18,
-                        win_rate: 68.4
-                    },
-                    {
-                        symbol: '000858',
-                        initial_cash: 250000,
-                        final_value: 280000,
-                        total_return: 12.0,
-                        max_drawdown: 9.1,
-                        sharpe_ratio: 1.1,
-                        total_trades: 14,
-                        win_rate: 62.1
-                    },
-                    {
-                        symbol: '601318',
-                        initial_cash: 250000,
-                        final_value: 290000,
-                        total_return: 16.0,
-                        max_drawdown: 5.9,
-                        sharpe_ratio: 1.4,
-                        total_trades: 12,
-                        win_rate: 70.0
-                    }
-                ]
-            },
-            stockNames: {
-                '000001': '平安银行',
-                '600519': '贵州茅台',
-                '000858': '五粮液',
-                '601318': '中国平安'
-            },
-            stockRealtimeData: {
-                '000001': {
-                    price: 15.23,
-                    open: 15.10,
-                    change: 2.1,
-                    volume: '1.2亿'
-                },
-                '600519': {
-                    price: 1899.00,
-                    open: 1880.00,
-                    change: 1.5,
-                    volume: '234万'
-                },
-                '000858': {
-                    price: 168.50,
-                    open: 167.20,
-                    change: -0.8,
-                    volume: '567万'
-                },
-                '601318': {
-                    price: 48.25,
-                    open: 48.00,
-                    change: 1.2,
-                    volume: '890万'
-                }
-            }
-        };
+        let autoUpdateTimer = null;
+        const UPDATE_INTERVAL = 30 * 60 * 1000;
         
-        // 从localStorage获取股票名称映射表
-        function getStockNamesFromLocalStorage() {
-            const stored = localStorage.getItem('stockNames');
-            if (stored) {
-                try {
-                    return JSON.parse(stored);
-                } catch (error) {
-                    console.error('解析localStorage中的股票名称映射表失败:', error);
-                    return {};
-                }
-            }
-            // 默认股票名称映射（当localStorage中没有数据时使用）
-            return {
-                '000001': '平安银行',
-                '600036': '招商银行',
-                '601398': '工商银行',
-                '601288': '农业银行',
-                '601988': '中国银行',
-                '600016': '民生银行',
-                '601166': '兴业银行',
-                '600000': '浦发银行',
-                '601818': '光大银行',
-                '601318': '中国平安',
-                '601628': '中国人寿',
-                '601336': '新华保险',
-                '601601': '中国太保',
-                '600030': '中信证券',
-                '601688': '华泰证券',
-                '601211': '国泰君安',
-                '600837': '海通证券',
-                '601901': '方正证券',
-                '600519': '贵州茅台',
-                '000858': '五粮液',
-                '000568': '泸州老窖',
-                '600809': '山西汾酒',
-                '000799': '酒鬼酒',
-                '000002': '万科A',
-                '600031': '三一重工',
-                '000333': '美的集团',
-                '000651': '格力电器',
-                '600276': '恒瑞医药',
-                '601888': '中国中免',
-                '600887': '伊利股份'
-            };
-        }
-        
-        // 股票名称映射（从localStorage获取）
-        let stockNames = getStockNamesFromLocalStorage();
-        
-        // 监听localStorage变化，实现实时同步
-        window.addEventListener('storage', function(e) {
-            if (e.key === 'stockNames') {
-                console.log('localStorage中的股票名称映射表已更新，重新加载');
-                stockNames = getStockNamesFromLocalStorage();
-                // 这里可以添加重新渲染股票列表的逻辑
-            }
-        });
-
-        // 页面加载完成后初始化
         document.addEventListener('DOMContentLoaded', function() {
-            // 加载数据
-            loadData();
+            loadHomeData();
+            startAutoUpdate();
             
-            // 导航栏点击事件
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.addEventListener('click', function() {
-                    // 移除所有活动状态
                     document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-                    // 添加当前活动状态
                     this.classList.add('active');
                     
                     const page = this.getAttribute('data-page');
@@ -561,179 +414,114 @@
             });
         });
         
-        // 加载数据
-        function loadData() {
-            // 从股票池API获取数据
-            fetch('/api/stockpool/info')
-                .then(response => response.json())
-                .then(stockPoolData => {
-                    console.log('股票池数据:', stockPoolData);
-                    
-                    // 构建模拟的组合数据（基于股票池）
-                    const data = {
-                        portfolioResult: {
-                            initial_cash: 1000000,
-                            final_value: 1150000,
-                            total_return: 15.0,
-                            max_drawdown: 8.5,
-                            total_trades: 56,
-                            win_rate: 65.0,
-                            start_date: '2024-01-01',
-                            end_date: '2024-12-31',
-                            individual_results: stockPoolData.current_pool.map(symbol => ({
-                                symbol: symbol,
-                                initial_cash: Math.floor(1000000 / stockPoolData.current_pool.length),
-                                final_value: Math.floor(1150000 / stockPoolData.current_pool.length),
-                                total_return: 15.0 + (Math.random() * 5 - 2.5),
-                                max_drawdown: 5.0 + Math.random() * 5,
-                                sharpe_ratio: 1.0 + Math.random() * 0.5,
-                                total_trades: 10 + Math.floor(Math.random() * 10),
-                                win_rate: 60.0 + Math.random() * 10
-                            }))
-                        },
-                        stockRealtimeData: {}
-                    };
-                    
-                    // 为每个股票生成模拟的实时数据
-                    stockPoolData.current_pool.forEach(symbol => {
-                        data.stockRealtimeData[symbol] = {
-                            price: 10 + Math.random() * 990,
-                            open: 10 + Math.random() * 990,
-                            change: (Math.random() - 0.5) * 10,
-                            volume: Math.floor(Math.random() * 10000) + '万'
-                        };
-                    });
-                    
-                    renderData(data);
+        function startAutoUpdate() {
+            if (autoUpdateTimer) {
+                clearInterval(autoUpdateTimer);
+            }
+            autoUpdateTimer = setInterval(function() {
+                console.log('自动刷新首页数据...');
+                loadHomeData();
+            }, UPDATE_INTERVAL);
+            console.log('已启动30分钟自动更新定时器');
+        }
+        
+        function loadHomeData() {
+            document.getElementById('loadingSection').style.display = 'flex';
+            document.getElementById('portfolioSection').style.display = 'none';
+            document.getElementById('stocksSection').style.display = 'none';
+            document.getElementById('emptySection').style.display = 'none';
+            
+            fetch('/api/home/overview')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('API请求失败: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('首页数据:', data);
+                    renderHomeData(data);
                 })
                 .catch(error => {
-                    console.error('API加载失败，使用本地模拟数据:', error);
-                    // API失败时使用本地模拟数据
-                    renderData(mockData);
+                    console.error('加载首页数据失败:', error);
+                    document.getElementById('loadingSection').style.display = 'none';
+                    document.getElementById('emptySection').style.display = 'flex';
                 });
         }
         
-        // 渲染数据到页面
-        function renderData(data) {
-            if (data.portfolioResult) {
-                // 隐藏加载和空数据
-                document.getElementById('loadingSection').style.display = 'none';
-                document.getElementById('emptySection').style.display = 'none';
-                
-                // 显示组合数据
-                document.getElementById('portfolioSection').style.display = 'block';
-                document.getElementById('stocksSection').style.display = 'block';
-                
-                // 填充组合数据
-                document.getElementById('initialCash').textContent = (data.portfolioResult.initial_cash || 0).toLocaleString();
-                document.getElementById('finalValue').textContent = (data.portfolioResult.final_value || 0).toLocaleString();
-                
-                const totalReturnEl = document.getElementById('totalReturn');
-                const totalReturn = data.portfolioResult.total_return || 0;
-                totalReturnEl.textContent = (totalReturn >= 0 ? '+' : '') + totalReturn + '%';
-                totalReturnEl.className = 'stat-value ' + (totalReturn >= 0 ? 'positive' : 'negative');
-                
-                document.getElementById('maxDrawdown').textContent = (data.portfolioResult.max_drawdown || 0) + '%';
-                document.getElementById('totalTrades').textContent = data.portfolioResult.total_trades || 0;
-                document.getElementById('winRate').textContent = (data.portfolioResult.win_rate || 0) + '%';
-                document.getElementById('portfolioDate').textContent = (data.portfolioResult.start_date || '') + ' 至 ' + (data.portfolioResult.end_date || '');
-                
-                // 填充个股数据
-                const stockList = document.getElementById('stockList');
-                stockList.innerHTML = '';
-                
-                data.portfolioResult.individual_results.forEach(item => {
-                    const stockCard = document.createElement('div');
-                    stockCard.className = 'stock-card';
-                    
-                    const stockReturnClass = item.total_return >= 0 ? 'positive' : 'negative';
-                    const stockReturnSign = item.total_return >= 0 ? '+' : '';
-                    
-                    const realtimeData = data.stockRealtimeData[item.symbol] || {};
-                    const changeClass = (realtimeData.change || 0) >= 0 ? 'positive' : 'negative';
-                    const changeSign = (realtimeData.change || 0) >= 0 ? '+' : '';
-                    
-                    stockCard.innerHTML = `
-                        <div class="stock-header">
-                            <div class="stock-info">
-                                <span class="stock-symbol">${item.symbol}</span>
-                                <span class="stock-name">${stockNames[item.symbol] || '未知股票'}</span>
-                            </div>
-                            <span class="stock-return ${stockReturnClass}">
-                                ${stockReturnSign}${item.total_return.toFixed(2)}%
-                            </span>
-                        </div>
-                        
-                        <div class="stock-stats">
-                            <div class="stock-stat">
-                                <span class="stock-stat-label">最新价</span>
-                                <span class="stock-stat-value">${realtimeData.price ? realtimeData.price.toFixed(2) : '--'}</span>
-                            </div>
-                            
-                            <div class="stock-stat">
-                                <span class="stock-stat-label">今开</span>
-                                <span class="stock-stat-value">${realtimeData.open ? realtimeData.open.toFixed(2) : '--'}</span>
-                            </div>
-                            
-                            <div class="stock-stat">
-                                <span class="stock-stat-label">涨跌幅</span>
-                                <span class="stock-stat-value ${changeClass}">
-                                    ${changeSign}${realtimeData.change ? realtimeData.change.toFixed(2) : '--'}%
-                                </span>
-                            </div>
-                            
-                            <div class="stock-stat">
-                                <span class="stock-stat-label">成交量</span>
-                                <span class="stock-stat-value">${realtimeData.volume || '--'}</span>
-                            </div>
-                            
-                            <div class="stock-stat">
-                                <span class="stock-stat-label">初始资金</span>
-                                <span class="stock-stat-value">${(item.initial_cash || 0).toLocaleString()}</span>
-                            </div>
-                            
-                            <div class="stock-stat">
-                                <span class="stock-stat-label">最终价值</span>
-                                <span class="stock-stat-value">${(item.final_value || 0).toLocaleString()}</span>
-                            </div>
-                            
-                            <div class="stock-stat">
-                                <span class="stock-stat-label">最大回撤</span>
-                                <span class="stock-stat-value">${item.max_drawdown ? item.max_drawdown.toFixed(2) : 0}%</span>
-                            </div>
-                            
-                            <div class="stock-stat">
-                                <span class="stock-stat-label">夏普比率</span>
-                                <span class="stock-stat-value">${item.sharpe_ratio ? item.sharpe_ratio.toFixed(2) : 0}</span>
-                            </div>
-                            
-                            <div class="stock-stat">
-                                <span class="stock-stat-label">交易次数</span>
-                                <span class="stock-stat-value">${item.total_trades || 0}</span>
-                            </div>
-                            
-                            <div class="stock-stat">
-                                <span class="stock-stat-label">胜率</span>
-                                <span class="stock-stat-value">${item.win_rate ? item.win_rate.toFixed(2) : 0}%</span>
-                            </div>
-                        </div>
-                    `;
-                    
-                    stockList.appendChild(stockCard);
-                });
-            } else {
-                // 显示空数据
-                document.getElementById('loadingSection').style.display = 'none';
-                document.getElementById('portfolioSection').style.display = 'none';
-                document.getElementById('stocksSection').style.display = 'none';
-                document.getElementById('emptySection').style.display = 'block';
+        function renderHomeData(data) {
+            document.getElementById('loadingSection').style.display = 'none';
+            
+            if (!data || data.error) {
+                document.getElementById('emptySection').style.display = 'flex';
+                return;
             }
+            
+            if (!data.positions || data.positions.length === 0) {
+                document.getElementById('emptySection').style.display = 'flex';
+                return;
+            }
+            
+            document.getElementById('portfolioSection').style.display = 'block';
+            document.getElementById('stocksSection').style.display = 'block';
+            
+            document.getElementById('portfolioDate').textContent = 
+                (data.start_date || '') + ' 至 ' + (data.end_date || '');
+            
+            document.getElementById('initialCash').textContent = 
+                formatCurrency(data.initial_cash);
+            
+            document.getElementById('finalValue').textContent = 
+                formatCurrency(data.final_value);
+            
+            const totalReturnEl = document.getElementById('totalReturn');
+            const totalReturn = data.total_return || 0;
+            totalReturnEl.textContent = (totalReturn >= 0 ? '+' : '') + totalReturn.toFixed(2) + '%';
+            totalReturnEl.className = 'stat-value ' + (totalReturn >= 0 ? 'positive' : 'negative');
+            
+            const maxDrawdownEl = document.getElementById('maxDrawdown');
+            const maxDrawdown = data.max_drawdown || 0;
+            maxDrawdownEl.textContent = maxDrawdown.toFixed(2) + '%';
+            maxDrawdownEl.className = 'stat-value ' + (maxDrawdown > 0 ? 'negative' : '');
+            
+            document.getElementById('totalTrades').textContent = data.total_trades || 0;
+            
+            const winRateEl = document.getElementById('winRate');
+            const winRate = data.win_rate || 0;
+            winRateEl.textContent = winRate.toFixed(2) + '%';
+            winRateEl.className = 'stat-value ' + (winRate >= 50 ? 'positive' : 'negative');
+            
+            renderStockList(data.positions);
         }
         
-        // 导航到指定页面
+        function renderStockList(positions) {
+            const stockList = document.getElementById('stockList');
+            stockList.innerHTML = '';
+            
+            positions.forEach(stock => {
+                const stockCard = document.createElement('div');
+                stockCard.className = 'stock-card';
+                
+                const returnPercent = stock.profit_loss_percent || 0;
+                const returnClass = returnPercent >= 0 ? 'positive' : 'negative';
+                const returnSign = returnPercent >= 0 ? '+' : '';
+                
+                stockCard.innerHTML = '<div class="stock-header"><div class="stock-info"><span class="stock-symbol">' + stock.symbol + '</span><span class="stock-name">' + (stock.name || '--') + '</span></div><span class="stock-return ' + returnClass + '">' + returnSign + returnPercent.toFixed(2) + '%</span></div><div class="stock-stats"><div class="stock-stat"><span class="stock-stat-label">持仓数量</span><span class="stock-stat-value">' + (stock.quantity || 0) + '</span></div><div class="stock-stat"><span class="stock-stat-label">成本价</span><span class="stock-stat-value">' + (stock.cost_price ? stock.cost_price.toFixed(2) : '--') + '</span></div><div class="stock-stat"><span class="stock-stat-label">现价</span><span class="stock-stat-value">' + (stock.current_price ? stock.current_price.toFixed(2) : '--') + '</span></div><div class="stock-stat"><span class="stock-stat-label">市值</span><span class="stock-stat-value">' + formatCurrency(stock.market_value) + '</span></div><div class="stock-stat"><span class="stock-stat-label">盈亏</span><span class="stock-stat-value ' + returnClass + '">' + returnSign + formatCurrency(stock.profit_loss) + '</span></div></div>';
+                
+                stockList.appendChild(stockCard);
+            });
+        }
+        
+        function formatCurrency(value) {
+            if (value === null || value === undefined) return '--';
+            return '¥' + Number(value).toLocaleString('zh-CN', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+        
         function navigateTo(page) {
             console.log('导航到:', page);
-            // 页面跳转逻辑
             switch(page) {
                 case 'home':
                     location.href = 'index.html';
@@ -761,7 +549,6 @@
         function checkLogin() {
             const isLoggedIn = localStorage.getItem('isLoggedIn');
             if (isLoggedIn !== 'true') {
-                window.location.href = 'login.html';
             }
         }
         

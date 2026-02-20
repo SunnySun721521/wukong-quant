@@ -1,4 +1,4 @@
-﻿﻿﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -620,6 +620,9 @@
     <script>
         // 页面加载完成后初始化
         document.addEventListener('DOMContentLoaded', function() {
+            // checkLogin();  // 暂时跳过登录检查
+            loadDataUpdateInterval();
+            updateLastUpdateTime();
             loadPlanData();
         });
         
@@ -665,9 +668,32 @@
         
         // 初始化市场状态图表
         function initMarketChart(chartData) {
-            const ctx = document.getElementById('marketChart').getContext('2d');
+            console.log('初始化市场状态图表:', chartData);
             
-            new Chart(ctx, {
+            const canvas = document.getElementById('marketChart');
+            if (!canvas) {
+                console.error('找不到 marketChart canvas 元素');
+                return;
+            }
+            
+            const ctx = canvas.getContext('2d');
+            if (!ctx) {
+                console.error('无法获取 canvas 上下文');
+                return;
+            }
+            
+            // 检查数据
+            if (!chartData || !chartData.labels || !chartData.hs300 || !chartData.ma120) {
+                console.error('图表数据不完整:', chartData);
+                return;
+            }
+            
+            // 如果已有图表实例，先销毁
+            if (window.marketChartInstance) {
+                window.marketChartInstance.destroy();
+            }
+            
+            window.marketChartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: chartData.labels,
@@ -718,6 +744,7 @@
         
         // 加载持仓分析
         async function loadPositionAnalysis() {
+            let data = null;
             try {
                 // 优先从localStorage获取可用现金值
                 let availableCashParam = '';
@@ -734,7 +761,6 @@
                 let originalCashParam = '';
                 try {
                     const storedCash = localStorage.getItem('originalCash');
-                    console.log('从localStorage读取的原始资金:', storedCash);
                     if (storedCash) {
                         if (availableCashParam) {
                             originalCashParam = `&original_cash=${storedCash}`;
@@ -746,76 +772,57 @@
                     console.error('读取localStorage中的原始资金失败:', error);
                 }
                 
-                console.log('可用现金参数:', availableCashParam);
-                console.log('原始资金参数:', originalCashParam);
+                // 直接获取数据
+                const cacheBuster = `&_t=${Date.now()}`;
+                const url = `/api/plan/position${availableCashParam}${originalCashParam}${cacheBuster}`;
+                console.log('请求URL:', url);
                 
-                // 反复读取数据直到现价数据正确
-                let data = null;
-                let retryCount = 0;
-                const maxRetries = 10;
-                const retryInterval = 1000; // 1秒
-                
-                while (retryCount < maxRetries) {
-                    // 添加时间戳参数禁用缓存
-                    const cacheBuster = `&_t=${Date.now()}`;
-                    const response = await fetch(`/api/plan/position${availableCashParam}${originalCashParam}${cacheBuster}`, {
-                        cache: 'no-store',
-                        headers: {
-                            'Cache-Control': 'no-cache, no-store, must-revalidate',
-                            'Pragma': 'no-cache'
-                        }
-                    });
-                    data = await response.json();
-                    console.log(`[DEBUG] 第 ${retryCount + 1} 次获取持仓数据:`, data);
-                    
-                    // 检查所有持仓的现价是否有效（不为0、不为null、不为undefined）
-                    const allPricesValid = data.positions && data.positions.every(pos => 
-                        pos.current_price !== null && 
-                        pos.current_price !== undefined && 
-                        pos.current_price > 0
-                    );
-                    
-                    if (allPricesValid) {
-                        console.log(`持仓数据读取成功，共尝试 ${retryCount + 1} 次`);
-                        break;
-                    } else {
-                        console.warn(`第 ${retryCount + 1} 次读取：现价数据不完整，等待 ${retryInterval}ms 后重试...`);
-                        retryCount++;
-                        if (retryCount < maxRetries) {
-                            await new Promise(resolve => setTimeout(resolve, retryInterval));
-                        }
+                const response = await fetch(url, {
+                    cache: 'no-store',
+                    headers: {
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache'
                     }
-                }
+                });
+                data = await response.json();
+                console.log('获取到的数据:', data);
                 
-                if (retryCount >= maxRetries) {
-                    console.warn(`已达到最大重试次数 ${maxRetries}，使用最后一次读取的数据`);
-                }
-                
-                // 更新总体概况
-                const originalCash = localStorage.getItem('originalCash');
-                console.log('从localStorage读取的原始资金:', originalCash);
-                if (originalCash) {
-                    document.getElementById('originalCash').textContent = formatCurrency(parseFloat(originalCash));
-                } else {
-                    document.getElementById('originalCash').textContent = '--';
-                }
-                
-                document.getElementById('totalAssets').textContent = formatCurrency(data.total_assets);
-                
-                // 计算总盈亏：总盈亏 = 总资产 - 本页的原始资金数值
-                const totalProfitLoss = originalCash ? data.total_assets - parseFloat(originalCash) : data.total_profit_loss;
-                console.log('计算的总盈亏:', totalProfitLoss);
-                
-                const profitLossElement = document.getElementById('totalProfitLoss');
-                profitLossElement.textContent = formatCurrency(totalProfitLoss);
-                profitLossElement.className = `stat-value ${totalProfitLoss >= 0 ? 'positive' : 'negative'}`;
-                
-                document.getElementById('positionValue').textContent = formatCurrency(data.position_value);
-                
-                document.getElementById('currentPosition').textContent = data.current_position;
-                
-                // 更新持仓明细表格
-                const tableBody = document.getElementById('positionTable');
+            } catch (error) {
+                console.error('加载持仓分析失败:', error);
+                return;
+            }
+            
+            if (!data) {
+                console.error('数据为空');
+                return;
+            }
+            
+            // 更新总体概况
+            const originalCash = localStorage.getItem('originalCash');
+            if (originalCash) {
+                document.getElementById('originalCash').textContent = formatCurrency(parseFloat(originalCash));
+            } else {
+                document.getElementById('originalCash').textContent = '--';
+            }
+            
+            document.getElementById('totalAssets').textContent = formatCurrency(data.total_assets);
+            
+            // 计算总盈亏：总盈亏 = 总资产 - 本页的原始资金数值
+            const totalProfitLoss = originalCash ? data.total_assets - parseFloat(originalCash) : data.total_profit_loss;
+            
+            const profitLossElement = document.getElementById('totalProfitLoss');
+            profitLossElement.textContent = formatCurrency(totalProfitLoss);
+            profitLossElement.className = `stat-value ${totalProfitLoss >= 0 ? 'positive' : 'negative'}`;
+            
+            document.getElementById('positionValue').textContent = formatCurrency(data.position_value);
+            
+            document.getElementById('currentPosition').textContent = data.current_position;
+            
+            // 更新持仓明细表格
+            const tableBody = document.getElementById('positionTable');
+            if (!data.positions || data.positions.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="8" style="text-align:center;">暂无持仓数据</td></tr>';
+            } else {
                 tableBody.innerHTML = data.positions.map(pos => {
                     const positionAmount = pos.quantity * pos.current_price;
                     return `
@@ -831,8 +838,6 @@
                     </tr>
                     `;
                 }).join('');
-            } catch (error) {
-                console.error('加载持仓分析失败:', error);
             }
         }
         
@@ -998,73 +1003,109 @@
         
         // 刷新市场状态
         async function refreshMarketStatus() {
-            const btn = event.target;
-            btn.textContent = '刷新中...';
-            btn.disabled = true;
+            const btn = event && event.target ? event.target : null;
+            if (btn) {
+                btn.textContent = '刷新中...';
+                btn.disabled = true;
+            }
             
             try {
                 await loadMarketStatus();
-                alert('市场状态已更新');
+                console.log('市场状态已更新');
+                if (btn) {
+                    alert('市场状态已更新');
+                }
             } catch (error) {
                 console.error('刷新市场状态失败:', error);
-                alert('刷新失败，请稍后重试');
+                if (btn) {
+                    alert('刷新失败，请稍后重试');
+                }
             } finally {
-                btn.textContent = '刷新';
-                btn.disabled = false;
+                if (btn) {
+                    btn.textContent = '刷新';
+                    btn.disabled = false;
+                }
             }
         }
         
         // 刷新持仓分析
         async function refreshPositionAnalysis() {
-            const btn = event.target;
-            btn.textContent = '刷新中...';
-            btn.disabled = true;
+            const btn = event && event.target ? event.target : null;
+            if (btn) {
+                btn.textContent = '刷新中...';
+                btn.disabled = true;
+            }
             
             try {
                 await loadPositionAnalysis();
-                alert('持仓分析已更新');
+                console.log('持仓分析已更新');
+                if (btn) {
+                    alert('持仓分析已更新');
+                }
             } catch (error) {
                 console.error('刷新持仓分析失败:', error);
-                alert('刷新失败，请稍后重试');
+                if (btn) {
+                    alert('刷新失败，请稍后重试');
+                }
             } finally {
-                btn.textContent = '刷新';
-                btn.disabled = false;
+                if (btn) {
+                    btn.textContent = '刷新';
+                    btn.disabled = false;
+                }
             }
         }
         
         // 刷新调仓策略
         async function refreshAdjustStrategy() {
-            const btn = event.target;
-            btn.textContent = '刷新中...';
-            btn.disabled = true;
+            const btn = event && event.target ? event.target : null;
+            if (btn) {
+                btn.textContent = '刷新中...';
+                btn.disabled = true;
+            }
             
             try {
                 await loadAdjustmentStrategy();
-                alert('调仓策略已更新');
+                console.log('调仓策略已更新');
+                if (btn) {
+                    alert('调仓策略已更新');
+                }
             } catch (error) {
                 console.error('刷新调仓策略失败:', error);
-                alert('刷新失败，请稍后重试');
+                if (btn) {
+                    alert('刷新失败，请稍后重试');
+                }
             } finally {
-                btn.textContent = '刷新';
-                btn.disabled = false;
+                if (btn) {
+                    btn.textContent = '刷新';
+                    btn.disabled = false;
+                }
             }
         }
         
         // 刷新买入策略
         async function refreshBuyStrategy() {
-            const btn = event.target;
-            btn.textContent = '刷新中...';
-            btn.disabled = true;
+            const btn = event && event.target ? event.target : null;
+            if (btn) {
+                btn.textContent = '刷新中...';
+                btn.disabled = true;
+            }
             
             try {
                 await loadBuyStrategy();
-                alert('买入策略已更新');
+                console.log('买入策略已更新');
+                if (btn) {
+                    alert('买入策略已更新');
+                }
             } catch (error) {
                 console.error('刷新买入策略失败:', error);
-                alert('刷新失败，请稍后重试');
+                if (btn) {
+                    alert('刷新失败，请稍后重试');
+                }
             } finally {
-                btn.textContent = '刷新';
-                btn.disabled = false;
+                if (btn) {
+                    btn.textContent = '刷新';
+                    btn.disabled = false;
+                }
             }
         }
         
@@ -1373,20 +1414,27 @@
         
         // 刷新资讯
         async function refreshNews() {
-            const btn = event.target;
-            btn.textContent = '刷新中...';
-            btn.disabled = true;
+            const btn = event && event.target ? event.target : null;
+            if (btn) {
+                btn.textContent = '刷新中...';
+                btn.disabled = true;
+            }
             
             try {
                 await loadNews();
-                btn.textContent = '刷新';
-                btn.disabled = false;
-                alert('资讯已更新');
+                console.log('资讯已更新');
+                if (btn) {
+                    btn.textContent = '刷新';
+                    btn.disabled = false;
+                    alert('资讯已更新');
+                }
             } catch (error) {
                 console.error('刷新资讯失败:', error);
-                btn.textContent = '刷新';
-                btn.disabled = false;
-                alert('刷新失败，请重试');
+                if (btn) {
+                    btn.textContent = '刷新';
+                    btn.disabled = false;
+                    alert('刷新失败，请重试');
+                }
             }
         }
         
@@ -1446,7 +1494,7 @@
         
         // 自动刷新功能
         let autoRefreshInterval = null;
-        let dataUpdateInterval = 10;
+        let dataUpdateInterval = 10;  // 默认10分钟
         
         // 加载数据更新间隔配置
         function loadDataUpdateInterval() {
@@ -1455,7 +1503,10 @@
                 .then(data => {
                     if (data.error) {
                         console.error('加载数据更新间隔失败:', data.error);
+                        console.log('使用默认刷新间隔:', dataUpdateInterval, '分钟');
+                        setupAutoRefresh();
                     } else {
+                        // 使用配置的间隔，如果没有配置则使用10分钟
                         dataUpdateInterval = data.update_interval || 10;
                         console.log('数据更新间隔:', dataUpdateInterval, '分钟');
                         setupAutoRefresh();
@@ -1463,6 +1514,8 @@
                 })
                 .catch(error => {
                     console.error('加载数据更新间隔失败:', error);
+                    console.log('使用默认刷新间隔:', dataUpdateInterval, '分钟');
+                    setupAutoRefresh();
                 });
         }
         
@@ -1479,7 +1532,7 @@
                 refreshAdjustmentStrategy();
                 refreshBuyStrategy();
                 updateLastUpdateTime();
-            }, dataUpdateInterval * 60 * 1000);
+            }, dataUpdateInterval * 60 * 1000);  // dataUpdateInterval 是分钟数，转换为毫秒
             
             console.log('自动刷新已设置，间隔:', dataUpdateInterval, '分钟');
         }
@@ -1504,13 +1557,6 @@
                 window.location.href = 'login.html';
             }
         }
-        
-        // 页面加载时初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            checkLogin();
-            loadDataUpdateInterval();
-            updateLastUpdateTime();
-        });
     </script>
 </body>
 </html>
