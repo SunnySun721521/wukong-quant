@@ -11,14 +11,6 @@
     {
       "hour": 21,
       "minute": 35
-    },
-    {
-      "hour": 22,
-      "minute": 5
-    },
-    {
-      "hour": 22,
-      "minute": 20
     }
   ],
   "only_weekday": true
