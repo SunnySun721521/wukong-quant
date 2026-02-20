@@ -1,0 +1,15 @@
+[1mdiff --git a/backend/data/pdf_scheduler_config.json b/backend/data/pdf_scheduler_config.json[m
+[1mindex 6778a0f..0360635 100644[m
+[1m--- a/backend/data/pdf_scheduler_config.json[m
+[1m+++ b/backend/data/pdf_scheduler_config.json[m
+[36m@@ -4,10 +4,6 @@[m
+       "hour": 12,[m
+       "minute": 0[m
+     },[m
+[31m-    {[m
+[31m-      "hour": 14,[m
+[31m-      "minute": 25[m
+[31m-    },[m
+     {[m
+       "hour": 15,[m
+       "minute": 30[m
