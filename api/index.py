@@ -17,9 +17,12 @@ from io import BytesIO
 app = Flask(__name__)
 CORS(app)
 
-DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'backup_data')
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.join(BASE_DIR, 'backup_data')
 STOCK_POOL_FILE = os.path.join(DATA_DIR, 'stock_pool.json')
 POSITION_FILE = os.path.join(DATA_DIR, 'positions.csv')
+
+WEB_DIR = os.path.join(BASE_DIR, 'web')
 
 app.config['JSON_AS_ASCII'] = False
 
@@ -72,7 +75,7 @@ def index():
 
 @app.route('/<path:path>')
 def serve_static(path):
-    static_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'web', path)
+    static_path = os.path.join(WEB_DIR, path)
     if os.path.exists(static_path):
         return send_file(static_path)
     return "Not Found", 404
