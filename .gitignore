@@ -53,5 +53,12 @@ start_server.bat
 
 # Strategy data (runtime data)
 strategy/data/position_data.csv
-strategy/data/*.csv
+strategy/data/stock_pool.json
+strategy/data/settings.json
+strategy/data/cash_config.json
+!strategy/data/hs300_data.csv
+
+# Backend data (runtime data)
+backend/data/cash_config.json
+backend/data/data_update_config.json
 
