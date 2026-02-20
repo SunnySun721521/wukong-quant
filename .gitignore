@@ -50,3 +50,8 @@ scheduler_config.json
 email_config.json
 ngrok.yml
 start_server.bat
+
+# Strategy data (runtime data)
+strategy/data/position_data.csv
+strategy/data/*.csv
+
