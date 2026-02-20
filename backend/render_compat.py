@@ -45,41 +45,45 @@ def init_render_email_config():
     
     try:
         db_path = os.path.join(get_data_dir(), 'email_config.db')
+        os.makedirs(os.path.dirname(db_path), exist_ok=True)
         
-        default_config = {
-            'sender_email': '25285603@qq.com',
-            'sender_auth_code': 'gyzieuggwgmfbhhh',
-            'smtp_server': 'smtp.qq.com',
-            'smtp_port': '465',
-            'use_ssl': 'true',
-            'timeout': '30',
-            'retry_times': '3',
-            'retry_interval': '5',
-            'email_subject_template': '每日操作计划 - {date}',
-            'email_body_template': 'simple',
-            'recipients': '["lib@tcscd.com"]',
-            'enabled': 'true'
-        }
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
         
-        if os.path.exists(db_path):
-            conn = sqlite3.connect(db_path)
-            cursor = conn.cursor()
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS email_config (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                config_key TEXT UNIQUE NOT NULL,
+                config_value TEXT NOT NULL,
+                config_type TEXT NOT NULL DEFAULT 'string',
+                description TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        
+        for key, value in RENDER_EMAIL_CONFIG.items():
+            cursor.execute("SELECT config_value FROM email_config WHERE config_key = ?", (key,))
+            result = cursor.fetchone()
             
-            for key, value in default_config.items():
-                try:
-                    cursor.execute("SELECT config_value FROM email_config WHERE config_key = ?", (key,))
-                    result = cursor.fetchone()
-                    if result is None:
-                        cursor.execute(
-                            "INSERT INTO email_config (config_key, config_value, config_type) VALUES (?, ?, 'string')",
-                            (key, value)
-                        )
-                except:
-                    pass
-            
-            conn.commit()
-            conn.close()
-            print(f"[Render] 邮箱配置已初始化")
+            if result is None:
+                cursor.execute(
+                    "INSERT INTO email_config (config_key, config_value, config_type) VALUES (?, ?, 'string')",
+                    (key, value)
+                )
+                print(f"[Render] 插入配置: {key} = {value}")
+            else:
+                if key == 'enabled' and result[0] != 'true':
+                    cursor.execute("UPDATE email_config SET config_value = ? WHERE config_key = ?", (value, key))
+                    print(f"[Render] 更新配置: {key} = {value}")
+        
+        cursor.execute("SELECT config_key, config_value FROM email_config")
+        all_config = cursor.fetchall()
+        print(f"[Render] 当前邮箱配置: {all_config}")
+        
+        conn.commit()
+        conn.close()
+        print(f"[Render] 邮箱配置初始化完成")
     except Exception as e:
         print(f"[Render] 邮箱配置初始化失败: {e}")
 
@@ -100,7 +104,6 @@ def preload_stock_data():
         return
     
     try:
-        import sys
         data_dir = get_strategy_data_dir()
         
         stock_pool_file = os.path.join(data_dir, 'stock_pool.json')
