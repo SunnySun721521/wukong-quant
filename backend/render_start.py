@@ -26,6 +26,12 @@ try:
 except ImportError:
     print("render_compat模块未找到，跳过Render初始化")
 
+try:
+    import render_data
+    render_data.patch_data_providers()
+except ImportError:
+    print("render_data模块未找到，跳过数据修补")
+
 if __name__ == '__main__':
     import app
     app.run_app()
