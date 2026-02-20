@@ -15,6 +15,12 @@ sys.path.insert(0, backend_dir)
 os.environ['RENDER'] = '1'
 
 try:
+    import render_settings
+    render_settings.apply_render_patches()
+except ImportError:
+    print("render_settings模块未找到，跳过Render修补")
+
+try:
     import render_compat
     render_compat.preload_render_data()
 except ImportError:
