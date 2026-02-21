@@ -44,15 +44,22 @@ def patch_email_config_manager():
             for key, value in render_config.items():
                 try:
                     current = self.get_config(key)
+                    print(f"[Render] 检查配置 {key}: 当前值={current}")
                     if current is None:
-                        self._set_config_value(key, str(value))
+                        self.set_config(key, str(value))
                         print(f"[Render] 设置默认配置: {key} = {value}")
                     elif key == 'enabled' and current != 'true':
-                        self._set_config_value(key, 'true')
+                        self.set_config(key, 'true')
                         print(f"[Render] 强制启用: {key} = true")
+                    elif key in ['sender_email', 'sender_auth_code', 'recipients']:
+                        if not current or current == '':
+                            self.set_config(key, str(value))
+                            print(f"[Render] 补充空值配置: {key} = {value}")
                 except Exception as e:
                     print(f"[Render] 设置配置失败 {key}: {e}")
             
+            all_config = self.get_all_config()
+            print(f"[Render] 最终配置: {all_config}")
             print("[Render] EmailConfigManager 修补完成")
         
         EmailConfigManager.init_default_config = patched_init_default
@@ -61,6 +68,8 @@ def patch_email_config_manager():
         
     except Exception as e:
         print(f"[Render] 修补失败: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 def apply_render_patches():
