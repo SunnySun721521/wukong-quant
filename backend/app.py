@@ -4517,9 +4517,143 @@ def register_data_update_callbacks():
     pdf_scheduler.add_data_update_callback(update_buy_strategy_data)
     print("数据更新回调函数已注册")
 
+def initialize_default_data():
+    """初始化默认数据，确保Render上有必要的文件"""
+    import shutil
+    
+    # 1. 创建默认回测股票池
+    backtest_pool_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'strategy', 'data', 'backtest_pool.json')
+    default_pool = ["002009", "002371", "300750", "600519", "000858", "600036", "601318", "601398", "000333", "600104", "600050", "601288", "600009", "600016", "600030", "601012", "601888", "603259", "603501", "002594", "000001", "300059", "600887", "601166"]
+    
+    try:
+        os.makedirs(os.path.dirname(backtest_pool_file), exist_ok=True)
+        if not os.path.exists(backtest_pool_file):
+            with open(backtest_pool_file, 'w', encoding='utf-8') as f:
+                json.dump({'stocks': default_pool, 'updated': datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, f, ensure_ascii=False)
+            print(f"已创建默认回测股票池: {default_pool}")
+    except Exception as e:
+        print(f"创建默认回测股票池失败: {e}")
+    
+    # 2. 创建默认持仓数据
+    position_file = get_position_file_path()
+    if not os.path.exists(position_file):
+        try:
+            os.makedirs(os.path.dirname(position_file), exist_ok=True)
+            with open(position_file, 'w', encoding='utf-8', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow(['symbol', 'name', 'shares', 'cost_price', 'current_price', 'change_pct', 'market_value', 'profit_loss', 'profit_pct'])
+                writer.writerow(['002009', '天奇股份', '1000', '15.50', '15.50', '0.00', '15500', '0', '0.00'])
+            print(f"已创建默认持仓数据")
+        except Exception as e:
+            print(f"创建默认持仓数据失败: {e}")
+    
+    # 3. 初始化默认邮箱配置
+    init_email_config_default()
+    
+    print("默认数据初始化完成")
+
+def init_email_config_default():
+    """初始化默认邮箱配置"""
+    try:
+        from email_config_db import init_email_db
+        init_email_db()
+        
+        from email_config_manager import EmailConfigManager
+        config_manager = EmailConfigManager()
+        config = config_manager.get_config()
+        
+        if not config.get('sender_email'):
+            config_manager.update_config({
+                'sender_email': '25285603@qq.com',
+                'sender_auth_code': 'xxxx',
+                'recipients': ['25285603@qq.com', 'lib@tcscd.com'],
+                'enabled': True,
+                'smtp_server': 'smtp.qq.com',
+                'smtp_port': 465,
+                'use_ssl': True
+            })
+            print("已创建默认邮箱配置")
+    except Exception as e:
+        print(f"初始化默认邮箱配置失败: {e}")
+
+@app.route('/api/test/datasource', methods=['GET'])
+def test_datasource():
+    """测试数据源连接"""
+    results = {
+        'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        'environment': 'render' if os.environ.get('RENDER') else 'local',
+        'datasources': {}
+    }
+    
+    test_symbol = '600519'
+    
+    results['datasources']['baostock'] = {'available': False, 'price': None, 'error': None}
+    try:
+        import baostock as bs
+        lg = bs.login()
+        if lg.error_code == '0':
+            rs = bs.query_history_k_data_plus(
+                f"sh.{test_symbol}",
+                "date,close",
+                start_date=(datetime.now() - timedelta(days=5)).strftime("%Y-%m-%d"),
+                end_date=datetime.now().strftime("%Y-%m-%d"),
+                frequency="d"
+            )
+            if rs.error_code == '0':
+                data_list = []
+                while rs.next():
+                    data_list.append(rs.get_row_data())
+                if data_list:
+                    results['datasources']['baostock'] = {
+                        'available': True,
+                        'price': float(data_list[-1][1]),
+                        'error': None
+                    }
+            bs.logout()
+        else:
+            results['datasources']['baostock']['error'] = lg.error_msg
+    except Exception as e:
+        results['datasources']['baostock']['error'] = str(e)
+    
+    results['datasources']['akshare'] = {'available': False, 'price': None, 'error': None}
+    try:
+        import akshare as ak
+        df = ak.stock_zh_a_spot_em()
+        if df is not None and not df.empty:
+            stock_df = df[df['代码'] == test_symbol]
+            if not stock_df.empty:
+                results['datasources']['akshare'] = {
+                    'available': True,
+                    'price': float(stock_df['最新价'].values[0]),
+                    'error': None
+                }
+    except Exception as e:
+        results['datasources']['akshare']['error'] = str(e)
+    
+    results['datasources']['efinance'] = {'available': False, 'price': None, 'error': None}
+    try:
+        import efinance as ef
+        df = ef.stock.get_realtime_quotes()
+        if df is not None and not df.empty:
+            df.columns = df.columns.str.replace(' ', '')
+            stock_df = df[df['股票代码'] == test_symbol]
+            if not stock_df.empty:
+                results['datasources']['efinance'] = {
+                    'available': True,
+                    'price': float(stock_df['最新价'].values[0]),
+                    'error': None
+                }
+    except Exception as e:
+        results['datasources']['efinance']['error'] = str(e)
+    
+    return jsonify(results)
+
 def run_app():
     """运行Flask应用"""
     os.makedirs(LOG_DIR, exist_ok=True)
+    
+    # 初始化默认数据
+    initialize_default_data()
     
     print("后端服务器启动中...")
     print("注册的路由:")
