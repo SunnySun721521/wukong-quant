@@ -1258,9 +1258,6 @@ def get_market_status():
                 print(f"[Render] render_solution失败: {e}")
                 import traceback
                 traceback.print_exc()
-                    return jsonify(result)
-            except Exception as e:
-                print(f"[Render] yfinance获取失败，尝试其他方式: {e}")
         
         # 首先尝试从 baostock 获取沪深300指数数据
         print("尝试从 baostock 获取沪深300指数数据")

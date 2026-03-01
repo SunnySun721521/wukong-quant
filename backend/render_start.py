@@ -1,43 +1,107 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Render专用启动脚本
-不影响本地程序运行
-用于 Render 部署时自动初始化数据
+Render 环境启动脚本
+确保所有配置和数据正确初始化
 """
-
 import os
 import sys
 
+# 设置环境变量
+os.environ['RENDER'] = 'true'
+
+# 添加backend目录到路径
 backend_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, backend_dir)
+if backend_dir not in sys.path:
+    sys.path.insert(0, backend_dir)
 
-os.environ['RENDER'] = '1'
+print("[Render] 启动脚本开始执行...")
+print(f"[Render] Python版本: {sys.version}")
+print(f"[Render] 工作目录: {os.getcwd()}")
+print(f"[Render] Backend目录: {backend_dir}")
 
+# 确保数据目录存在
+data_dir = os.path.join(backend_dir, 'data')
+os.makedirs(data_dir, exist_ok=True)
+print(f"[Render] 数据目录: {data_dir}")
+
+# 初始化邮箱配置数据库
 try:
-    import download_fonts
-    download_fonts.download_render_fonts()
-except ImportError:
-    print("download_fonts模块未找到，跳过字体下载")
+    print("[Render] 初始化邮箱配置...")
+    import sqlite3
+    
+    db_path = os.path.join(data_dir, 'email_config.db')
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    
+    # 创建配置表
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS email_config (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            config_key TEXT UNIQUE NOT NULL,
+            config_value TEXT NOT NULL,
+            config_type TEXT DEFAULT 'string',
+            description TEXT,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    # 创建收件人表
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS email_recipients (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            email_address TEXT UNIQUE NOT NULL,
+            is_active INTEGER DEFAULT 1,
+            added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    # 确保默认配置存在
+    default_configs = [
+        ('sender_email', '25285603@qq.com', 'string'),
+        ('sender_auth_code', 'xqlznzjdrqynbjbc', 'string'),
+        ('smtp_server', 'smtp.qq.com', 'string'),
+        ('smtp_port', '465', 'string'),
+        ('use_ssl', 'true', 'boolean'),
+        ('enabled', 'true', 'boolean'),
+        ('timeout', '60', 'integer'),
+        ('retry_times', '3', 'integer'),
+        ('retry_interval', '5', 'integer'),
+    ]
+    
+    for key, value, config_type in default_configs:
+        cursor.execute("SELECT config_value FROM email_config WHERE config_key = ?", (key,))
+        if not cursor.fetchone():
+            cursor.execute(
+                "INSERT INTO email_config (config_key, config_value, config_type) VALUES (?, ?, ?)",
+                (key, value, config_type)
+            )
+    
+    # 确保默认收件人存在
+    default_recipients = ['25285603@qq.com', 'lib@tcscd.com']
+    for email in default_recipients:
+        cursor.execute(
+            "INSERT OR IGNORE INTO email_recipients (email_address) VALUES (?)",
+            (email,)
+        )
+    
+    conn.commit()
+    conn.close()
+    print("[Render] 邮箱配置初始化完成")
+    
+except Exception as e:
+    print(f"[Render] 邮箱配置初始化失败: {e}")
 
+# 导入并启动Flask应用
+print("[Render] 导入Flask应用...")
 try:
-    import render_settings
-    render_settings.apply_render_patches()
-except ImportError:
-    print("render_settings模块未找到，跳过Render修补")
-
-try:
-    import render_compat
-    render_compat.preload_render_data()
-except ImportError:
-    print("render_compat模块未找到，跳过Render初始化")
-
-try:
-    import render_data
-    render_data.patch_data_providers()
-except ImportError:
-    print("render_data模块未找到，跳过数据修补")
-
-if __name__ == '__main__':
     import app
-    app.run_app()
+    print("[Render] Flask应用导入成功")
+except Exception as e:
+    print(f"[Render] Flask应用导入失败: {e}")
+    import traceback
+    traceback.print_exc()
+    sys.exit(1)
+
+# 启动应用
+print("[Render] 启动Flask应用...")
+app.app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5006)), debug=False, threaded=True)
