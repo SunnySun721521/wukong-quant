@@ -106,6 +106,17 @@ class DataProvider:
         import socket
         socket.setdefaulttimeout(20)
         
+        # Render环境优先使用yfinance
+        if os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID'):
+            try:
+                from render_unified_data import get_kline_data_render
+                df = get_kline_data_render(symbol, start_date, end_date)
+                if df is not None and not df.empty:
+                    print(f"[Render] 使用统一数据模块获取K线: {symbol}")
+                    return df
+            except Exception as e:
+                print(f"[Render] 统一数据模块获取失败，尝试其他方式: {e}")
+        
         bs_symbol = f"sh.{symbol}" if symbol.startswith('6') else f"sz.{symbol}"
         
         if BAOSTOCK_AVAILABLE:

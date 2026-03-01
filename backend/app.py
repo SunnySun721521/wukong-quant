@@ -1176,6 +1176,46 @@ def get_market_status():
         import os
         from datetime import datetime
         
+        # Render环境优先使用yfinance获取沪深300指数数据
+        if os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID'):
+            print("[Render] 使用yfinance获取沪深300指数数据")
+            try:
+                from render_unified_data import RenderDataProvider
+                current_price, change_pct, ma120, hist_df = RenderDataProvider.get_index_data('000300', days=150)
+                
+                if current_price is not None:
+                    is_bull = current_price > ma120
+                    
+                    # 生成图表数据
+                    if hist_df is not None and len(hist_df) >= 7:
+                        recent_df = hist_df.tail(7)
+                        labels = [date.strftime('%m-%d') for date in recent_df.index]
+                        hs300_values = [round(float(val), 2) for val in recent_df['Close'].values]
+                        ma120_values = [round(float(val), 2) for val in recent_df['Close'].rolling(120).mean().tail(7).values]
+                    else:
+                        labels = ["01-20", "01-21", "01-22", "01-23", "01-24", "01-25", "01-26"]
+                        hs300_values = [3750, 3780, 3760, 3800, 3820, 3810, current_price]
+                        ma120_values = [3700, 3710, 3720, 3730, 3740, 3750, ma120]
+                    
+                    result = {
+                        "status": "bull" if is_bull else "bear",
+                        "status_text": "牛市" if is_bull else "熊市",
+                        "hs300_index": round(current_price, 2),
+                        "hs300_change": round(change_pct, 2),
+                        "ma120": round(ma120, 2),
+                        "chart_data": {
+                            "labels": labels,
+                            "hs300": hs300_values,
+                            "ma120": ma120_values
+                        },
+                        "analysis": f"沪深300指数{'高于' if is_bull else '低于'}120日均线，市场处于{'牛市' if is_bull else '熊市'}状态",
+                        "update_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    }
+                    print(f"[Render] 市场状态获取成功: {result['status_text']}")
+                    return jsonify(result)
+            except Exception as e:
+                print(f"[Render] yfinance获取失败，尝试其他方式: {e}")
+        
         # 首先尝试从 baostock 获取沪深300指数数据
         print("尝试从 baostock 获取沪深300指数数据")
         try:
@@ -2046,6 +2086,76 @@ def test_api():
     print("=" * 80)
     return jsonify({"status": "success", "message": "Test API is working"})
 
+def get_buy_strategy_render(stock_pool):
+    """Render环境下的买入建议生成 - 使用yfinance"""
+    import yfinance as yf
+    from datetime import datetime, timedelta
+    import pandas as pd
+    
+    suggestions = []
+    print(f"[Render] 开始分析股票池，共 {len(stock_pool)} 只股票")
+    
+    for symbol in stock_pool:
+        try:
+            # 转换股票代码
+            if symbol.startswith('6'):
+                yf_symbol = f"{symbol}.SS"
+            else:
+                yf_symbol = f"{symbol}.SZ"
+            
+            # 获取股票信息
+            ticker = yf.Ticker(yf_symbol)
+            info = ticker.info
+            name = info.get('longName', info.get('shortName', symbol))
+            
+            # 获取历史数据 (365天)
+            end_date = datetime.now()
+            start_date = end_date - timedelta(days=365)
+            hist = ticker.history(start=start_date, end=end_date)
+            
+            if hist.empty or len(hist) < 200:
+                print(f"[Render] {symbol} 数据不足，跳过")
+                continue
+            
+            # 计算技术指标
+            current_price = float(hist['Close'].iloc[-1])
+            volume = float(hist['Volume'].iloc[-1])
+            ma20 = float(hist['Close'].tail(20).mean())
+            ma250 = float(hist['Close'].tail(250).mean()) if len(hist) >= 250 else float(hist['Close'].mean())
+            v_ma5 = float(hist['Volume'].tail(5).mean())
+            v_ma60 = float(hist['Volume'].tail(60).mean())
+            
+            # 判断买入条件
+            base_condition = current_price > ma250 and v_ma5 > v_ma60
+            shrink_volume = volume < v_ma5 * 0.8
+            backtest_ma20 = abs(current_price / ma20 - 1) < 0.015
+            signal_condition = shrink_volume and backtest_ma20
+            
+            print(f"[Render] {symbol} {name}: 价格={current_price:.2f}, 基础条件={base_condition}, 信号条件={signal_condition}")
+            
+            if base_condition and signal_condition:
+                price_range = f"{round(current_price * 0.98, 2)}-{round(current_price * 1.02, 2)}"
+                stop_loss = round(current_price * 0.96, 2)
+                
+                suggestions.append({
+                    "action": "buy",
+                    "action_text": "买入",
+                    "symbol": symbol,
+                    "name": name,
+                    "current_price": current_price,
+                    "price_range": price_range,
+                    "stop_loss": stop_loss,
+                    "reason": "符合牛回踩策略，股价在年线之上，缩量回踩20日线"
+                })
+                print(f"[Render] {symbol} {name} 添加到买入建议")
+                
+        except Exception as e:
+            print(f"[Render] 分析 {symbol} 失败: {e}")
+            continue
+    
+    print(f"[Render] 共生成 {len(suggestions)} 条买入建议")
+    return suggestions
+
 @app.route('/api/plan/buy', methods=['GET'])
 def get_buy_strategy():
     import sys
@@ -2069,6 +2179,28 @@ def get_buy_strategy():
     print(f"当前股票池大小: {len(stock_pool)}")
     print(f"当前股票池: {stock_pool}")
     app.logger.debug(f"当前股票池: {stock_pool}")
+    
+    # Render环境优先使用yfinance版本
+    if os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID'):
+        print("[Render] 使用yfinance版本获取买入建议")
+        try:
+            suggestions = get_buy_strategy_render(stock_pool)
+            result = {
+                "conditions": [
+                    {"type": "市场环境", "description": "整体处于牛市或熊市，无重大系统性风险"},
+                    {"type": "技术条件", "description": "目标股票处于上升趋势，出现健康的技术性回调"},
+                    {"type": "风险控制", "description": "单只股票仓位限制，买入价格区间控制，止损位预设"}
+                ],
+                "suggestions": suggestions,
+                "update_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            }
+            log_file.write(f"[Render] 买入建议生成完成: {len(suggestions)} 条\n")
+            log_file.close()
+            return jsonify(result)
+        except Exception as e:
+            print(f"[Render] yfinance版本失败，尝试原版本: {e}")
+            log_file.write(f"[Render] yfinance版本失败: {e}\n")
+            log_file.flush()
     
     # 读取当前持仓的股票列表（用于信息展示，不用于过滤）
     def get_held_stocks():
@@ -2514,6 +2646,19 @@ def export_plan_pdf():
         return jsonify({'error': 'PDF导出功能不可用，请安装reportlab库'}), 500
     
     try:
+        # Render环境优先获取中文字体
+        chinese_font = CHINESE_FONT
+        if os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID'):
+            print("[Render] 尝试获取中文字体...")
+            try:
+                from render_pdf_fonts import get_chinese_font
+                render_font = get_chinese_font()
+                if render_font:
+                    chinese_font = render_font
+                    print(f"[Render] 使用字体: {chinese_font}")
+            except Exception as e:
+                print(f"[Render] 获取字体失败: {e}")
+        
         # 从请求参数获取available_cash和original_cash（模拟前端的localStorage）
         available_cash = request.args.get('available_cash', 187500.00, type=float)
         original_cash = request.args.get('original_cash', 200000.00, type=float)
@@ -2552,8 +2697,9 @@ def export_plan_pdf():
         styles = getSampleStyleSheet()
         story = []
         
-        # 设置中文字体
-        chinese_font = CHINESE_FONT if CHINESE_FONT else 'Helvetica'
+        # 使用已获取的中文字体（Render环境已提前获取）
+        if not chinese_font:
+            chinese_font = 'Helvetica'
         
         # 添加标题
         title_style = ParagraphStyle(
@@ -3436,6 +3582,22 @@ def _send_email_notification(pdf_file_path: str):
     try:
         print(f"开始发送邮件通知: {pdf_file_path}")
         
+        # Render环境优先使用专用邮件模块
+        if os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID'):
+            print("[Render] 使用专用邮件模块发送通知邮件")
+            try:
+                from render_email_sender import send_email_render
+                success, error_msg = send_email_render(pdf_file_path)
+                
+                if success:
+                    print(f"[Render] 邮件发送成功: {pdf_file_path}")
+                else:
+                    print(f"[Render] 邮件发送失败: {error_msg}")
+                return
+            except Exception as e:
+                print(f"[Render] 专用邮件模块失败: {e}")
+                # 继续使用原有逻辑
+        
         # 在Flask应用上下文中执行所有操作
         with app.app_context():
             # 获取市场数据用于邮件模板
@@ -3843,6 +4005,24 @@ def get_email_statistics():
 # API: 发送测试邮件
 @app.route('/api/email/test', methods=['POST'])
 def send_test_email():
+    # Render环境优先使用专用邮件模块
+    if os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID'):
+        print("[Render] 使用专用邮件模块发送测试邮件")
+        try:
+            from render_email_sender import send_test_email_render
+            success, error_msg = send_test_email_render()
+            
+            if success:
+                return jsonify({
+                    'message': '测试邮件发送成功',
+                    'environment': 'Render'
+                })
+            else:
+                return jsonify({'error': f'发送失败: {error_msg}'}), 500
+        except Exception as e:
+            print(f"[Render] 专用邮件模块失败: {e}")
+            # 继续使用原有逻辑
+    
     try:
         data = request.get_json()
         recipients = data.get('recipients', [])
