@@ -44,6 +44,9 @@ try:
             import platform
             system = platform.system()
             
+            # Render环境检测
+            is_render = os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID')
+            
             if system == 'Windows':
                 system_fonts = [
                     ('C:/Windows/Fonts/msyh.ttc', 'msyh', 'Microsoft YaHei'),
@@ -51,11 +54,20 @@ try:
                     ('C:/Windows/Fonts/simsun.ttc', 'simsun', 'SimSun'),
                 ]
             else:
+                # Linux/Render环境 - 使用更多字体路径
                 system_fonts = [
-                    ('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 'DejaVuSans', 'DejaVu Sans'),
-                    ('/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf', 'LiberationSans', 'Liberation Sans'),
+                    # Noto CJK 字体 (Render可能预装)
                     ('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc', 'NotoSansCJK', 'Noto Sans CJK'),
                     ('/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc', 'NotoSansCJK', 'Noto Sans CJK'),
+                    ('/usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc', 'NotoSansCJK', 'Noto Sans CJK'),
+                    # WenQuanYi 字体
+                    ('/usr/share/fonts/wenquanyi/wenquanyi/wqy-zenhei.ttc', 'WQYZenHei', 'WenQuanYi Zen Hei'),
+                    ('/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc', 'WQYZenHei', 'WenQuanYi Zen Hei'),
+                    ('/usr/share/fonts/wqy-zenhei/wqy-zenhei.ttc', 'WQYZenHei', 'WenQuanYi Zen Hei'),
+                    # Source Han 字体
+                    ('/usr/share/fonts/adobe-source-han-sans/SourceHanSansCN-Regular.otf', 'SourceHanSans', 'Source Han Sans'),
+                    # DejaVu 作为后备
+                    ('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 'DejaVuSans', 'DejaVu Sans'),
                 ]
             
             font_registered = False
@@ -71,13 +83,24 @@ try:
                         continue
             
             if not font_registered:
-                try:
-                    pdfmetrics.registerFont(TTFont('Helvetica', 'Helvetica'))
-                    print("使用 Helvetica 作为后备字体")
-                    return 'Helvetica'
-                except:
-                    print("警告: 未找到可用的中文字体，PDF中文显示可能有问题")
-                    return None
+                # 尝试下载并安装中文字体 (Render环境)
+                if is_render:
+                    print("Render环境: 尝试下载中文字体...")
+                    try:
+                        import urllib.request
+                        font_url = "https://github.com/googlefonts/noto-cjk/raw/main/Sans/OTF/SimplifiedChinese/NotoSansSC-Regular.otf"
+                        font_path = os.path.join(font_dir, 'NotoSansSC-Regular.otf')
+                        if not os.path.exists(font_path):
+                            urllib.request.urlretrieve(font_url, font_path)
+                            print(f"下载字体成功: {font_path}")
+                        pdfmetrics.registerFont(TTFont('NotoSansSC', font_path))
+                        print("成功注册下载的中文字体: NotoSansSC")
+                        return 'NotoSansSC'
+                    except Exception as e:
+                        print(f"下载字体失败: {e}")
+                
+                print("警告: 未找到可用的中文字体，PDF中文显示可能有问题")
+                return None
             
             return font_name
         except Exception as e:
@@ -1363,16 +1386,32 @@ def get_position_analysis():
                     quantity = int(pos['quantity'])
                     cost_price = float(pos['cost_price'])
                     
-                    # 从 BaoStock 获取最新价格
+                    # 获取最新价格 - Render环境优先yfinance
                     try:
                         print(f"正在获取 {symbol} ({name}) 的最新价格...")
-                        latest_price = DataProvider.get_current_price(symbol)
+                        latest_price = None
+                        
+                        # Render环境优先使用yfinance
+                        if os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID'):
+                            try:
+                                from render_data_provider import get_a_stock_price_render
+                                latest_price = get_a_stock_price_render(symbol)
+                                if latest_price:
+                                    print(f"Render环境 yfinance 获取到 {symbol} 价格: {latest_price}")
+                            except Exception as e:
+                                print(f"Render环境获取失败: {e}")
+                        
+                        # 如果Render环境获取失败，使用原有方式
+                        if not latest_price:
+                            latest_price = DataProvider.get_current_price(symbol)
+                            if latest_price is not None and latest_price > 0:
+                                print(f"DataProvider获取到 {symbol} 的最新价格: {latest_price}")
+                        
                         if latest_price is not None and latest_price > 0:
                             current_price = latest_price
-                            print(f"从 BaoStock 获取到 {symbol} 的最新价格: {current_price}")
                         else:
                             current_price = float(pos['current_price'])
-                            print(f"BaoStock 获取失败，使用文件中的价格: {current_price}")
+                            print(f"获取失败，使用文件中的价格: {current_price}")
                     except Exception as e:
                         print(f"获取 {symbol} 最新价格失败: {e}，使用文件中的价格")
                         current_price = float(pos['current_price'])

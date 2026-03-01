@@ -177,7 +177,8 @@ def init_backtest_pool():
 
 
 def init_email_config():
-    """初始化邮箱配置"""
+    """初始化邮箱配置 - 同时初始化两个数据库"""
+    # 1. 初始化 wukong_data.db
     with sqlite3.connect(DB_PATH) as conn:
         cursor = conn.cursor()
         cursor.execute("SELECT COUNT(*) FROM email_config")
@@ -198,7 +199,86 @@ def init_email_config():
                 ''', (email,))
             
             conn.commit()
-            print(f"已初始化邮箱配置")
+            print(f"已初始化邮箱配置到 wukong_data.db")
+    
+    # 2. 初始化 email_config.db (email_config_db.py 使用的数据库)
+    email_db_path = os.path.join(DATA_DIR, 'email_config.db')
+    try:
+        with sqlite3.connect(email_db_path) as conn:
+            cursor = conn.cursor()
+            
+            # 创建表
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS email_config (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    config_key TEXT UNIQUE NOT NULL,
+                    config_value TEXT NOT NULL,
+                    config_type TEXT NOT NULL DEFAULT 'string',
+                    description TEXT,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS email_recipients (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    email_address TEXT UNIQUE NOT NULL,
+                    name TEXT,
+                    description TEXT,
+                    is_active BOOLEAN DEFAULT 1,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            # 检查是否已有配置
+            cursor.execute("SELECT COUNT(*) FROM email_config")
+            count = cursor.fetchone()[0]
+            
+            if count == 0:
+                # 插入默认配置
+                for key, value in DEFAULT_EMAIL_CONFIG.items():
+                    config_type = 'boolean' if value.lower() in ['true', 'false'] else 'string'
+                    desc = {
+                        'sender_email': '发送邮箱地址',
+                        'sender_auth_code': '发送邮箱授权码',
+                        'smtp_server': 'SMTP服务器地址',
+                        'smtp_port': 'SMTP服务器端口',
+                        'use_ssl': '是否使用SSL',
+                        'enabled': '是否启用邮件发送'
+                    }.get(key, key)
+                    cursor.execute('''
+                        INSERT INTO email_config (config_key, config_value, config_type, description)
+                        VALUES (?, ?, ?, ?)
+                    ''', (key, value, config_type, desc))
+                
+                # 插入默认收件人
+                for email in DEFAULT_RECIPIENTS:
+                    cursor.execute('''
+                        INSERT OR IGNORE INTO email_recipients (email_address)
+                        VALUES (?)
+                    ''', (email,))
+                
+                conn.commit()
+                print(f"已初始化邮箱配置到 email_config.db")
+            else:
+                # 确保关键配置存在
+                for key, value in DEFAULT_EMAIL_CONFIG.items():
+                    cursor.execute("SELECT config_value FROM email_config WHERE config_key = ?", (key,))
+                    if not cursor.fetchone():
+                        config_type = 'boolean' if value.lower() in ['true', 'false'] else 'string'
+                        cursor.execute('''
+                            INSERT INTO email_config (config_key, config_value, config_type)
+                            VALUES (?, ?, ?)
+                        ''', (key, value, config_type))
+                conn.commit()
+                print(f"email_config.db 配置已验证")
+                
+    except Exception as e:
+        print(f"初始化 email_config.db 失败: {e}")
+        import traceback
+        traceback.print_exc()
 
 
 def init_render_data():
