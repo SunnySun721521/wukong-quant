@@ -1,0 +1,275 @@
+page {
+  background-color: #0d0d0d;
+}
+
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40rpx;
+  padding: 30rpx 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20rpx;
+}
+
+.title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10rpx;
+}
+
+.subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.params-section {
+  background: #1a1a1a;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.param-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25rpx;
+}
+
+.param-label {
+  width: 180rpx;
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.param-value {
+  flex: 1;
+  font-size: 28rpx;
+  color: #ffffff;
+  padding: 15rpx 20rpx;
+  background: #2a2a2a;
+  border-radius: 8rpx;
+}
+
+.param-input {
+  flex: 1;
+  height: 70rpx;
+  padding: 0 20rpx;
+  background: #2a2a2a;
+  border: 1rpx solid #3a3a3a;
+  border-radius: 8rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+}
+
+.run-btn {
+  width: 100%;
+  height: 90rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border: none;
+  border-radius: 12rpx;
+  margin-top: 20rpx;
+}
+
+.run-btn[disabled] {
+  opacity: 0.5;
+}
+
+.portfolio-section {
+  background: #1a1a1a;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.portfolio-header {
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #2a2a2a;
+}
+
+.portfolio-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.portfolio-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.stat-item {
+  flex: 1;
+  min-width: 200rpx;
+  background: #2a2a2a;
+  border-radius: 12rpx;
+  padding: 25rpx;
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 10rpx;
+}
+
+.stat-value {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.stat-value.positive {
+  color: #ff4d4f;
+}
+
+.stat-value.negative {
+  color: #52c41a;
+}
+
+.stocks-section {
+  background: #1a1a1a;
+  border-radius: 16rpx;
+  padding: 30rpx;
+}
+
+.stocks-header {
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #2a2a2a;
+}
+
+.stocks-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.stock-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.stock-card {
+  background: #2a2a2a;
+  border-radius: 12rpx;
+  padding: 25rpx;
+  border-left: 6rpx solid #667eea;
+}
+
+.stock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 15rpx;
+  border-bottom: 1rpx solid #3a3a3a;
+}
+
+.stock-symbol {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.stock-return {
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 10rpx 20rpx;
+  border-radius: 8rpx;
+}
+
+.stock-return.positive {
+  background: rgba(255, 77, 79, 0.2);
+  color: #ff4d4f;
+}
+
+.stock-return.negative {
+  background: rgba(82, 196, 26, 0.2);
+  color: #52c41a;
+}
+
+.stock-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+}
+
+.stock-stat {
+  flex: 1;
+  min-width: 150rpx;
+  background: #3a3a3a;
+  border-radius: 8rpx;
+  padding: 15rpx;
+  text-align: center;
+}
+
+.stock-stat-label {
+  display: block;
+  font-size: 22rpx;
+  color: #999999;
+  margin-bottom: 8rpx;
+}
+
+.stock-stat-value {
+  display: block;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.loading-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+}
+
+.loading-spinner {
+  width: 80rpx;
+  height: 80rpx;
+  border: 4rpx solid #3a3a3a;
+  border-top: 4rpx solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.error-section {
+  background: rgba(255, 77, 79, 0.1);
+  border: 1rpx solid #ff4d4f;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  margin-top: 30rpx;
+}
+
+.error-text {
+  font-size: 28rpx;
+  color: #ff4d4f;
+  text-align: center;
+}

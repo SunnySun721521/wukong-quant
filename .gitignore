@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+email_config.db
+
+# Cache
+price_cache.json
+*.cache
+
+# PDF
+scheduled_pdfs/
+*.pdf
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files
+test_*.py
+check_*.py
+fix_*.py
+monitor_*.py
+test_*.xlsx
+
+# Config (个人配置)
+scheduler_config.json
+email_config.json
+ngrok.yml
+start_server.bat
+
+# Strategy data (runtime data)
+strategy/data/position_data.csv
+strategy/data/stock_pool.json
+strategy/data/settings.json
+strategy/data/cash_config.json
+!strategy/data/hs300_data.csv
+
+# Backend data (runtime data)
+backend/data/cash_config.json
+backend/data/data_update_config.json
+

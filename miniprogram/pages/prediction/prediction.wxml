@@ -1,0 +1,134 @@
+<view class="container">
+  <view class="header">
+    <text class="title">策略分析</text>
+    <text class="subtitle">5只股票组合策略分析</text>
+  </view>
+
+  <view class="params-section">
+    <view class="param-row">
+      <text class="param-label">开始日期</text>
+      <picker mode="date" value="{{startDate}}" start="2020-01-01" end="{{endDate}}" bindchange="onStartDateChange">
+        <view class="param-value">{{startDate}}</view>
+      </picker>
+    </view>
+
+    <view class="param-row">
+      <text class="param-label">结束日期</text>
+      <picker mode="date" value="{{endDate}}" start="2020-01-01" end="{{today}}" bindchange="onEndDateChange">
+        <view class="param-value">{{endDate}}</view>
+      </picker>
+    </view>
+
+    <view class="param-row">
+      <text class="param-label">快速均线</text>
+      <input type="number" class="param-input" value="{{fastPeriod}}" bindinput="onFastPeriodInput" placeholder="5" />
+    </view>
+
+    <view class="param-row">
+      <text class="param-label">慢速均线</text>
+      <input type="number" class="param-input" value="{{slowPeriod}}" bindinput="onSlowPeriodInput" placeholder="20" />
+    </view>
+
+    <button class="run-btn" bindtap="runStrategyAnalysis" disabled="{{loading}}">
+      {{loading ? '分析中...' : '开始分析'}}
+    </button>
+  </view>
+
+  <view class="portfolio-section" wx:if="{{portfolioResult}}">
+    <view class="portfolio-header">
+      <text class="portfolio-title">组合总体表现</text>
+    </view>
+
+    <view class="portfolio-stats">
+      <view class="stat-item">
+        <text class="stat-label">初始资金</text>
+        <text class="stat-value">{{portfolioResult.initial_cash}}</text>
+      </view>
+
+      <view class="stat-item">
+        <text class="stat-label">最终价值</text>
+        <text class="stat-value">{{portfolioResult.final_value}}</text>
+      </view>
+
+      <view class="stat-item">
+        <text class="stat-label">总收益率</text>
+        <text class="stat-value {{portfolioResult.total_return >= 0 ? 'positive' : 'negative'}}">
+          {{portfolioResult.total_return >= 0 ? '+' : ''}}{{portfolioResult.total_return}}%
+        </text>
+      </view>
+
+      <view class="stat-item">
+        <text class="stat-label">最大回撤</text>
+        <text class="stat-value">{{portfolioResult.max_drawdown}}%</text>
+      </view>
+
+      <view class="stat-item">
+        <text class="stat-label">总交易次数</text>
+        <text class="stat-value">{{portfolioResult.total_trades}}</text>
+      </view>
+
+      <view class="stat-item">
+        <text class="stat-label">胜率</text>
+        <text class="stat-value">{{portfolioResult.win_rate}}%</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="stocks-section" wx:if="{{results.length > 0}}">
+    <view class="stocks-header">
+      <text class="stocks-title">个股表现</text>
+    </view>
+
+    <view class="stock-list">
+      <view class="stock-card" wx:for="{{results}}" wx:key="symbol">
+        <view class="stock-header">
+          <text class="stock-symbol">{{item.symbol}}</text>
+          <text class="stock-return {{item.total_return >= 0 ? 'positive' : 'negative'}}">
+            {{item.total_return >= 0 ? '+' : ''}}{{item.total_return}}%
+          </text>
+        </view>
+
+        <view class="stock-stats">
+          <view class="stock-stat">
+            <text class="stock-stat-label">初始资金</text>
+            <text class="stock-stat-value">{{item.initial_cash}}</text>
+          </view>
+
+          <view class="stock-stat">
+            <text class="stock-stat-label">最终价值</text>
+            <text class="stock-stat-value">{{item.final_value}}</text>
+          </view>
+
+          <view class="stock-stat">
+            <text class="stock-stat-label">最大回撤</text>
+            <text class="stock-stat-value">{{item.max_drawdown}}%</text>
+          </view>
+
+          <view class="stock-stat">
+            <text class="stock-stat-label">夏普比率</text>
+            <text class="stock-stat-value">{{item.sharpe_ratio}}</text>
+          </view>
+
+          <view class="stock-stat">
+            <text class="stock-stat-label">交易次数</text>
+            <text class="stock-stat-value">{{item.total_trades}}</text>
+          </view>
+
+          <view class="stock-stat">
+            <text class="stock-stat-label">胜率</text>
+            <text class="stock-stat-value">{{item.win_rate}}%</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="loading-section" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">分析中...</text>
+  </view>
+
+  <view class="error-section" wx:if="{{error}}">
+    <text class="error-text">{{error}}</text>
+  </view>
+</view>

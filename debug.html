@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>调试 plan.html</title>
+</head>
+<body>
+    <h1>调试页面</h1>
+    <button onclick="testRefresh()">测试刷新</button>
+    <div id="output"></div>
+
+    <script>
+        console.log('页面加载...');
+
+        async function testRefresh(showAlert = true) {
+            console.log('testRefresh 被调用，showAlert:', showAlert);
+            const output = document.getElementById('output');
+            output.innerHTML = `刷新时间: ${new Date().toLocaleTimeString()}<br>` + output.innerHTML;
+
+            if (showAlert) {
+                alert('刷新完成');
+            }
+        }
+
+        // 测试自动刷新
+        let autoRefreshInterval = null;
+
+        function startAutoRefresh() {
+            if (autoRefreshInterval) {
+                clearInterval(autoRefreshInterval);
+            }
+
+            console.log('启动自动刷新...');
+
+            autoRefreshInterval = setInterval(() => {
+                console.log('自动刷新中...');
+                testRefresh(false);
+            }, 5000); // 5秒测试
+
+            console.log('自动刷新已启动');
+        }
+
+        // 页面加载后启动
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOMContentLoaded 事件触发');
+            testRefresh(false);
+            startAutoRefresh();
+
+            // 监听页面可见性
+            document.addEventListener('visibilitychange', function() {
+                console.log('visibilitychange 事件触发，状态:', document.visibilityState);
+                if (document.visibilityState === 'visible') {
+                    console.log('页面可见');
+                    testRefresh(false);
+                }
+            });
+        });
+
+        console.log('脚本加载完成');
+    </script>
+</body>
+</html>

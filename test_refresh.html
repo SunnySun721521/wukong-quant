@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>测试自动刷新</title>
+</head>
+<body>
+    <h1>测试自动刷新功能</h1>
+    <button onclick="testRefresh()">测试刷新</button>
+    <div id="output"></div>
+
+    <script>
+        let autoRefreshInterval = null;
+
+        function startAutoRefresh() {
+            if (autoRefreshInterval) {
+                clearInterval(autoRefreshInterval);
+            }
+
+            console.log('启动自动刷新...');
+
+            autoRefreshInterval = setInterval(() => {
+                console.log('自动刷新中...');
+                testRefresh(false);
+            }, 5000); // 5秒测试
+
+            console.log('自动刷新已启动');
+        }
+
+        function testRefresh(showAlert = true) {
+            console.log('testRefresh 被调用，showAlert:', showAlert);
+            const output = document.getElementById('output');
+            output.innerHTML = `刷新时间: ${new Date().toLocaleTimeString()}<br>` + output.innerHTML;
+
+            if (showAlert) {
+                alert('刷新完成');
+            }
+        }
+
+        // 页面加载后启动
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('页面加载完成');
+            testRefresh(false);
+            startAutoRefresh();
+
+            // 监听页面可见性
+            document.addEventListener('visibilitychange', function() {
+                if (document.visibilityState === 'visible') {
+                    console.log('页面可见');
+                    testRefresh(false);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="header">
+    <text class="title">服务器设置</text>
+    <text class="subtitle">配置后端服务器地址</text>
+  </view>
+
+  <view class="form-section">
+    <view class="form-item">
+      <text class="label">服务器地址：</text>
+      <input 
+        class="input" 
+        placeholder="请输入服务器地址" 
+        value="{{serverUrl}}" 
+        bindinput="onServerUrlInput" 
+      />
+    </view>
+
+    <view class="hint">
+      <text class="hint-text">提示：手机端需要输入局域网IP地址，如：http://192.168.1.100:5001</text>
+    </view>
+
+    <view class="button-group">
+      <button 
+        class="btn btn-test" 
+        bindtap="testConnection" 
+        loading="{{testing}}"
+      >
+        {{testing ? '测试中...' : '测试连接'}}
+      </button>
+
+      <button 
+        class="btn btn-save" 
+        bindtap="saveServerUrl"
+      >
+        保存
+      </button>
+    </view>
+
+    <view class="result-section" wx:if="{{testResult}}">
+      <view class="result-item {{testResult.success ? 'success' : 'error'}}">
+        <text class="result-icon">{{testResult.success ? '✓' : '✗'}}</text>
+        <text class="result-message">{{testResult.message}}</text>
+      </view>
+    </view>
+  </view>
+</view>

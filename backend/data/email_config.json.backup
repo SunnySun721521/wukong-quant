@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "sender_email": "25285603@qq.com",
+  "sender_auth_code": "vnbxnyskelmwbhbb",
+  "recipients": [],
+  "smtp_server": "smtp.qq.com",
+  "smtp_port": 465,
+  "use_ssl": true,
+  "email_subject_template": "?????? - {date}",
+  "email_body_template": "simple",
+  "retry_times": 3,
+  "retry_interval": 5,
+  "timeout": 30
+}

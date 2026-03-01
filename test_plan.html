@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>测试计划页面</title>
+</head>
+<body>
+    <h1>测试页面</h1>
+    <div id="output"></div>
+
+    <script>
+        console.log('=== 脚本开始执行 ===');
+
+        async function testLoad() {
+            console.log('testLoad: 开始');
+            try {
+                const response = await fetch('/api/plan/market-status?_t=' + Date.now());
+                console.log('响应状态:', response.status);
+                const data = await response.json();
+                console.log('获取到的数据:', data);
+                document.getElementById('output').innerHTML = '加载成功: ' + JSON.stringify(data);
+            } catch (error) {
+                console.error('加载失败:', error);
+                document.getElementById('output').innerHTML = '加载失败: ' + error.message;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            console.log('DOMContentLoaded 事件触发');
+            await testLoad();
+        });
+
+        console.log('=== 脚本加载完成 ===');
+    </script>
+</body>
+</html>

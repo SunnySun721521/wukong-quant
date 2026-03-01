@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>量化交易系统 - 悟空522</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header .title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .header .settings-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .header .settings-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .portfolio-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .portfolio-header {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        
+        .portfolio-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .portfolio-date {
+            font-size: 14px;
+            color: #666;
+            margin-left: 15px;
+        }
+        
+        .portfolio-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .stat-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .stat-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .stat-value.positive {
+            color: #52c41a;
+        }
+        
+        .stat-value.negative {
+            color: #f5222d;
+        }
+        
+        .stocks-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stocks-header {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        
+        .stocks-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .stock-list {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .stock-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .stock-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stock-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .stock-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .stock-symbol {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-right: 10px;
+        }
+        
+        .stock-name {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .stock-return {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .stock-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .stock-stat {
+            text-align: center;
+        }
+        
+        .stock-stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .stock-stat-value {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .loading-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 0;
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .empty-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 0;
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .empty-text {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .nav-bar {
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-item {
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nav-item.active {
+            background-color: #667eea;
+            color: white;
+        }
+        
+        .nav-item:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header .title {
+                font-size: 24px;
+            }
+            
+            .portfolio-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stock-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <div class="nav-bar">
+            <div class="nav-item active" data-page="home">首页</div>
+            <div class="nav-item" data-page="plan">计划</div>
+            <div class="nav-item" data-page="backtest">回测</div>
+            <div class="nav-item" data-page="prediction">预测</div>
+            <div class="nav-item" data-page="strategy">策略</div>
+            <div class="nav-item" data-page="settings">设置</div>
+        </div>
+        
+        <!-- 头部 -->
+        <div class="header">
+            <span class="title">量化交易系统</span>
+            <span class="subtitle">智能投资组合分析</span>
+            <span class="settings-btn" onclick="navigateTo('settings')">⚙ 设置</span>
+        </div>
+        
+        <!-- 组合总体表现 -->
+        <div class="portfolio-section" id="portfolioSection" style="display: none;">
+            <div class="portfolio-header">
+                <span class="portfolio-title">组合总体表现</span>
+                <span class="portfolio-date" id="portfolioDate">2024-01-01 至 2024-12-31</span>
+            </div>
+            
+            <div class="portfolio-stats">
+                <div class="stat-item">
+                    <span class="stat-label">初始资金</span>
+                    <span class="stat-value" id="initialCash">--</span>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-label">最终价值</span>
+                    <span class="stat-value" id="finalValue">--</span>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-label">总收益率</span>
+                    <span class="stat-value" id="totalReturn">--</span>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-label">最大回撤</span>
+                    <span class="stat-value" id="maxDrawdown">--</span>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-label">总交易次数</span>
+                    <span class="stat-value" id="totalTrades">--</span>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-label">胜率</span>
+                    <span class="stat-value" id="winRate">--</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 个股表现 -->
+        <div class="stocks-section" id="stocksSection" style="display: none;">
+            <div class="stocks-header">
+                <span class="stocks-title">个股表现</span>
+            </div>
+            
+            <div class="stock-list" id="stockList">
+                <!-- 个股卡片将通过JavaScript动态生成 -->
+            </div>
+        </div>
+        
+        <!-- 加载中 -->
+        <div class="loading-section" id="loadingSection">
+            <div class="loading-spinner"></div>
+            <span class="loading-text">加载中...</span>
+        </div>
+        
+        <!-- 暂无数据 -->
+        <div class="empty-section" id="emptySection" style="display: none;">
+            <span class="empty-text">暂无数据</span>
+        </div>
+    </div>
+    
+    <script>
+        let autoUpdateTimer = null;
+        const UPDATE_INTERVAL = 30 * 60 * 1000;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            loadHomeData();
+            startAutoUpdate();
+            
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const page = this.getAttribute('data-page');
+                    navigateTo(page);
+                });
+            });
+        });
+        
+        function startAutoUpdate() {
+            if (autoUpdateTimer) {
+                clearInterval(autoUpdateTimer);
+            }
+            autoUpdateTimer = setInterval(function() {
+                console.log('自动刷新首页数据...');
+                loadHomeData();
+            }, UPDATE_INTERVAL);
+            console.log('已启动30分钟自动更新定时器');
+        }
+        
+        function loadHomeData() {
+            document.getElementById('loadingSection').style.display = 'flex';
+            document.getElementById('portfolioSection').style.display = 'none';
+            document.getElementById('stocksSection').style.display = 'none';
+            document.getElementById('emptySection').style.display = 'none';
+            
+            fetch('/api/home/overview')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('API请求失败: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('首页数据:', data);
+                    renderHomeData(data);
+                })
+                .catch(error => {
+                    console.error('加载首页数据失败:', error);
+                    document.getElementById('loadingSection').style.display = 'none';
+                    document.getElementById('emptySection').style.display = 'flex';
+                });
+        }
+        
+        function renderHomeData(data) {
+            document.getElementById('loadingSection').style.display = 'none';
+            
+            if (!data || data.error) {
+                document.getElementById('emptySection').style.display = 'flex';
+                return;
+            }
+            
+            if (!data.positions || data.positions.length === 0) {
+                document.getElementById('emptySection').style.display = 'flex';
+                return;
+            }
+            
+            document.getElementById('portfolioSection').style.display = 'block';
+            document.getElementById('stocksSection').style.display = 'block';
+            
+            document.getElementById('portfolioDate').textContent = 
+                (data.start_date || '') + ' 至 ' + (data.end_date || '');
+            
+            document.getElementById('initialCash').textContent = 
+                formatCurrency(data.initial_cash);
+            
+            document.getElementById('finalValue').textContent = 
+                formatCurrency(data.final_value);
+            
+            const totalReturnEl = document.getElementById('totalReturn');
+            const totalReturn = data.total_return || 0;
+            totalReturnEl.textContent = (totalReturn >= 0 ? '+' : '') + totalReturn.toFixed(2) + '%';
+            totalReturnEl.className = 'stat-value ' + (totalReturn >= 0 ? 'positive' : 'negative');
+            
+            const maxDrawdownEl = document.getElementById('maxDrawdown');
+            const maxDrawdown = data.max_drawdown || 0;
+            maxDrawdownEl.textContent = maxDrawdown.toFixed(2) + '%';
+            maxDrawdownEl.className = 'stat-value ' + (maxDrawdown > 0 ? 'negative' : '');
+            
+            document.getElementById('totalTrades').textContent = data.total_trades || 0;
+            
+            const winRateEl = document.getElementById('winRate');
+            const winRate = data.win_rate || 0;
+            winRateEl.textContent = winRate.toFixed(2) + '%';
+            winRateEl.className = 'stat-value ' + (winRate >= 50 ? 'positive' : 'negative');
+            
+            renderStockList(data.positions);
+        }
+        
+        function renderStockList(positions) {
+            const stockList = document.getElementById('stockList');
+            stockList.innerHTML = '';
+            
+            positions.forEach(stock => {
+                const stockCard = document.createElement('div');
+                stockCard.className = 'stock-card';
+                
+                const returnPercent = stock.profit_loss_percent || 0;
+                const returnClass = returnPercent >= 0 ? 'positive' : 'negative';
+                const returnSign = returnPercent >= 0 ? '+' : '';
+                
+                stockCard.innerHTML = '<div class="stock-header"><div class="stock-info"><span class="stock-symbol">' + stock.symbol + '</span><span class="stock-name">' + (stock.name || '--') + '</span></div><span class="stock-return ' + returnClass + '">' + returnSign + returnPercent.toFixed(2) + '%</span></div><div class="stock-stats"><div class="stock-stat"><span class="stock-stat-label">持仓数量</span><span class="stock-stat-value">' + (stock.quantity || 0) + '</span></div><div class="stock-stat"><span class="stock-stat-label">成本价</span><span class="stock-stat-value">' + (stock.cost_price ? stock.cost_price.toFixed(2) : '--') + '</span></div><div class="stock-stat"><span class="stock-stat-label">现价</span><span class="stock-stat-value">' + (stock.current_price ? stock.current_price.toFixed(2) : '--') + '</span></div><div class="stock-stat"><span class="stock-stat-label">市值</span><span class="stock-stat-value">' + formatCurrency(stock.market_value) + '</span></div><div class="stock-stat"><span class="stock-stat-label">盈亏</span><span class="stock-stat-value ' + returnClass + '">' + returnSign + formatCurrency(stock.profit_loss) + '</span></div></div>';
+                
+                stockList.appendChild(stockCard);
+            });
+        }
+        
+        function formatCurrency(value) {
+            if (value === null || value === undefined) return '--';
+            return '¥' + Number(value).toLocaleString('zh-CN', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+        
+        function navigateTo(page) {
+            console.log('导航到:', page);
+            switch(page) {
+                case 'home':
+                    location.href = 'index.html';
+                    break;
+                case 'plan':
+                    location.href = 'plan.html';
+                    break;
+                case 'backtest':
+                    location.href = 'backtest.html';
+                    break;
+                case 'prediction':
+                    location.href = 'prediction.html';
+                    break;
+                case 'strategy':
+                    location.href = 'strategy.html';
+                    break;
+                case 'settings':
+                    location.href = 'settings.html';
+                    break;
+                default:
+                    location.href = 'index.html';
+            }
+        }
+        
+        function checkLogin() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (isLoggedIn !== 'true') {
+            }
+        }
+        
+        window.onload = function() {
+            checkLogin();
+        };
+    </script>
+</body>
+</html>

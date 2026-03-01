@@ -1,0 +1,21 @@
+{
+  "scheduled_times": [
+    {
+      "hour": 10,
+      "minute": 40
+    },
+    {
+      "hour": 12,
+      "minute": 0
+    },
+    {
+      "hour": 15,
+      "minute": 20
+    },
+    {
+      "hour": 15,
+      "minute": 30
+    }
+  ],
+  "only_weekday": true
+}

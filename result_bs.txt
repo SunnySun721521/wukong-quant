@@ -1,0 +1,26 @@
+Starting...
+Login: 0
+Data rows: 648
+
+=== 2020-08-03 ===
+Close: 8.35
+MA250: 7.95592
+V_MA5: 7536807.2
+V_MA60: 6376242.8
+Buy cond1 (close>ma250): True
+Buy cond2 (v_ma5>v_ma60): True
+Buy cond3 (shrink): False
+Buy cond4 (backtest ma20): False
+BUY SIGNAL: False
+
+=== 2020-08-04 ===
+Close: 9.19
+MA250: 7.9578
+V_MA5: 8646153.8
+V_MA60: 6566286.033333333
+Buy cond1 (close>ma250): True
+Buy cond2 (v_ma5>v_ma60): True
+Buy cond3 (shrink): False
+Buy cond4 (backtest ma20): False
+BUY SIGNAL: False
+Done

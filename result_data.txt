@@ -1,0 +1,6 @@
+Starting...
+login: 0
+2018-01-01 to 2020-08-03: 628 days
+2019 year: 244 days
+First date: 2015-01-05, Last date: 2020-12-31, Total: 1462
+Done

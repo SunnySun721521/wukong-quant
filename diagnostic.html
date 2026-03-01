@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>诊断测试</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>计划页面诊断测试</h1>
+
+    <div class="section">
+        <h2>1. JavaScript 测试</h2>
+        <div id="js-test">测试中...</div>
+    </div>
+
+    <div class="section">
+        <h2>2. API 测试 - 市场状态</h2>
+        <div id="market-status-test">测试中...</div>
+    </div>
+
+    <div class="section">
+        <h2>3. API 测试 - 调仓策略</h2>
+        <div id="adjustment-test">测试中...</div>
+    </div>
+
+    <div class="section">
+        <h2>4. API 测试 - 买入建议</h2>
+        <div id="buy-test">测试中...</div>
+    </div>
+
+    <div class="section">
+        <h2>5. 控制台日志</h2>
+        <div id="console-log" style="background: #f0f0f0; padding: 10px; max-height: 300px; overflow-y: auto;"></div>
+    </div>
+
+    <script>
+        // 拦截 console.log
+        const originalLog = console.log;
+        const consoleLogDiv = document.getElementById('console-log');
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            const logLine = document.createElement('div');
+            logLine.textContent = args.join(' ');
+            consoleLogDiv.appendChild(logLine);
+            consoleLogDiv.scrollTop = consoleLogDiv.scrollHeight;
+        };
+
+        // 拦截 console.error
+        const originalError = console.error;
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            const logLine = document.createElement('div');
+            logLine.textContent = 'ERROR: ' + args.join(' ');
+            logLine.style.color = 'red';
+            consoleLogDiv.appendChild(logLine);
+            consoleLogDiv.scrollTop = consoleLogDiv.scrollHeight;
+        };
+
+        // 测试 JavaScript
+        document.getElementById('js-test').innerHTML = '<span class="success">✓ JavaScript 正常工作</span>';
+
+        // 测试市场状态 API
+        async function testMarketStatus() {
+            try {
+                const response = await fetch('/api/plan/market-status?_t=' + Date.now());
+                const data = await response.json();
+                document.getElementById('market-status-test').innerHTML = 
+                    '<span class="success">✓ 市场状态 API 正常</span><br>' +
+                    '数据: ' + JSON.stringify(data).substring(0, 100) + '...';
+            } catch (error) {
+                document.getElementById('market-status-test').innerHTML = 
+                    '<span class="error">✗ 市场状态 API 失败</span><br>' +
+                    '错误: ' + error.message;
+            }
+        }
+
+        // 测试调仓策略 API
+        async function testAdjustment() {
+            try {
+                const response = await fetch('/api/plan/adjustment?_t=' + Date.now());
+                const data = await response.json();
+                document.getElementById('adjustment-test').innerHTML = 
+                    '<span class="success">✓ 调仓策略 API 正常</span><br>' +
+                    '数据: ' + JSON.stringify(data).substring(0, 100) + '...';
+            } catch (error) {
+                document.getElementById('adjustment-test').innerHTML = 
+                    '<span class="error">✗ 调仓策略 API 失败</span><br>' +
+                    '错误: ' + error.message;
+            }
+        }
+
+        // 测试买入建议 API
+        async function testBuy() {
+            try {
+                const response = await fetch('/api/plan/buy?_t=' + Date.now());
+                const data = await response.json();
+                document.getElementById('buy-test').innerHTML = 
+                    '<span class="success">✓ 买入建议 API 正常</span><br>' +
+                    '数据: ' + JSON.stringify(data).substring(0, 100) + '...';
+            } catch (error) {
+                document.getElementById('buy-test').innerHTML = 
+                    '<span class="error">✗ 买入建议 API 失败</span><br>' +
+                    '错误: ' + error.message;
+            }
+        }
+
+        // 页面加载后运行测试
+        document.addEventListener('DOMContentLoaded', async function() {
+            console.log('=== 诊断测试开始 ===');
+            await testMarketStatus();
+            await testAdjustment();
+            await testBuy();
+            console.log('=== 诊断测试完成 ===');
+        });
+    </script>
+</body>
+</html>

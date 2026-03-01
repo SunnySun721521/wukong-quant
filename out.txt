@@ -1,0 +1,14 @@
+login: 0
+data: 648
+
+=== 0803 ===
+close=8.35, ma250=7.95592
+v_ma5=7536807.2, v_ma60=6376242.8
+c1=True, c2=True, c3=False, c4=False
+BUY=False
+
+=== 0804 ===
+close=9.19, ma250=7.9578
+v_ma5=8646153.8, v_ma60=6566286.033333333
+c1=True, c2=True, c3=False, c4=False
+BUY=False

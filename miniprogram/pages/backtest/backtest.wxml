@@ -1,0 +1,93 @@
+<view class="container">
+  <view class="card">
+    <view class="title">回测参数设置</view>
+    <view class="form-item">
+      <text class="label">股票代码：</text>
+      <view class="input-group">
+        <input class="input" placeholder="输入股票代码，如600519" value="{{symbol}}" bindinput="onSymbolInput" />
+        <text class="picker-btn" bindtap="onStockPickerToggle">▼</text>
+      </view>
+      <view class="stock-picker" wx:if="{{showStockPicker}}">
+        <view class="picker-item" wx:for="{{stockPool}}" wx:key="*this" bindtap="onStockSelect" data-symbol="{{item}}">
+          <text>{{item}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="form-item">
+      <text class="label">开始日期：</text>
+      <picker mode="date" value="{{startDate}}" bindchange="onStartDateChange">
+        <view class="picker">{{startDate}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="label">结束日期：</text>
+      <picker mode="date" value="{{endDate}}" start="{{startDate}}" end="{{today}}" bindchange="onEndDateChange">
+        <view class="picker">{{endDate}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="label">快速均线：</text>
+      <input class="input" type="number" placeholder="默认5" value="{{fastPeriod}}" bindinput="onFastPeriodInput" />
+    </view>
+    <view class="form-item">
+      <text class="label">慢速均线：</text>
+      <input class="input" type="number" placeholder="默认20" value="{{slowPeriod}}" bindinput="onSlowPeriodInput" />
+    </view>
+    <button class="btn btn-primary" bindtap="runBacktest" loading="{{loading}}">开始回测</button>
+  </view>
+
+  <view class="card" wx:if="{{result}}">
+    <view class="title">回测结果</view>
+    <view class="result-grid">
+      <view class="result-item">
+        <text class="result-label">总收益率</text>
+        <text class="result-value {{result.total_return >= 0 ? 'text-danger' : 'text-success'}}">{{result.total_return}}%</text>
+      </view>
+      <view class="result-item">
+        <text class="result-label">最大回撤</text>
+        <text class="result-value text-danger">{{result.max_drawdown}}%</text>
+      </view>
+      <view class="result-item">
+        <text class="result-label">夏普比率</text>
+        <text class="result-value text-primary">{{result.sharpe_ratio}}</text>
+      </view>
+      <view class="result-item">
+        <text class="result-label">交易次数</text>
+        <text class="result-value">{{result.total_trades}}</text>
+      </view>
+      <view class="result-item">
+        <text class="result-label">胜率</text>
+        <text class="result-value {{result.win_rate >= 50 ? 'text-danger' : 'text-success'}}">{{result.win_rate}}%</text>
+      </view>
+      <view class="result-item">
+        <text class="result-label">平均盈利</text>
+        <text class="result-value text-danger">{{result.avg_profit}}</text>
+      </view>
+    </view>
+    
+    <view class="section-title mt-20">资金曲线</view>
+    <view class="chart-container">
+      <canvas type="2d" id="equityChart" class="equity-chart"></canvas>
+    </view>
+    
+    <view class="section-title mt-20">交易记录</view>
+    <scroll-view scroll-y class="trade-list">
+      <view class="trade-item" wx:for="{{result.trade_log}}" wx:key="index">
+        <view class="trade-info">
+          <text class="trade-date">{{item.date}}</text>
+          <text class="trade-symbol">{{item.symbol}}</text>
+        </view>
+        <view class="trade-action {{item.type === 'buy' ? 'text-danger' : 'text-success'}}">
+          <text class="trade-type">{{item.type === 'buy' ? '买入' : '卖出'}}</text>
+          <text class="trade-price">{{item.price}}</text>
+          <text class="trade-quantity">x{{item.quantity}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="card" wx:if="{{error}}">
+    <view class="title text-danger">错误</view>
+    <text class="text">{{error}}</text>
+  </view>
+</view>

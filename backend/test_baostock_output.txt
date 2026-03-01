@@ -1,0 +1,10 @@
+﻿=== 测试baostock获取股票003816的名称 ===
+login success!
+登录结果: 0, success
+baostock代码: sz.003816
+查询结果: 0, success
+获取到股票信息:
+  代码: sz.003816, 名称: 中国广核, 行业: 2019-08-26
+logout success!
+
+=== 测试完成 ===

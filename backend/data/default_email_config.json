@@ -1,0 +1,14 @@
+{
+  "smtp_server": "smtp.qq.com",
+  "smtp_port": "465",
+  "use_ssl": true,
+  "timeout": 30,
+  "retry_times": 3,
+  "retry_interval": 5,
+  "email_subject_template": "每日操作计划 - {date}",
+  "sender_email": "25285603@qq.com",
+  "sender_auth_code": "gyzieuggwgmfbhhh",
+  "email_body_template": "simple",
+  "enabled": true,
+  "recipients": ["lib@tcscd.com"]
+}
