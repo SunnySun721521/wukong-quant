@@ -662,8 +662,42 @@ def save_backtest_pool(stocks):
 
 @app.route('/api/bpool/info', methods=['GET'])
 def get_backtest_pool_info():
+    stocks = load_backtest_pool()
+    
+    # Render环境获取股票名称
+    stock_info_list = []
+    if os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID'):
+        print("[Render] 获取回测股票池名称")
+        try:
+            from render_unified_data import get_stock_info_render
+            for symbol in stocks:
+                try:
+                    info = get_stock_info_render(symbol)
+                    stock_info_list.append({
+                        'symbol': symbol,
+                        'name': info.get('name', symbol) if info else symbol
+                    })
+                except Exception as e:
+                    print(f"[Render] 获取股票名称失败 {symbol}: {e}")
+                    stock_info_list.append({'symbol': symbol, 'name': symbol})
+        except Exception as e:
+            print(f"[Render] 导入render_unified_data失败: {e}")
+            stock_info_list = [{'symbol': s, 'name': s} for s in stocks]
+    else:
+        # 本地环境
+        for symbol in stocks:
+            try:
+                info = DataProvider.get_stock_info(symbol)
+                stock_info_list.append({
+                    'symbol': symbol,
+                    'name': info.get('name', symbol) if info else symbol
+                })
+            except:
+                stock_info_list.append({'symbol': symbol, 'name': symbol})
+    
     return jsonify({
-        'current_pool': load_backtest_pool(),
+        'current_pool': stocks,
+        'stock_info': stock_info_list,
         'message': '回测股票池信息'
     })
 

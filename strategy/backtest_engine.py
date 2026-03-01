@@ -8,6 +8,12 @@ from datetime import datetime, timedelta
 import sys
 import os
 
+RENDER_ENV = os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID')
+
+def is_render_environment():
+    """检测是否在 Render 环境"""
+    return RENDER_ENV is not None
+
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from data_provider import DataProvider
 
@@ -542,6 +548,24 @@ class BacktestEngine:
     
     def prepare_data(self, symbol, start_date, end_date):
         try:
+            # Render环境优先使用统一数据模块
+            if is_render_environment():
+                print(f"[Render] 回测数据获取: {symbol}")
+                try:
+                    # 添加backend路径以导入render_unified_data
+                    backend_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                    if backend_path not in sys.path:
+                        sys.path.insert(0, backend_path)
+                    
+                    from render_unified_data import get_kline_data_render
+                    df = get_kline_data_render(symbol, start_date, end_date)
+                    if df is not None and not df.empty:
+                        print(f"[Render] 回测数据获取成功: {symbol}, {len(df)}条")
+                        return df
+                except Exception as e:
+                    print(f"[Render] 统一数据模块获取失败: {e}")
+            
+            # 本地环境使用DataProvider
             df = DataProvider.get_kline_data(symbol, start_date, end_date)
             if df is not None and not df.empty:
                 return df

@@ -4,7 +4,7 @@ Render 环境 PDF 字体处理模块
 确保 PDF 中文正确显示
 """
 import os
-import urllib.request
+import subprocess
 
 RENDER_ENV = os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID')
 
@@ -14,150 +14,104 @@ def is_render_environment():
 
 
 def get_chinese_font():
-    """获取中文字体"""
+    """获取中文字体 - Render环境专用"""
     if not is_render_environment():
         return None
     
-    font_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fonts')
-    os.makedirs(font_dir, exist_ok=True)
-    
-    # 尝试多种字体路径
-    font_paths = [
-        # Noto CJK 字体
-        ('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc', 'NotoSansCJK'),
-        ('/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc', 'NotoSansCJK'),
-        ('/usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc', 'NotoSansCJK'),
-        # WenQuanYi 字体
-        ('/usr/share/fonts/wenquanyi/wenquanyi/wqy-zenhei.ttc', 'WQYZenHei'),
-        ('/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc', 'WQYZenHei'),
-        # Source Han 字体
-        ('/usr/share/fonts/adobe-source-han-sans/SourceHanSansCN-Regular.otf', 'SourceHanSans'),
-    ]
+    print("[Render] 开始获取中文字体...")
     
     # 尝试注册系统字体
     try:
         from reportlab.pdfbase import pdfmetrics
         from reportlab.pdfbase.ttfonts import TTFont
-        
-        for font_path, font_name in font_paths:
-            if os.path.exists(font_path):
-                try:
-                    pdfmetrics.registerFont(TTFont(font_name, font_path))
-                    print(f"[Render] 成功注册系统字体: {font_name}")
-                    return font_name
-                except Exception as e:
-                    print(f"[Render] 注册字体失败 {font_name}: {e}")
-                    continue
-    except Exception as e:
-        print(f"[Render] 字体注册模块导入失败: {e}")
-    
-    # 下载字体
-    downloaded_font = download_chinese_font()
-    if downloaded_font:
-        return downloaded_font
-    
-    print("[Render] 警告: 未找到可用的中文字体")
-    return None
-
-
-def download_chinese_font():
-    """下载中文字体"""
-    if not is_render_environment():
+    except ImportError:
+        print("[Render] reportlab未安装")
         return None
     
-    font_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fonts')
-    os.makedirs(font_dir, exist_ok=True)
-    
-    # 使用 Noto Sans SC (简体中文)
-    font_url = "https://github.com/googlefonts/noto-cjk/raw/main/Sans/OTF/SimplifiedChinese/NotoSansSC-Regular.otf"
-    font_path = os.path.join(font_dir, 'NotoSansSC-Regular.otf')
-    
-    if os.path.exists(font_path):
+    # 方法1: 尝试使用系统已安装的中文字体
+    system_fonts = find_system_chinese_fonts()
+    for font_path, font_name in system_fonts:
         try:
-            from reportlab.pdfbase import pdfmetrics
-            from reportlab.pdfbase.ttfonts import TTFont
-            pdfmetrics.registerFont(TTFont('NotoSansSC', font_path))
-            print(f"[Render] 使用已下载的字体: NotoSansSC")
-            return 'NotoSansSC'
+            pdfmetrics.registerFont(TTFont(font_name, font_path))
+            print(f"[Render] 成功注册系统字体: {font_name} @ {font_path}")
+            return font_name
         except Exception as e:
-            print(f"[Render] 注册已下载字体失败: {e}")
+            print(f"[Render] 注册字体失败 {font_name}: {e}")
+            continue
     
-    # 下载字体
-    try:
-        print(f"[Render] 正在下载中文字体...")
-        urllib.request.urlretrieve(font_url, font_path)
-        print(f"[Render] 字体下载成功: {font_path}")
-        
-        from reportlab.pdfbase import pdfmetrics
-        from reportlab.pdfbase.ttfonts import TTFont
-        pdfmetrics.registerFont(TTFont('NotoSansSC', font_path))
-        print(f"[Render] 成功注册下载字体: NotoSansSC")
-        return 'NotoSansSC'
-        
-    except Exception as e:
-        print(f"[Render] 下载字体失败: {e}")
-        
-        # 尝试备用字体URL
-        backup_urls = [
-            "https://raw.githubusercontent.com/ArtifexSoftware/urw-base35-fonts/master/fonts/NimbusRoman-Regular.otf",
-        ]
-        
-        for url in backup_urls:
-            try:
-                backup_path = os.path.join(font_dir, 'backup_font.otf')
-                urllib.request.urlretrieve(url, backup_path)
-                from reportlab.pdfbase import pdfmetrics
-                from reportlab.pdfbase.ttfonts import TTFont
-                pdfmetrics.registerFont(TTFont('BackupFont', backup_path))
-                print(f"[Render] 使用备用字体: BackupFont")
-                return 'BackupFont'
-            except:
-                continue
-    
+    # 方法2: 使用内置的reportlab字体（不支持中文，但至少不会报错）
+    print("[Render] 警告: 未找到可用的中文字体，PDF中文可能无法正常显示")
     return None
 
 
-def create_pdf_with_chinese(filename, content_list):
-    """创建包含中文的PDF"""
-    if not is_render_environment():
-        return None
+def find_system_chinese_fonts():
+    """查找系统中的中文字体"""
+    fonts = []
     
+    # Render环境可能的字体路径
+    possible_paths = [
+        # DejaVu 字体 (通常预装)
+        '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',
+        '/usr/share/fonts/dejavu/DejaVuSans.ttf',
+        # Noto 字体
+        '/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf',
+        '/usr/share/fonts/noto/NotoSans-Regular.ttf',
+        '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',
+        '/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc',
+        # Liberation 字体
+        '/usr/share/fonts/liberation/LiberationSans-Regular.ttf',
+        '/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf',
+        # WenQuanYi 字体
+        '/usr/share/fonts/wenquanyi/wqy-zenhei.ttc',
+        '/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc',
+        # Source Han 字体
+        '/usr/share/fonts/adobe-source-han-sans/SourceHanSansCN-Regular.otf',
+        # FreeFont
+        '/usr/share/fonts/truetype/freefont/FreeSans.ttf',
+        # 其他常见路径
+        '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',
+        '/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf',
+    ]
+    
+    for path in possible_paths:
+        if os.path.exists(path):
+            font_name = os.path.basename(path).split('.')[0].replace('-', '').replace('_', '')
+            fonts.append((path, font_name))
+            print(f"[Render] 发现系统字体: {font_name} @ {path}")
+    
+    # 尝试使用fc-list命令查找中文字体
     try:
-        from reportlab.lib.pagesizes import A4
-        from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-        from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-        
-        font_name = get_chinese_font()
-        
-        doc = SimpleDocTemplate(filename, pagesize=A4)
-        styles = getSampleStyleSheet()
-        story = []
-        
-        if font_name:
-            title_style = ParagraphStyle('ChineseTitle', parent=styles['Heading1'], fontName=font_name)
-            normal_style = ParagraphStyle('ChineseNormal', parent=styles['Normal'], fontName=font_name)
-        else:
-            title_style = styles['Heading1']
-            normal_style = styles['Normal']
-        
-        for item in content_list:
-            if item.get('type') == 'title':
-                story.append(Paragraph(item.get('text', ''), title_style))
-            elif item.get('type') == 'paragraph':
-                story.append(Paragraph(item.get('text', ''), normal_style))
-            elif item.get('type') == 'spacer':
-                story.append(Spacer(1, item.get('height', 12)))
-        
-        doc.build(story)
-        print(f"[Render] PDF创建成功: {filename}")
-        return filename
-        
+        result = subprocess.run(['fc-list', ':lang=zh'], capture_output=True, text=True, timeout=5)
+        if result.returncode == 0:
+            for line in result.stdout.strip().split('\n'):
+                if line:
+                    parts = line.split(':')
+                    if parts:
+                        font_path = parts[0].strip()
+                        if os.path.exists(font_path):
+                            font_name = f"zh_{len(fonts)}"
+                            fonts.append((font_path, font_name))
+                            print(f"[Render] fc-list发现中文字体: {font_path}")
     except Exception as e:
-        print(f"[Render] 创建PDF失败: {e}")
-        return None
+        print(f"[Render] fc-list查找失败: {e}")
+    
+    return fonts
+
+
+def register_font_for_pdf():
+    """为PDF注册字体 - 返回字体名称供PDF使用"""
+    font = get_chinese_font()
+    if font:
+        return font
+    
+    # 如果没有找到中文字体，尝试使用reportlab内置字体
+    # 这些字体不支持中文，但可以防止PDF生成失败
+    return 'Helvetica'
 
 
 if __name__ == '__main__':
     print(f"Render环境: {is_render_environment()}")
+    fonts = find_system_chinese_fonts()
+    print(f"发现的字体: {fonts}")
     font = get_chinese_font()
-    print(f"中文字体: {font}")
+    print(f"使用的字体: {font}")

@@ -16,7 +16,7 @@ git add .
 
 echo.
 echo [3/4] Committing changes...
-git commit -m "Fix Render deployment: PDF fonts, email sending, yfinance integration"
+git commit -m "Fix Render: PDF fonts, market status, backtest data, email sending"
 
 echo.
 echo [4/4] Pushing to GitHub...
@@ -24,6 +24,6 @@ git push origin main
 
 echo.
 echo ========================================
-echo Done!
+echo Done! Please check Render dashboard for deployment status.
 echo ========================================
 pause

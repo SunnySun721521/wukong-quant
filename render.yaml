@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: wukong-quant
+    env: python
+    buildCommand: pip install -r requirements.txt && apt-get update && apt-get install -y fonts-noto-cjk fonts-wqy-zenhei || true
+    startCommand: cd backend && python app.py
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: RENDER
+        value: true

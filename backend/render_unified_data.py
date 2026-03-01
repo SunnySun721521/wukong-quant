@@ -221,41 +221,196 @@ class RenderDataProvider:
     def get_index_data(index_code='000300', days=120):
         """获取指数数据 (沪深300等)"""
         if not is_render_environment():
-            return None, None
+            return None, None, None, None
         
+        print(f"[Render] 开始获取指数数据: {index_code}")
+        
+        # 方法1: yfinance - 使用正确的指数代码
         try:
             import yfinance as yf
-            # 沪深300: 000300.SS, 上证指数: 000001.SS, 深证成指: 399001.SZ
-            if index_code == '000300':
-                yf_symbol = "000300.SS"
-            elif index_code == '000001':
-                yf_symbol = "000001.SS"
-            elif index_code == '399001':
-                yf_symbol = "399001.SZ"
-            else:
-                yf_symbol = f"{index_code}.SS"
             
-            ticker = yf.Ticker(yf_symbol)
-            end_date = datetime.now()
-            start_date = end_date - timedelta(days=days + 50)
-            hist = ticker.history(start=start_date, end=end_date)
+            # 沪深300指数的yfinance代码映射
+            index_mapping = {
+                '000300': ['000300.SS', 'CSI300.SS'],  # 沪深300
+                '000001': ['000001.SS', 'SSE.SS'],      # 上证指数
+                '399001': ['399001.SZ', 'SZSE.SZ'],     # 深证成指
+                '399006': ['399006.SZ'],                # 创业板指
+            }
             
-            if not hist.empty:
-                current_price = float(hist['Close'].iloc[-1])
-                prev_price = float(hist['Close'].iloc[-2]) if len(hist) > 1 else current_price
-                change_pct = ((current_price - prev_price) / prev_price) * 100 if prev_price > 0 else 0
-                
-                # 计算MA120
-                if len(hist) >= 120:
-                    ma120 = float(hist['Close'].tail(120).mean())
-                else:
-                    ma120 = float(hist['Close'].mean())
-                
-                print(f"[Render] yfinance获取指数 {index_code}: 价格={current_price}, 涨跌={change_pct}%")
-                return current_price, change_pct, ma120, hist
+            yf_symbols = index_mapping.get(index_code, [f"{index_code}.SS"])
+            
+            for yf_symbol in yf_symbols:
+                try:
+                    print(f"[Render] 尝试yfinance代码: {yf_symbol}")
+                    ticker = yf.Ticker(yf_symbol)
+                    end_date = datetime.now()
+                    start_date = end_date - timedelta(days=days + 50)
+                    hist = ticker.history(start=start_date, end=end_date)
+                    
+                    if not hist.empty and len(hist) > 0:
+                        current_price = float(hist['Close'].iloc[-1])
+                        prev_price = float(hist['Close'].iloc[-2]) if len(hist) > 1 else current_price
+                        change_pct = ((current_price - prev_price) / prev_price) * 100 if prev_price > 0 else 0
+                        
+                        # 计算MA120
+                        if len(hist) >= 120:
+                            ma120 = float(hist['Close'].tail(120).mean())
+                        else:
+                            ma120 = float(hist['Close'].mean())
+                        
+                        print(f"[Render] yfinance获取指数成功 {yf_symbol}: 价格={current_price:.2f}, 涨跌={change_pct:.2f}%")
+                        return current_price, change_pct, ma120, hist
+                except Exception as e:
+                    print(f"[Render] yfinance代码 {yf_symbol} 失败: {e}")
+                    continue
         except Exception as e:
-            print(f"[Render] 获取指数数据失败: {e}")
+            print(f"[Render] yfinance获取指数失败: {e}")
         
+        # 方法2: 使用akshare获取指数数据
+        try:
+            import akshare as ak
+            import socket
+            socket.setdefaulttimeout(30)
+            
+            end_date_str = datetime.now().strftime('%Y%m%d')
+            start_date_str = (datetime.now() - timedelta(days=days + 50)).strftime('%Y%m%d')
+            
+            # akshare指数代码映射
+            ak_index_map = {
+                '000300': 'sh000300',   # 沪深300
+                '000001': 'sh000001',   # 上证指数
+                '399001': 'sz399001',   # 深证成指
+                '399006': 'sz399006',   # 创业板指
+            }
+            
+            ak_symbol = ak_index_map.get(index_code, f'sh{index_code}')
+            print(f"[Render] 尝试akshare获取: {ak_symbol}")
+            
+            df = ak.stock_zh_index_daily(symbol=ak_symbol)
+            if df is not None and not df.empty:
+                # 筛选日期范围
+                df['date'] = pd.to_datetime(df['date'])
+                df = df[(df['date'] >= start_date_str) & (df['date'] <= end_date_str)]
+                df.sort_values('date', inplace=True)
+                
+                if not df.empty:
+                    current_price = float(df['close'].iloc[-1])
+                    prev_price = float(df['close'].iloc[-2]) if len(df) > 1 else current_price
+                    change_pct = ((current_price - prev_price) / prev_price) * 100 if prev_price > 0 else 0
+                    
+                    if len(df) >= 120:
+                        ma120 = float(df['close'].tail(120).mean())
+                    else:
+                        ma120 = float(df['close'].mean())
+                    
+                    # 转换为yfinance格式
+                    hist = df.set_index('date')[['open', 'high', 'low', 'close', 'volume']].copy()
+                    hist.index.name = 'Date'
+                    
+                    print(f"[Render] akshare获取指数成功: 价格={current_price:.2f}, 涨跌={change_pct:.2f}%")
+                    return current_price, change_pct, ma120, hist
+        except Exception as e:
+            print(f"[Render] akshare获取指数失败: {e}")
+        
+        # 方法3: 使用efinance获取指数数据
+        try:
+            import efinance as ef
+            
+            end_date_str = datetime.now().strftime('%Y%m%d')
+            start_date_str = (datetime.now() - timedelta(days=days + 50)).strftime('%Y%m%d')
+            
+            print(f"[Render] 尝试efinance获取指数: {index_code}")
+            
+            df = ef.stock.get_quote_history(
+                stock_codes=[index_code],
+                beg=start_date_str,
+                end=end_date_str,
+                klt=101
+            )
+            
+            if df and index_code in df:
+                result_df = df[index_code]
+                if result_df is not None and not result_df.empty:
+                    result_df.columns = result_df.columns.str.replace(r'\s+', '', regex=True)
+                    col_map = {'日期': 'date', '开盘': 'open', '收盘': 'close', 
+                               '最高': 'high', '最低': 'low', '成交量': 'volume'}
+                    result_df = result_df.rename(columns={k: v for k, v in col_map.items() if k in result_df.columns})
+                    
+                    if 'date' in result_df.columns:
+                        result_df['date'] = pd.to_datetime(result_df['date'])
+                        result_df.sort_values('date', inplace=True)
+                        
+                        current_price = float(result_df['close'].iloc[-1])
+                        prev_price = float(result_df['close'].iloc[-2]) if len(result_df) > 1 else current_price
+                        change_pct = ((current_price - prev_price) / prev_price) * 100 if prev_price > 0 else 0
+                        
+                        if len(result_df) >= 120:
+                            ma120 = float(result_df['close'].tail(120).mean())
+                        else:
+                            ma120 = float(result_df['close'].mean())
+                        
+                        hist = result_df.set_index('date')[['open', 'high', 'low', 'close', 'volume']].copy()
+                        hist.index.name = 'Date'
+                        
+                        print(f"[Render] efinance获取指数成功: 价格={current_price:.2f}, 涨跌={change_pct:.2f}%")
+                        return current_price, change_pct, ma120, hist
+        except Exception as e:
+            print(f"[Render] efinance获取指数失败: {e}")
+        
+        # 方法4: 使用baostock获取指数数据
+        try:
+            import baostock as bs
+            
+            lg = bs.login()
+            if lg.error_code == '0':
+                end_date_str = datetime.now().strftime('%Y-%m-%d')
+                start_date_str = (datetime.now() - timedelta(days=days + 50)).strftime('%Y-%m-%d')
+                
+                # baostock指数代码
+                bs_code = f"sh.{index_code}" if index_code.startswith('000') else f"sz.{index_code}"
+                print(f"[Render] 尝试baostock获取: {bs_code}")
+                
+                rs = bs.query_history_k_data_plus(
+                    bs_code,
+                    "date,open,high,low,close,volume",
+                    start_date=start_date_str,
+                    end_date=end_date_str,
+                    frequency="d",
+                    adjustflag="3"
+                )
+                
+                if rs.error_code == '0':
+                    data_list = []
+                    while rs.next():
+                        data_list.append(rs.get_row_data())
+                    
+                    if data_list:
+                        df = pd.DataFrame(data_list, columns=['date', 'open', 'high', 'low', 'close', 'volume'])
+                        df['date'] = pd.to_datetime(df['date'])
+                        for col in ['open', 'high', 'low', 'close', 'volume']:
+                            df[col] = pd.to_numeric(df[col], errors='coerce')
+                        
+                        current_price = float(df['close'].iloc[-1])
+                        prev_price = float(df['close'].iloc[-2]) if len(df) > 1 else current_price
+                        change_pct = ((current_price - prev_price) / prev_price) * 100 if prev_price > 0 else 0
+                        
+                        if len(df) >= 120:
+                            ma120 = float(df['close'].tail(120).mean())
+                        else:
+                            ma120 = float(df['close'].mean())
+                        
+                        hist = df.set_index('date')[['open', 'high', 'low', 'close', 'volume']].copy()
+                        hist.index.name = 'Date'
+                        
+                        bs.logout()
+                        print(f"[Render] baostock获取指数成功: 价格={current_price:.2f}, 涨跌={change_pct:.2f}%")
+                        return current_price, change_pct, ma120, hist
+                
+                bs.logout()
+        except Exception as e:
+            print(f"[Render] baostock获取指数失败: {e}")
+        
+        print(f"[Render] 所有方法均无法获取指数 {index_code} 数据")
         return None, None, None, None
     
     @staticmethod
