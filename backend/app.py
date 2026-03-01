@@ -4641,6 +4641,19 @@ def get_home_overview():
                     if time.time() - cached_price_data.get('timestamp', 0) < HOME_PRICE_CACHE_EXPIRE:
                         current_price = cached_price_data.get('price')
                 
+                # Render环境使用render_solution获取最新价格
+                if current_price is None and os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID'):
+                    try:
+                        from render_solution import get_current_price_render
+                        current_price = get_current_price_render(symbol)
+                        if current_price:
+                            PRICE_CACHE[symbol] = {
+                                'price': current_price,
+                                'timestamp': time.time()
+                            }
+                    except Exception as e:
+                        print(f"[Render] 获取价格失败 {symbol}: {e}")
+                
                 if current_price is None and need_refresh_prices:
                     bs_symbol = f"sh.{symbol}" if symbol.startswith('6') else f"sz.{symbol}"
                     rs = bs.query_history_k_data_plus(
