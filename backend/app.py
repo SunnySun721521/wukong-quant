@@ -4521,6 +4521,16 @@ def initialize_default_data():
     """初始化默认数据，确保Render上有必要的文件"""
     import shutil
     
+    # 0. 初始化统一数据库（优先使用数据库）
+    try:
+        from render_data_init import init_render_data
+        init_render_data()
+        print("统一数据库初始化完成")
+    except Exception as e:
+        print(f"统一数据库初始化失败: {e}")
+        import traceback
+        traceback.print_exc()
+    
     # 1. 创建默认回测股票池
     backtest_pool_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'strategy', 'data', 'backtest_pool.json')
     default_pool = ["002009", "002371", "300750", "600519", "000858", "600036", "601318", "601398", "000333", "600104", "600050", "601288", "600009", "600016", "600030", "601012", "601888", "603259", "603501", "002594", "000001", "300059", "600887", "601166"]
@@ -4534,7 +4544,7 @@ def initialize_default_data():
     except Exception as e:
         print(f"创建默认回测股票池失败: {e}")
     
-    # 2. 创建默认持仓数据
+    # 2. 创建默认持仓数据（如果CSV不存在）
     position_file = get_position_file_path()
     if not os.path.exists(position_file):
         try:
