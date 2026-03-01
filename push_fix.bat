@@ -12,7 +12,7 @@ git add .
 
 echo.
 echo [2/3] Committing changes...
-git commit -m "Fix Render: IndentationError in app.py, update render_start.py"
+git commit -m "Fix Render: IndentationError in app.py"
 
 echo.
 echo [3/3] Pushing to GitHub...
