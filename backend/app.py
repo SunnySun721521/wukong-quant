@@ -4603,12 +4603,16 @@ def test_datasource():
                 data_list = []
                 while rs.next():
                     data_list.append(rs.get_row_data())
-                if data_list:
+                if data_list and len(data_list) > 0 and len(data_list[-1]) > 1:
                     results['datasources']['baostock'] = {
                         'available': True,
                         'price': float(data_list[-1][1]),
                         'error': None
                     }
+                else:
+                    results['datasources']['baostock']['error'] = 'No data returned'
+            else:
+                results['datasources']['baostock']['error'] = rs.error_msg
             bs.logout()
         else:
             results['datasources']['baostock']['error'] = lg.error_msg
@@ -4618,6 +4622,8 @@ def test_datasource():
     results['datasources']['akshare'] = {'available': False, 'price': None, 'error': None}
     try:
         import akshare as ak
+        import socket
+        socket.setdefaulttimeout(30)
         df = ak.stock_zh_a_spot_em()
         if df is not None and not df.empty:
             stock_df = df[df['代码'] == test_symbol]
@@ -4627,8 +4633,12 @@ def test_datasource():
                     'price': float(stock_df['最新价'].values[0]),
                     'error': None
                 }
+            else:
+                results['datasources']['akshare']['error'] = 'Stock not found'
+        else:
+            results['datasources']['akshare']['error'] = 'Empty response'
     except Exception as e:
-        results['datasources']['akshare']['error'] = str(e)
+        results['datasources']['akshare']['error'] = str(e)[:200]
     
     results['datasources']['efinance'] = {'available': False, 'price': None, 'error': None}
     try:
@@ -4643,8 +4653,40 @@ def test_datasource():
                     'price': float(stock_df['最新价'].values[0]),
                     'error': None
                 }
+            else:
+                results['datasources']['efinance']['error'] = 'Stock not found'
+        else:
+            results['datasources']['efinance']['error'] = 'Empty response'
+    except ImportError:
+        results['datasources']['efinance']['error'] = 'Module not installed'
     except Exception as e:
-        results['datasources']['efinance']['error'] = str(e)
+        results['datasources']['efinance']['error'] = str(e)[:200]
+    
+    results['datasources']['yfinance'] = {'available': False, 'price': None, 'error': None}
+    try:
+        import yfinance as yf
+        ticker = yf.Ticker(f"{test_symbol}.SS")
+        info = ticker.info
+        if info and 'regularMarketPrice' in info:
+            results['datasources']['yfinance'] = {
+                'available': True,
+                'price': float(info['regularMarketPrice']),
+                'error': None
+            }
+        else:
+            hist = ticker.history(period="5d")
+            if not hist.empty:
+                results['datasources']['yfinance'] = {
+                    'available': True,
+                    'price': float(hist['Close'].iloc[-1]),
+                    'error': None
+                }
+            else:
+                results['datasources']['yfinance']['error'] = 'No data'
+    except ImportError:
+        results['datasources']['yfinance']['error'] = 'Module not installed'
+    except Exception as e:
+        results['datasources']['yfinance']['error'] = str(e)[:200]
     
     return jsonify(results)
 

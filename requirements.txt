@@ -7,3 +7,5 @@ APScheduler>=3.10.0
 xlrd>=2.0.1
 openpyxl>=3.0.0
 akshare>=1.12.0
+efinance>=0.5.0
+yfinance>=0.2.0
