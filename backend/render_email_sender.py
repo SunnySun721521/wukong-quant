@@ -289,21 +289,22 @@ class RenderEmailSender:
             story = []
             
             # 尝试使用中文字体
+            font_name = None
             try:
-                from render_pdf_fonts import get_chinese_font
-                font_name = get_chinese_font()
-                if font_name:
-                    title_style = ParagraphStyle('ChineseTitle', parent=styles['Heading1'], fontName=font_name)
-                    normal_style = ParagraphStyle('ChineseNormal', parent=styles['Normal'], fontName=font_name)
-                else:
-                    title_style = styles['Heading1']
-                    normal_style = styles['Normal']
+                from render_solution import get_pdf_font_render
+                font_name = get_pdf_font_render()
             except:
+                pass
+            
+            if font_name:
+                title_style = ParagraphStyle('ChineseTitle', parent=styles['Heading1'], fontName=font_name)
+                normal_style = ParagraphStyle('ChineseNormal', parent=styles['Normal'], fontName=font_name)
+            else:
                 title_style = styles['Heading1']
                 normal_style = styles['Normal']
             
-            story.append(Paragraph("Test Email - 测试邮件", title_style))
-            story.append(Paragraph(f"This is a test email. 这是一封测试邮件。", normal_style))
+            story.append(Paragraph("Test Email", title_style))
+            story.append(Paragraph(f"This is a test email.", normal_style))
             story.append(Paragraph(f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", normal_style))
             
             doc.build(story)
@@ -312,6 +313,8 @@ class RenderEmailSender:
             
         except Exception as e:
             print(f"[Render] 创建测试PDF失败: {e}")
+            import traceback
+            traceback.print_exc()
             return None
     
     def _log_send(self, recipients: List[str], subject: str, status: str, error: str, pdf_file: str):

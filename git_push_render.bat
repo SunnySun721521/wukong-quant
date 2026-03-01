@@ -16,7 +16,7 @@ git add .
 
 echo.
 echo [3/4] Committing changes...
-git commit -m "Fix Render: PDF fonts, market status, backtest data, email sending"
+git commit -m "Fix Render: market status data, backtest data, stock names, PDF fonts, email sending"
 
 echo.
 echo [4/4] Pushing to GitHub...

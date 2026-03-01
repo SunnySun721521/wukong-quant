@@ -664,24 +664,24 @@ def save_backtest_pool(stocks):
 def get_backtest_pool_info():
     stocks = load_backtest_pool()
     
-    # Render环境获取股票名称
+    # Render环境获取股票名称 - 使用render_solution
     stock_info_list = []
     if os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID'):
         print("[Render] 获取回测股票池名称")
         try:
-            from render_unified_data import get_stock_info_render
+            from render_solution import get_stock_info_render, get_stock_name_render
             for symbol in stocks:
                 try:
-                    info = get_stock_info_render(symbol)
+                    name = get_stock_name_render(symbol)
                     stock_info_list.append({
                         'symbol': symbol,
-                        'name': info.get('name', symbol) if info else symbol
+                        'name': name
                     })
                 except Exception as e:
                     print(f"[Render] 获取股票名称失败 {symbol}: {e}")
                     stock_info_list.append({'symbol': symbol, 'name': symbol})
         except Exception as e:
-            print(f"[Render] 导入render_unified_data失败: {e}")
+            print(f"[Render] 导入render_solution失败: {e}")
             stock_info_list = [{'symbol': s, 'name': s} for s in stocks]
     else:
         # 本地环境
@@ -1204,32 +1204,37 @@ def get_market_status():
     print("API called: /api/plan/market-status")
     
     try:
-        cache_key = 'market_status'
-        
         import pandas as pd
         import os
         from datetime import datetime
         
-        # Render环境优先使用yfinance获取沪深300指数数据
+        # Render环境使用新的解决方案模块
         if os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID'):
-            print("[Render] 使用yfinance获取沪深300指数数据")
+            print("[Render] 使用render_solution获取指数数据")
             try:
-                from render_unified_data import RenderDataProvider
-                current_price, change_pct, ma120, hist_df = RenderDataProvider.get_index_data('000300', days=150)
+                from render_solution import get_index_render
+                current_price, change_pct, ma120, hist_df = get_index_render()
                 
                 if current_price is not None:
                     is_bull = current_price > ma120
                     
-                    # 生成图表数据
+                    # 生成图表数据 - 使用实际数据
                     if hist_df is not None and len(hist_df) >= 7:
                         recent_df = hist_df.tail(7)
                         labels = [date.strftime('%m-%d') for date in recent_df.index]
-                        hs300_values = [round(float(val), 2) for val in recent_df['Close'].values]
-                        ma120_values = [round(float(val), 2) for val in recent_df['Close'].rolling(120).mean().tail(7).values]
+                        hs300_values = [round(float(val), 2) for val in recent_df['close'].values]
+                        # 计算MA120
+                        if len(hist_df) >= 120:
+                            ma120_series = hist_df['close'].rolling(120).mean().tail(7)
+                            ma120_values = [round(float(val), 2) if not pd.isna(val) else round(ma120, 2) for val in ma120_series.values]
+                        else:
+                            ma120_values = [round(ma120, 2)] * 7
                     else:
-                        labels = ["01-20", "01-21", "01-22", "01-23", "01-24", "01-25", "01-26"]
-                        hs300_values = [3750, 3780, 3760, 3800, 3820, 3810, current_price]
-                        ma120_values = [3700, 3710, 3720, 3730, 3740, 3750, ma120]
+                        # 使用默认数据
+                        today = datetime.now()
+                        labels = [(today - timedelta(days=6-i)).strftime('%m-%d') for i in range(7)]
+                        hs300_values = [current_price] * 7
+                        ma120_values = [ma120] * 7
                     
                     result = {
                         "status": "bull" if is_bull else "bear",
@@ -1242,10 +1247,17 @@ def get_market_status():
                             "hs300": hs300_values,
                             "ma120": ma120_values
                         },
-                        "analysis": f"沪深300指数{'高于' if is_bull else '低于'}120日均线，市场处于{'牛市' if is_bull else '熊市'}状态",
+                        "analysis": f"上证指数{'高于' if is_bull else '低于'}120日均线，市场处于{'牛市' if is_bull else '熊市'}状态",
                         "update_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     }
-                    print(f"[Render] 市场状态获取成功: {result['status_text']}")
+                    print(f"[Render] 市场状态获取成功: {result['status_text']}, 指数={current_price:.2f}")
+                    return jsonify(result)
+                else:
+                    print("[Render] 指数数据获取失败，使用备用方案")
+            except Exception as e:
+                print(f"[Render] render_solution失败: {e}")
+                import traceback
+                traceback.print_exc()
                     return jsonify(result)
             except Exception as e:
                 print(f"[Render] yfinance获取失败，尝试其他方式: {e}")
@@ -2685,13 +2697,17 @@ def export_plan_pdf():
         if os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID'):
             print("[Render] 尝试获取中文字体...")
             try:
-                from render_pdf_fonts import get_chinese_font
-                render_font = get_chinese_font()
+                from render_solution import get_pdf_font_render
+                render_font = get_pdf_font_render()
                 if render_font:
                     chinese_font = render_font
                     print(f"[Render] 使用字体: {chinese_font}")
+                else:
+                    print("[Render] 未找到中文字体，PDF可能无法正常显示中文")
             except Exception as e:
                 print(f"[Render] 获取字体失败: {e}")
+                import traceback
+                traceback.print_exc()
         
         # 从请求参数获取available_cash和original_cash（模拟前端的localStorage）
         available_cash = request.args.get('available_cash', 187500.00, type=float)

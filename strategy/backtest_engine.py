@@ -548,22 +548,24 @@ class BacktestEngine:
     
     def prepare_data(self, symbol, start_date, end_date):
         try:
-            # Render环境优先使用统一数据模块
+            # Render环境优先使用render_solution模块
             if is_render_environment():
                 print(f"[Render] 回测数据获取: {symbol}")
                 try:
-                    # 添加backend路径以导入render_unified_data
+                    # 添加backend路径以导入render_solution
                     backend_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
                     if backend_path not in sys.path:
                         sys.path.insert(0, backend_path)
                     
-                    from render_unified_data import get_kline_data_render
-                    df = get_kline_data_render(symbol, start_date, end_date)
+                    from render_solution import get_kline_render
+                    df = get_kline_render(symbol, start_date, end_date)
                     if df is not None and not df.empty:
-                        print(f"[Render] 回测数据获取成功: {symbol}, {len(df)}条")
+                        print(f"[Render] 回测数据获取成功: {symbol}, {len(df)}条, 最新日期: {df.index[-1]}")
                         return df
                 except Exception as e:
-                    print(f"[Render] 统一数据模块获取失败: {e}")
+                    print(f"[Render] render_solution获取失败: {e}")
+                    import traceback
+                    traceback.print_exc()
             
             # 本地环境使用DataProvider
             df = DataProvider.get_kline_data(symbol, start_date, end_date)
