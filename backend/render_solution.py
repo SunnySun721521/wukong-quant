@@ -151,6 +151,41 @@ class RenderStockData:
         except Exception as e:
             print(f"[Render] 获取股票信息失败 {symbol}: {e}")
             return {'symbol': symbol, 'name': symbol, 'price': 0}
+    
+    @staticmethod
+    def get_current_price(symbol):
+        """获取股票当前价格"""
+        if not is_render_environment():
+            return None
+        
+        print(f"[Render] 获取当前价格: {symbol}")
+        
+        try:
+            import yfinance as yf
+            
+            # A股代码转换
+            if symbol.isdigit() and len(symbol) == 6:
+                if symbol.startswith('6'):
+                    yf_symbol = f"{symbol}.SS"
+                else:
+                    yf_symbol = f"{symbol}.SZ"
+            else:
+                yf_symbol = symbol
+            
+            ticker = yf.Ticker(yf_symbol)
+            
+            # 获取最近5天的数据
+            hist = ticker.history(period="5d")
+            
+            if hist is not None and not hist.empty:
+                price = float(hist['Close'].iloc[-1])
+                print(f"[Render] 获取价格成功: {symbol} = {price}")
+                return price
+            
+        except Exception as e:
+            print(f"[Render] 获取价格失败 {symbol}: {e}")
+        
+        return None
 
 
 class RenderIndexData:
@@ -346,6 +381,10 @@ def get_stock_name_render(symbol):
 def get_stock_info_render(symbol):
     """获取股票信息"""
     return RenderStockData.get_stock_info(symbol)
+
+def get_current_price_render(symbol):
+    """获取股票当前价格"""
+    return RenderStockData.get_current_price(symbol)
 
 def get_index_render():
     """获取指数数据"""

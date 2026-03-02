@@ -91,17 +91,10 @@ try:
 except Exception as e:
     print(f"[Render] 邮箱配置初始化失败: {e}")
 
-# 导入并启动Flask应用
+# 导入app模块（这会触发app.py中的初始化代码）
 print("[Render] 导入Flask应用...")
-try:
-    import app
-    print("[Render] Flask应用导入成功")
-except Exception as e:
-    print(f"[Render] Flask应用导入失败: {e}")
-    import traceback
-    traceback.print_exc()
-    sys.exit(1)
+import app
 
-# 启动应用
-print("[Render] 启动Flask应用...")
-app.app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5006)), debug=False, threaded=True)
+# 启动Flask服务（调用app.py中的run_app函数）
+print("[Render] 启动Flask服务...")
+app.run_app()

@@ -8938,5 +8938,29 @@
     "module": "买入策略",
     "success": true,
     "error": null
+  },
+  {
+    "timestamp": "2026-03-02 10:10:07",
+    "module": "市场状态判断",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-03-02 10:10:27",
+    "module": "持仓分析",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-03-02 10:10:28",
+    "module": "调仓策略",
+    "success": true,
+    "error": null
+  },
+  {
+    "timestamp": "2026-03-02 10:10:52",
+    "module": "买入策略",
+    "success": true,
+    "error": null
   }
 ]

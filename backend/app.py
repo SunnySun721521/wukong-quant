@@ -1474,15 +1474,15 @@ def get_position_analysis():
                         print(f"正在获取 {symbol} ({name}) 的最新价格...")
                         latest_price = None
                         
-                        # Render环境优先使用yfinance
+                        # Render环境优先使用render_solution
                         if os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID'):
                             try:
-                                from render_data_provider import get_a_stock_price_render
-                                latest_price = get_a_stock_price_render(symbol)
+                                from render_solution import get_current_price_render
+                                latest_price = get_current_price_render(symbol)
                                 if latest_price:
-                                    print(f"Render环境 yfinance 获取到 {symbol} 价格: {latest_price}")
+                                    print(f"[Render] yfinance获取到 {symbol} 价格: {latest_price}")
                             except Exception as e:
-                                print(f"Render环境获取失败: {e}")
+                                print(f"[Render] render_solution获取失败: {e}")
                         
                         # 如果Render环境获取失败，使用原有方式
                         if not latest_price:
@@ -4642,7 +4642,7 @@ def get_home_overview():
                         current_price = cached_price_data.get('price')
                 
                 # Render环境使用render_solution获取最新价格
-                if current_price is None and os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID'):
+                if current_price is None and (os.environ.get('RENDER') or os.environ.get('RENDER_SERVICE_ID')):
                     try:
                         from render_solution import get_current_price_render
                         current_price = get_current_price_render(symbol)
